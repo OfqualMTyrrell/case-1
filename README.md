@@ -1,6 +1,21 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started with Create React App & IBM Carbon Design System
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and includes the [IBM Carbon Design System](https://carbondesignsystem.com/) (`carbon-components-react`, `@carbon/icons-react`, `@carbon/themes`).
+## Using IBM Carbon Components
+
+You can now use Carbon React components in your app. Example usage:
+
+```jsx
+import { Button } from 'carbon-components-react';
+
+function App() {
+  return <Button>Carbon Button</Button>;
+}
+```
+
+Refer to the [Carbon React documentation](https://react.carbondesignsystem.com/) for more details.
 
 ## Available Scripts
 

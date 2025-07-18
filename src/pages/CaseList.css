@@ -1,0 +1,11 @@
+.clickable-row:hover {
+  background-color: var(--cds-layer-hover, #393939) !important;
+}
+
+.clickable-row:active {
+  background-color: var(--cds-layer-active, #262626) !important;
+}
+
+.clickable-row {
+  cursor: pointer;
+}

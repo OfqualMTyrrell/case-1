@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+
+
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import CaseList from './pages/CaseList';
+import CaseInformation from './pages/CaseInformation';
+import CaseListV2 from './pages/CaseListV2';
+import '@carbon/styles/css/styles.css';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="cds-theme--g100">
+      <Router>
+        <Routes>
+          <Route path="/cases" element={<CaseList />} />
+          <Route path="/case/:id" element={<CaseInformation />} />
+          <Route path="/cases-v2" element={<CaseListV2 />} />
+          <Route path="/" element={<Navigate to="/cases" replace />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

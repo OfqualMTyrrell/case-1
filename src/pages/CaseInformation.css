@@ -1,0 +1,23 @@
+/* Responsive nav visibility */
+.case-nav-lg {
+  display: block;
+}
+.case-nav-sm {
+  display: none;
+}
+@media (max-width: 672px) {
+  .case-nav-lg {
+    display: none !important;
+  }
+  .case-nav-sm {
+    display: flex !important;
+  }
+}
+.case-nav-active {
+  border-bottom: 3px solid #0f62fe; /* IBM blue */
+  color: var(--cds-link-primary, #0f62fe);
+}
+
+.case-nav-list {
+  border-bottom: 1px solid var(--cds-border-subtle, #393939);
+}
