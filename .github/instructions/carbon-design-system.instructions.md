@@ -40,7 +40,7 @@ Provide project context and coding guidelines that AI should follow when generat
 - All Carbon components are accessible by default. Do not override ARIA roles unless necessary.
 
 ## Customization
-- Extend components using `className` and `style` props.
+- Extend components using props as defined in carbon design system documentation.
 - Avoid modifying internal styles directly.
 
 ## Resources
