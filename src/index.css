@@ -1,13 +1,26 @@
+/* Global styles optimized for Carbon g100 theme */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
+}
+
+/* Ensure html and body take full height for proper theme coverage */
+html, body, #root {
+  height: 100%;
+  background-color: var(--cds-background);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  background-color: var(--cds-layer);
+  color: var(--cds-text-primary);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
 }

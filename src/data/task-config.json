@@ -1,0 +1,588 @@
+{
+  "caseTypes": {
+    "default": {
+      "name": "Default Case Type",
+      "stages": [
+        {
+          "id": "triage",
+          "name": "Triage",
+          "order": 1,
+          "tasks": [
+            {
+              "id": "check-information",
+              "name": "Check information is correct and present",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "information-complete",
+                  "type": "radio",
+                  "label": "Is all required information present and correct?",
+                  "required": true,
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" },
+                    { "value": "partially", "label": "Partially" }
+                  ]
+                },
+                {
+                  "id": "missing-info-details",
+                  "type": "textarea",
+                  "label": "Details of missing or incorrect information",
+                  "required": false,
+                  "rows": 4,
+                  "placeholder": "Please provide details of any missing or incorrect information..."
+                }
+              ]
+            },
+            {
+              "id": "assign-caseworker",
+              "name": "Assign a caseworker",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "caseworker-selection",
+                  "type": "select",
+                  "label": "Assign Caseworker",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select a caseworker..." },
+                    { "value": "jane-lee", "label": "Jane Lee" },
+                    { "value": "mike-brown", "label": "Mike Brown" },
+                    { "value": "sarah-black", "label": "Sarah Black" },
+                    { "value": "alex-green", "label": "Alex Green" },
+                    { "value": "lisa-white", "label": "Lisa White" },
+                    { "value": "tom-black", "label": "Tom Black" },
+                    { "value": "rachel-brown", "label": "Rachel Brown" },
+                    { "value": "chris-green", "label": "Chris Green" }
+                  ]
+                },
+                {
+                  "id": "assignment-reason",
+                  "type": "textarea",
+                  "label": "Reason for assignment",
+                  "required": false,
+                  "rows": 3,
+                  "placeholder": "Please provide any specific reasons for this assignment..."
+                }
+              ]
+            },
+            {
+              "id": "add-triage-notes",
+              "name": "Add triage notes",
+              "order": 3,
+              "questions": [
+                {
+                  "id": "triage-priority",
+                  "type": "select",
+                  "label": "Priority Level",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select priority..." },
+                    { "value": "low", "label": "Low" },
+                    { "value": "medium", "label": "Medium" },
+                    { "value": "high", "label": "High" },
+                    { "value": "urgent", "label": "Urgent" }
+                  ]
+                },
+                {
+                  "id": "triage-notes",
+                  "type": "textarea",
+                  "label": "Triage Notes",
+                  "required": true,
+                  "rows": 6,
+                  "placeholder": "Please provide detailed triage notes including initial assessment, any immediate concerns, and recommended next steps..."
+                },
+                {
+                  "id": "estimated-completion",
+                  "type": "text",
+                  "label": "Estimated completion date",
+                  "required": false,
+                  "placeholder": "DD/MM/YYYY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "review",
+          "name": "Review",
+          "order": 2,
+          "tasks": [
+            {
+              "id": "add-review-notes",
+              "name": "Add review notes",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "review-type",
+                  "type": "radio",
+                  "label": "Type of review",
+                  "required": true,
+                  "options": [
+                    { "value": "initial", "label": "Initial Review" },
+                    { "value": "detailed", "label": "Detailed Review" },
+                    { "value": "follow-up", "label": "Follow-up Review" }
+                  ]
+                },
+                {
+                  "id": "review-notes",
+                  "type": "textarea",
+                  "label": "Review Notes",
+                  "required": true,
+                  "rows": 6,
+                  "placeholder": "Please provide detailed review notes including findings, analysis, and recommendations..."
+                },
+                {
+                  "id": "review-outcome",
+                  "type": "select",
+                  "label": "Review Outcome",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select outcome..." },
+                    { "value": "approved", "label": "Approved" },
+                    { "value": "rejected", "label": "Rejected" },
+                    { "value": "requires-clarification", "label": "Requires Clarification" },
+                    { "value": "requires-meeting", "label": "Requires Meeting" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "record-meeting-date",
+              "name": "Record meeting date",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "meeting-required",
+                  "type": "radio",
+                  "label": "Is a meeting required?",
+                  "required": true,
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ]
+                },
+                {
+                  "id": "meeting-date",
+                  "type": "text",
+                  "label": "Meeting Date",
+                  "required": false,
+                  "placeholder": "DD/MM/YYYY"
+                },
+                {
+                  "id": "meeting-attendees",
+                  "type": "textarea",
+                  "label": "Meeting Attendees",
+                  "required": false,
+                  "rows": 3,
+                  "placeholder": "List all attendees..."
+                },
+                {
+                  "id": "meeting-agenda",
+                  "type": "textarea",
+                  "label": "Meeting Agenda/Notes",
+                  "required": false,
+                  "rows": 4,
+                  "placeholder": "Meeting agenda items or notes..."
+                }
+              ]
+            },
+            {
+              "id": "inherent-risk-exposure",
+              "name": "Inherent risk exposure",
+              "order": 3,
+              "questions": [
+                {
+                  "id": "inherent-risk-level",
+                  "type": "select",
+                  "label": "Inherent Risk Level",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select risk level..." },
+                    { "value": "very-low", "label": "Very Low" },
+                    { "value": "low", "label": "Low" },
+                    { "value": "medium", "label": "Medium" },
+                    { "value": "high", "label": "High" },
+                    { "value": "very-high", "label": "Very High" }
+                  ]
+                },
+                {
+                  "id": "risk-factors",
+                  "type": "textarea",
+                  "label": "Risk Factors",
+                  "required": true,
+                  "rows": 4,
+                  "placeholder": "Describe the key risk factors identified..."
+                },
+                {
+                  "id": "risk-impact",
+                  "type": "textarea",
+                  "label": "Potential Impact",
+                  "required": true,
+                  "rows": 3,
+                  "placeholder": "Describe the potential impact if risks materialise..."
+                }
+              ]
+            },
+            {
+              "id": "residual-risk-exposure",
+              "name": "Residual risk exposure",
+              "order": 4,
+              "questions": [
+                {
+                  "id": "residual-risk-level",
+                  "type": "select",
+                  "label": "Residual Risk Level",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select risk level..." },
+                    { "value": "very-low", "label": "Very Low" },
+                    { "value": "low", "label": "Low" },
+                    { "value": "medium", "label": "Medium" },
+                    { "value": "high", "label": "High" },
+                    { "value": "very-high", "label": "Very High" }
+                  ]
+                },
+                {
+                  "id": "mitigation-measures",
+                  "type": "textarea",
+                  "label": "Mitigation Measures",
+                  "required": true,
+                  "rows": 4,
+                  "placeholder": "Describe the mitigation measures in place or proposed..."
+                },
+                {
+                  "id": "residual-impact",
+                  "type": "textarea",
+                  "label": "Residual Impact Assessment",
+                  "required": true,
+                  "rows": 3,
+                  "placeholder": "Assess the remaining impact after mitigation measures..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "outcome",
+          "name": "Outcome",
+          "order": 3,
+          "tasks": [
+            {
+              "id": "record-outcome",
+              "name": "Record outcome",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "final-outcome",
+                  "type": "select",
+                  "label": "Final Outcome",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select outcome..." },
+                    { "value": "approved", "label": "Approved" },
+                    { "value": "rejected", "label": "Rejected" },
+                    { "value": "approved-with-conditions", "label": "Approved with Conditions" },
+                    { "value": "withdrawn", "label": "Withdrawn" },
+                    { "value": "referred", "label": "Referred" }
+                  ]
+                },
+                {
+                  "id": "outcome-reasoning",
+                  "type": "textarea",
+                  "label": "Outcome Reasoning",
+                  "required": true,
+                  "rows": 6,
+                  "placeholder": "Provide detailed reasoning for the outcome decision..."
+                },
+                {
+                  "id": "conditions",
+                  "type": "textarea",
+                  "label": "Conditions (if applicable)",
+                  "required": false,
+                  "rows": 4,
+                  "placeholder": "List any conditions attached to the outcome..."
+                }
+              ]
+            },
+            {
+              "id": "record-follow-up-requirements",
+              "name": "Record follow up requirements",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "follow-up-required",
+                  "type": "radio",
+                  "label": "Is follow-up required?",
+                  "required": true,
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ]
+                },
+                {
+                  "id": "follow-up-timeline",
+                  "type": "select",
+                  "label": "Follow-up Timeline",
+                  "required": false,
+                  "options": [
+                    { "value": "", "label": "Select timeline..." },
+                    { "value": "1-month", "label": "1 Month" },
+                    { "value": "3-months", "label": "3 Months" },
+                    { "value": "6-months", "label": "6 Months" },
+                    { "value": "12-months", "label": "12 Months" },
+                    { "value": "other", "label": "Other" }
+                  ]
+                },
+                {
+                  "id": "follow-up-details",
+                  "type": "textarea",
+                  "label": "Follow-up Details",
+                  "required": false,
+                  "rows": 4,
+                  "placeholder": "Describe the follow-up requirements and actions needed..."
+                }
+              ]
+            },
+            {
+              "id": "close-case",
+              "name": "Close case",
+              "order": 3,
+              "questions": [
+                {
+                  "id": "closure-confirmation",
+                  "type": "radio",
+                  "label": "Confirm case closure",
+                  "required": true,
+                  "options": [
+                    { "value": "ready-to-close", "label": "Ready to close" },
+                    { "value": "requires-further-action", "label": "Requires further action" }
+                  ]
+                },
+                {
+                  "id": "closure-notes",
+                  "type": "textarea",
+                  "label": "Closure Notes",
+                  "required": true,
+                  "rows": 4,
+                  "placeholder": "Provide final notes and summary for case closure..."
+                },
+                {
+                  "id": "lessons-learned",
+                  "type": "textarea",
+                  "label": "Lessons Learned",
+                  "required": false,
+                  "rows": 3,
+                  "placeholder": "Any lessons learned or process improvements identified..."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Recognition application": {
+      "name": "Recognition Application",
+      "stages": [
+        {
+          "id": "triage",
+          "name": "Triage",
+          "order": 1,
+          "tasks": [
+            {
+              "id": "initial-assessment",
+              "name": "Initial application assessment",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "application-complete",
+                  "type": "radio",
+                  "label": "Is the application complete?",
+                  "required": true,
+                  "options": [
+                    { "value": "complete", "label": "Complete" },
+                    { "value": "incomplete", "label": "Incomplete" },
+                    { "value": "requires-clarification", "label": "Requires clarification" }
+                  ]
+                },
+                {
+                  "id": "eligibility-check",
+                  "type": "radio",
+                  "label": "Does the applicant meet eligibility criteria?",
+                  "required": true,
+                  "options": [
+                    { "value": "eligible", "label": "Eligible" },
+                    { "value": "not-eligible", "label": "Not eligible" },
+                    { "value": "unclear", "label": "Unclear - requires further review" }
+                  ]
+                },
+                {
+                  "id": "initial-notes",
+                  "type": "textarea",
+                  "label": "Initial Assessment Notes",
+                  "required": true,
+                  "rows": 6,
+                  "placeholder": "Provide initial assessment notes including any concerns or observations..."
+                }
+              ]
+            },
+            {
+              "id": "assign-recognition-assessor",
+              "name": "Assign recognition assessor",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "assessor-selection",
+                  "type": "select",
+                  "label": "Assign Recognition Assessor",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select an assessor..." },
+                    { "value": "senior-assessor-1", "label": "Dr. Sarah Johnson (Senior Assessor)" },
+                    { "value": "senior-assessor-2", "label": "Prof. Michael Chen (Senior Assessor)" },
+                    { "value": "assessor-1", "label": "Emma Wilson (Assessor)" },
+                    { "value": "assessor-2", "label": "David Thompson (Assessor)" }
+                  ]
+                },
+                {
+                  "id": "complexity-level",
+                  "type": "select",
+                  "label": "Application Complexity",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select complexity..." },
+                    { "value": "standard", "label": "Standard" },
+                    { "value": "complex", "label": "Complex" },
+                    { "value": "highly-complex", "label": "Highly Complex" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "review",
+          "name": "Detailed Review",
+          "order": 2,
+          "tasks": [
+            {
+              "id": "criteria-assessment",
+              "name": "Assess recognition criteria",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "criteria-a-assessment",
+                  "type": "select",
+                  "label": "Criteria A Assessment",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select assessment..." },
+                    { "value": "met", "label": "Fully Met" },
+                    { "value": "partially-met", "label": "Partially Met" },
+                    { "value": "not-met", "label": "Not Met" }
+                  ]
+                },
+                {
+                  "id": "criteria-b-assessment",
+                  "type": "select",
+                  "label": "Criteria B Assessment",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select assessment..." },
+                    { "value": "met", "label": "Fully Met" },
+                    { "value": "partially-met", "label": "Partially Met" },
+                    { "value": "not-met", "label": "Not Met" }
+                  ]
+                },
+                {
+                  "id": "criteria-assessment-notes",
+                  "type": "textarea",
+                  "label": "Criteria Assessment Notes",
+                  "required": true,
+                  "rows": 8,
+                  "placeholder": "Provide detailed assessment of how the applicant meets or does not meet each criterion..."
+                }
+              ]
+            },
+            {
+              "id": "site-visit-planning",
+              "name": "Plan site visit (if required)",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "site-visit-required",
+                  "type": "radio",
+                  "label": "Is a site visit required?",
+                  "required": true,
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" },
+                    { "value": "virtual-meeting", "label": "Virtual meeting sufficient" }
+                  ]
+                },
+                {
+                  "id": "visit-date",
+                  "type": "text",
+                  "label": "Proposed Visit Date",
+                  "required": false,
+                  "placeholder": "DD/MM/YYYY"
+                },
+                {
+                  "id": "visit-objectives",
+                  "type": "textarea",
+                  "label": "Visit Objectives",
+                  "required": false,
+                  "rows": 4,
+                  "placeholder": "Outline the key objectives and areas to assess during the visit..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "outcome",
+          "name": "Decision",
+          "order": 3,
+          "tasks": [
+            {
+              "id": "final-recommendation",
+              "name": "Make final recommendation",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "recommendation",
+                  "type": "select",
+                  "label": "Final Recommendation",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select recommendation..." },
+                    { "value": "grant-recognition", "label": "Grant Recognition" },
+                    { "value": "conditional-recognition", "label": "Grant with Conditions" },
+                    { "value": "refuse-recognition", "label": "Refuse Recognition" },
+                    { "value": "defer-decision", "label": "Defer Decision" }
+                  ]
+                },
+                {
+                  "id": "recommendation-rationale",
+                  "type": "textarea",
+                  "label": "Recommendation Rationale",
+                  "required": true,
+                  "rows": 8,
+                  "placeholder": "Provide comprehensive rationale for the recommendation including assessment against all criteria..."
+                },
+                {
+                  "id": "conditions",
+                  "type": "textarea",
+                  "label": "Conditions (if applicable)",
+                  "required": false,
+                  "rows": 4,
+                  "placeholder": "List any conditions that must be met..."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,5 +1,8 @@
+/* Root app styles optimized for g100 theme */
 .App {
-  text-align: center;
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -14,18 +17,43 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--cds-background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--cds-text-primary);
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--cds-link-primary);
+}
+
+/* Ensure clickable rows have proper hover and focus states for g100 theme */
+.clickable-row:hover {
+  background-color: var(--cds-layer-hover) !important;
+}
+
+.clickable-row:focus {
+  outline: 2px solid var(--cds-focus);
+  outline-offset: -2px;
+}
+
+/* Fix FilterableMultiSelect dropdown options alignment */
+.left-aligned-multiselect .cds--list-box__menu-item__option {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+.left-aligned-multiselect .cds--checkbox-label-text {
+  text-align: left !important;
+}
+
+.left-aligned-multiselect .cds--checkbox-label {
+  justify-content: flex-start !important;
+  text-align: left !important;
 }
 
 @keyframes App-logo-spin {
