@@ -136,7 +136,7 @@ function CaseInformation() {
             <div style={{ position: 'sticky', top: '2rem', zIndex: 1 }} className="case-nav-list case-nav-lg">
               <ContainedList kind="interactive" style={{ marginTop: '2rem' }}>
                 <ContainedListItem onClick={() => {}} className="case-nav-active">Case information</ContainedListItem>
-                <ContainedListItem onClick={() => {}}>Tasks</ContainedListItem>
+                <ContainedListItem onClick={() => navigate(`/case/${caseData.CaseID}/tasks`)}>Tasks</ContainedListItem>
                 <ContainedListItem onClick={() => {}}>Messages</ContainedListItem>
                 <ContainedListItem onClick={() => {}}>Timeline</ContainedListItem>
               </ContainedList>
@@ -145,7 +145,7 @@ function CaseInformation() {
             <div className="case-nav-sm" style={{ display: 'none', justifyContent: 'flex-end', marginBottom: '1rem' }}>
               <OverflowMenu aria-label="Open navigation menu" flipped>
                 <OverflowMenuItem itemText="Case information" onClick={() => {}} />
-                <OverflowMenuItem itemText="Tasks" onClick={() => {}} />
+                <OverflowMenuItem itemText="Tasks" onClick={() => navigate(`/case/${caseData.CaseID}/tasks`)} />
                 <OverflowMenuItem itemText="Messages" onClick={() => {}} />
                 <OverflowMenuItem itemText="Timeline" onClick={() => {}} />
               </OverflowMenu>

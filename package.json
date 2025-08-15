@@ -19,11 +19,12 @@
   },
   
   "scripts": {
-  "start": "serve -s build",
-  "build": "react-scripts build",
-  "postinstall": "npm run build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "serve": "serve -s build",
+    "postinstall": "npm run build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   
   "eslintConfig": {
