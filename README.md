@@ -19,22 +19,23 @@ Refer to the [Carbon React documentation](https://react.carbondesignsystem.com/)
 
 ## Available Scripts
 
-In the project directory, you can run:
+This project is configured to work optimally with both local development and Heroku production deployment.
 
-### `npm start`
+### Development Scripts
 
-Runs the app in the development mode.\
+#### `npm run dev`
+
+Runs the app in development mode with hot reloading.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload when you make changes and you'll see any lint errors in the console.
 
-### `npm test`
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+#### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -42,7 +43,40 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### `npm run serve`
+
+Serves the production build locally for testing.\
+This mimics how the app will run in production on Heroku.
+
+### Production Deployment
+
+#### `npm start`
+
+**Production command for Heroku deployment.**\
+Serves the optimized production build using the `serve` package.
+
+This command is automatically run by Heroku and provides optimal performance on basic dynos by serving minified, static files instead of running the development server.
+
+#### `postinstall`
+
+Automatically runs `npm run build` after dependencies are installed on Heroku, ensuring the production build is created during deployment.
+
+### Local Development Workflow
+
+```bash
+npm run dev          # Start development server (http://localhost:3000)
+npm run build        # Build for production
+npm run serve        # Test production build locally
+```
+
+### Heroku Deployment
+
+The project is configured for seamless Heroku deployment:
+
+1. **Automatic Building**: The `postinstall` hook ensures the app is built after dependency installation
+2. **Optimized Serving**: `npm start` serves the production build via the `serve` package
+3. **Performance**: Uses minified, tree-shaken code for optimal performance on Heroku's basic dynos
+
 
 ### `npm run eject`
 

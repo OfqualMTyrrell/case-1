@@ -19,8 +19,9 @@
   },
   
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "serve -s build",
+    "build": "react-scripts build", 
+    "dev": "react-scripts start",
     "serve": "serve -s build",
     "postinstall": "npm run build",
     "test": "react-scripts test",
