@@ -1,11 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   Breadcrumb, 
   BreadcrumbItem, 
   ProgressIndicator, 
   ProgressStep, 
-  Layer 
+  Layer,
+  MenuButton,
+  MenuItem
 } from '@carbon/react';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
 
@@ -21,6 +23,7 @@ function CaseHeader({
   currentCaseStatus = null // Allow external status override for real-time updates
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   if (!caseData) return null;
 
@@ -48,6 +51,28 @@ function CaseHeader({
     }
   };
 
+  // Handle menu actions
+  const handleOpenInNewTab = () => {
+    const url = `/case/${caseData.CaseID}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleRecordCaseNote = () => {
+    navigate(`/case/${caseData.CaseID}/record-note`, {
+      state: { from: location.pathname }
+    });
+  };
+
+  const handleSendMessage = () => {
+    // TODO: Implement messaging functionality
+    console.log('Send message - not implemented yet');
+  };
+
+  const handleCancelCase = () => {
+    // TODO: Implement cancel case functionality  
+    console.log('Cancel case - not implemented yet');
+  };
+
   return (
     <Layer>
       <div style={{ 
@@ -55,9 +80,40 @@ function CaseHeader({
         padding: '1rem', 
         marginTop: '1em', 
         marginBottom: '1rem', 
-        paddingTop: '1em' 
+        paddingTop: '1em',
+        position: 'relative'
       }}>
-        <Breadcrumb style={{ marginBottom: '1rem', paddingTop: '0.5em' }}>
+        {/* Actions Menu Button - positioned absolutely to avoid layout impact */}
+        <div style={{ 
+          position: 'absolute',
+          top: '50%',
+          right: '1rem',
+          transform: 'translateY(-50%)',
+          zIndex: 10
+        }}>
+          <MenuButton label="Actions" align="bottom-right">
+            <MenuItem 
+              label="Open in a new tab"
+              onClick={handleOpenInNewTab}
+              aria-label="Open case information in a new tab"
+            />
+            <MenuItem 
+              label="Record a case note"
+              onClick={handleRecordCaseNote}
+            />
+            <MenuItem 
+              label="Send a message"
+              onClick={handleSendMessage}
+            />
+            <MenuItem 
+              label="Cancel case"
+              onClick={handleCancelCase}
+              kind="danger"
+            />
+          </MenuButton>
+        </div>
+
+        <Breadcrumb style={{ marginBottom: '1rem', paddingTop: '0.5em', paddingRight: '6rem' }}>
           {/* Default Cases breadcrumb */}
           <BreadcrumbItem 
             href="#" 
