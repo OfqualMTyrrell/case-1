@@ -10,15 +10,11 @@ import {
   Button, 
   Form,
   FormGroup,
-  TextInput,
-  TextArea,
-  Select,
-  SelectItem,
-  RadioButton,
-  RadioButtonGroup,
+  Checkbox,
   OverflowMenu,
   OverflowMenuItem,
-  InlineNotification
+  InlineNotification,
+  Link
 } from '@carbon/react';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
@@ -28,21 +24,17 @@ import { getDisplayStatus } from '../utils/caseStatusUtils';
 import './CaseInformation.css';
 import '@carbon/styles/css/styles.css';
 
-function TaskDetail() {
+function TaskCheckAnswers() {
   const { caseId, stageId, taskId } = useParams();
   const navigate = useNavigate();
   const [caseData, setCaseData] = useState(null);
   const [taskData, setTaskData] = useState(null);
   const [stageData, setStageData] = useState(null);
   const [formData, setFormData] = useState({});
+  const [isCompleted, setIsCompleted] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [notification, setNotification] = useState(null);
   const [currentCaseStatus, setCurrentCaseStatus] = useState('');
-
-  // Check if we're in edit mode (coming from check answers page)
-  const urlParams = new URLSearchParams(window.location.search);
-  const isEditMode = urlParams.has('question');
-  const editQuestionId = urlParams.get('question');
 
   useEffect(() => {
     const foundCase = casesData.find(c => c.CaseID === caseId);
@@ -71,8 +63,9 @@ function TaskDetail() {
     if (savedData) {
       const parsed = JSON.parse(savedData);
       setFormData(parsed.formData || {});
+      setIsCompleted(parsed.isCompleted || false);
     }
-  }, [caseId, stageId, taskId, isEditMode, editQuestionId]);
+  }, [caseId, stageId, taskId]);
 
   // Update case status when task statuses change
   useEffect(() => {
@@ -80,7 +73,7 @@ function TaskDetail() {
       const updatedStatus = getDisplayStatus(caseId, caseData.Status);
       setCurrentCaseStatus(updatedStatus);
     }
-  }, [caseId, caseData]);
+  }, [isCompleted, caseId, caseData]);
 
   // Listen for storage changes to refresh case status
   useEffect(() => {
@@ -108,15 +101,32 @@ function TaskDetail() {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [caseId, stageId, taskId]);
 
-  const handleInputChange = (questionId, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [questionId]: value
-    }));
+  const handleCompletionChange = (event, data) => {
+    const checked = event.target.checked;
+    setIsCompleted(checked);
     setHasUnsavedChanges(true);
   };
 
   const handleSave = () => {
+    // Ensure isCompleted is a boolean value
+    const completionStatus = Boolean(isCompleted);
+    
+    // If trying to mark as complete, validate required fields
+    if (completionStatus) {
+      const requiredFields = taskData.questions.filter(q => q.required);
+      const missingFields = requiredFields.filter(q => !formData[q.id] || formData[q.id] === '');
+      
+      if (missingFields.length > 0) {
+        const fieldNames = missingFields.map(f => f.label).join(', ');
+        setNotification({
+          kind: 'error',
+          title: 'Required fields missing',
+          subtitle: `Please complete the following required fields: ${fieldNames}`
+        });
+        return;
+      }
+    }
+    
     // Reset validation errors if saving successfully
     setNotification(null);
     
@@ -127,142 +137,78 @@ function TaskDetail() {
       // Only save primitive values (string, number, boolean)
       if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
         cleanFormData[key] = value;
+      } else if (value && typeof value === 'object' && value.value !== undefined) {
+        // Handle objects with value property (like Select components)
+        cleanFormData[key] = value.value;
       }
     });
-
-    // Load existing saved data to preserve completion status
-    const existingSavedData = sessionStorage.getItem(`taskData_${caseId}_${stageId}_${taskId}`);
-    let existingData = {};
-    if (existingSavedData) {
-      existingData = JSON.parse(existingSavedData);
-    }
 
     // Save form data to session storage
     const dataToSave = {
       formData: cleanFormData,
-      isCompleted: existingData.isCompleted || false,
+      isCompleted: completionStatus,
       lastSaved: new Date().toISOString()
     };
-    
-    console.log('Saving form data:', cleanFormData);
     
     try {
       sessionStorage.setItem(`taskData_${caseId}_${stageId}_${taskId}`, JSON.stringify(dataToSave));
       
-      // Update task status to in-progress if there's any data
+      // Update task status
       const statusKey = `${stageId}_${taskId}`;
       const currentStatuses = JSON.parse(sessionStorage.getItem(`taskStatuses_${caseId}`) || '{}');
-      if (Object.keys(cleanFormData).length > 0) {
-        currentStatuses[statusKey] = existingData.isCompleted ? 'completed' : 'in-progress';
-        sessionStorage.setItem(`taskStatuses_${caseId}`, JSON.stringify(currentStatuses));
-        
-        // Update case status immediately after task status changes
-        if (caseData) {
-          const updatedStatus = getDisplayStatus(caseId, caseData.Status);
-          setCurrentCaseStatus(updatedStatus);
-        }
+      currentStatuses[statusKey] = completionStatus ? 'completed' : 'in-progress';
+      sessionStorage.setItem(`taskStatuses_${caseId}`, JSON.stringify(currentStatuses));
+      
+      // Update case status immediately after task status changes
+      if (caseData) {
+        const updatedStatus = getDisplayStatus(caseId, caseData.Status);
+        setCurrentCaseStatus(updatedStatus);
       }
       
       setHasUnsavedChanges(false);
       
-      // Navigate immediately - no delay needed
-      if (isEditMode) {
-        // If in edit mode, go back to check answers
-        navigate(`/case/${caseId}/tasks/${stageId}/${taskId}/check`);
-      } else {
-        // If not in edit mode, go to check answers
-        navigate(`/case/${caseId}/tasks/${stageId}/${taskId}/check`);
-      }
+      // Always navigate back to task list after saving
+      navigate(`/case/${caseId}/tasks`);
     } catch (error) {
       console.error('Error saving task data:', error);
       // Could add error notification here if needed
     }
   };
 
-  const renderQuestion = (question) => {
-    // Get the saved value, ensuring it's properly formatted
-    let value = formData[question.id];
+  const handleEditAnswer = (questionId) => {
+    navigate(`/case/${caseId}/tasks/${stageId}/${taskId}/edit?question=${questionId}`);
+  };
+
+  const getAnswerDisplay = (question) => {
+    const value = formData[question.id];
     
-    // Handle different value types and ensure they're strings for form inputs
-    if (value === null || value === undefined) {
-      value = '';
-    } else if (typeof value === 'object' && value.value !== undefined) {
-      // Handle cases where Carbon components might save objects
-      value = value.value;
-    } else {
-      // Ensure value is a string
-      value = String(value);
+    if (!value || value === '') {
+      if (question.required) {
+        return (
+          <Link 
+            onClick={() => navigate(`/case/${caseId}/tasks/${stageId}/${taskId}/edit?question=${question.id}`)}
+            style={{ cursor: 'pointer' }}
+          >
+            Enter {question.label.toLowerCase()}
+          </Link>
+        );
+      } else {
+        return <span style={{ color: 'var(--cds-text-secondary)' }}>Not provided</span>;
+      }
     }
     
+    // Format the answer based on question type
     switch (question.type) {
-      case 'text':
-        return (
-          <TextInput
-            id={question.id}
-            labelText={question.label}
-            placeholder={question.placeholder || ''}
-            value={value}
-            onChange={(e) => handleInputChange(question.id, e.target.value)}
-            size="lg"
-            autoFocus={isEditMode && editQuestionId === question.id}
-          />
-        );
-      
-      case 'textarea':
-        return (
-          <TextArea
-            id={question.id}
-            labelText={question.label}
-            placeholder={question.placeholder || ''}
-            value={value}
-            onChange={(e) => handleInputChange(question.id, e.target.value)}
-            rows={question.rows || 4}
-            autoFocus={isEditMode && editQuestionId === question.id}
-          />
-        );
-      
       case 'select':
-        return (
-          <Select
-            id={question.id}
-            labelText={question.label}
-            value={value}
-            onChange={(e) => handleInputChange(question.id, e.target.value)}
-            size="lg"
-          >
-            <SelectItem value="" text="Please select an option" />
-            {question.options.map(option => (
-              <SelectItem
-                key={option.value}
-                value={option.value}
-                text={option.label}
-              />
-            ))}
-          </Select>
-        );
-      
+        // Find the option label for the selected value
+        const selectedOption = question.options?.find(opt => opt.value === value);
+        return selectedOption ? selectedOption.label : value;
       case 'radio':
-        return (
-          <RadioButtonGroup
-            key={`${question.id}_${value}`} // Force re-render when value changes
-            legendText={question.label}
-            name={question.id}
-            defaultSelected={value}
-            onChange={(selectedValue) => handleInputChange(question.id, selectedValue)}
-          >
-            {question.options.map(option => (
-              <RadioButton
-                key={option.value}
-                labelText={option.label}
-                value={option.value}
-                id={`${question.id}_${option.value}`}
-              />
-            ))}
-          </RadioButtonGroup>
-        );
-      
+        // Find the option label for the selected value
+        const selectedRadioOption = question.options?.find(opt => opt.value === value);
+        return selectedRadioOption ? selectedRadioOption.label : value;
       default:
-        return null;
+        return value;
     }
   };
 
@@ -287,7 +233,7 @@ function TaskDetail() {
     // Try first task in next stage
     if (currentStageIndex < allStages.length - 1) {
       const nextStage = allStages[currentStageIndex + 1];
-      if (nextStage.tasks.length > 0) {
+      if (nextStage.tasks && nextStage.tasks.length > 0) {
         return {
           stageId: nextStage.id,
           taskId: nextStage.tasks[0].id,
@@ -320,7 +266,7 @@ function TaskDetail() {
     // Try last task in previous stage
     if (currentStageIndex > 0) {
       const prevStage = allStages[currentStageIndex - 1];
-      if (prevStage.tasks.length > 0) {
+      if (prevStage.tasks && prevStage.tasks.length > 0) {
         const lastTask = prevStage.tasks[prevStage.tasks.length - 1];
         return {
           stageId: prevStage.id,
@@ -384,15 +330,19 @@ function TaskDetail() {
               caseData={caseData}
               breadcrumbs={[
                 { 
-                  title: caseData.Title, 
+                  title: caseData?.Title, 
                   path: `/case/${caseId}` 
                 },
                 { 
                   title: 'Tasks', 
                   path: `/case/${caseId}/tasks` 
+                },
+                { 
+                  title: taskData?.name, 
+                  path: `/case/${caseId}/tasks/${stageId}/${taskId}` 
                 }
               ]}
-              currentPageTitle={taskData?.name}
+              currentPageTitle="Check your answers"
               currentCaseStatus={currentCaseStatus}
             />
           </Column>
@@ -406,13 +356,50 @@ function TaskDetail() {
                 style={{ marginBottom: '1rem' }}
               />
             )}
-            <h2 style={{ fontSize: '1rem', margin: '1rem 0' }}>{taskData.name}</h2>
-            <Form style={{ marginBottom: '2rem' }}>
-              {taskData.questions.map((question, index) => (
-                <FormGroup key={question.id} style={{ marginBottom: '1.5rem' }}>
-                  {renderQuestion(question)}
-                </FormGroup>
+            <h2 style={{ fontSize: '1.5rem', margin: '1rem 0' }}>Check your answers</h2>
+
+            <ContainedList style={{ marginBottom: '2rem' }}>
+              {taskData.questions.map((question) => (
+                <ContainedListItem key={question.id}>
+                  <div style={{ 
+                    display: 'flex', 
+                    alignItems: 'flex-start', 
+                    width: '100%',
+                    gap: '1rem'
+                  }}>
+                    <div style={{ flex: '0 0 30%', minWidth: 0 }}>
+                      <strong>{question.label}</strong>
+                      {question.required && (
+                        <span style={{ marginLeft: '4px' }}>*</span>
+                      )}
+                    </div>
+                    <div style={{ flex: '1', minWidth: 0 }}>
+                      {getAnswerDisplay(question)}
+                    </div>
+                    <div style={{ flex: '0 0 auto' }}>
+                      {(!question.required || (formData[question.id] && formData[question.id] !== '')) && (
+                        <Link 
+                          onClick={() => handleEditAnswer(question.id)}
+                          style={{ cursor: 'pointer' }}
+                        >
+                          Edit
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </ContainedListItem>
               ))}
+            </ContainedList>
+
+            <Form style={{ marginBottom: '2rem' }}>
+              <FormGroup style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+                <Checkbox
+                  id="task-completion"
+                  labelText="Have you completed this task?"
+                  checked={isCompleted}
+                  onChange={handleCompletionChange}
+                />
+              </FormGroup>
             </Form>
 
             <div style={{ 
@@ -432,9 +419,9 @@ function TaskDetail() {
               <Button
                 kind="secondary"
                 size="lg"
-                onClick={() => navigate(`/case/${caseId}/tasks`)}
+                onClick={() => navigate(`/case/${caseId}/tasks/${stageId}/${taskId}`)}
               >
-                Back to task list
+                Back
               </Button>
             </div>
 
@@ -483,4 +470,4 @@ function TaskDetail() {
   );
 }
 
-export default TaskDetail;
+export default TaskCheckAnswers;

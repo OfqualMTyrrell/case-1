@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Content, Grid, Column, DataTable, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableContainer, TableToolbar, TableToolbarContent, TableToolbarSearch, Checkbox, Tag, FilterableMultiSelect, Pagination, Button, DatePicker, DatePickerInput, Layer } from '@carbon/react';
 import casesData from '../cases.json';
 import AppHeader from '../components/AppHeader';
+import { getDisplayStatus } from '../utils/caseStatusUtils';
 import '@carbon/styles/css/styles.css';
 
 const headers = [
@@ -61,6 +62,7 @@ function CaseListV2() {
   const navigate = useNavigate();
   const [rows, setRows] = useState([]);
   const [filteredRows, setFilteredRows] = useState([]);
+  const [refreshKey, setRefreshKey] = useState(0); // Add refresh trigger
   
   // Pending filters (user selections before applying)
   const [pendingStatusFilter, setPendingStatusFilter] = useState([]);
@@ -79,11 +81,60 @@ function CaseListV2() {
   const [searchTerm, setSearchTerm] = useState('');
   const pageSizeRef = useRef(pageSize);
 
+  // Function to refresh data from session storage
+  const refreshData = () => {
+    setRefreshKey(prev => prev + 1);
+  };
+
+  // Listen for storage events and focus events to refresh data
   useEffect(() => {
-    const allRows = casesData.map((item, idx) => ({ id: idx.toString(), ...item }));
+    const handleStorageChange = () => {
+      refreshData();
+    };
+    
+    const handleFocus = () => {
+      refreshData();
+    };
+    
+    // Custom event for immediate data refresh
+    const handleDataRefresh = () => {
+      refreshData();
+    };
+
+    // Listen for storage events (when data changes in other tabs/windows)
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Listen for focus events (when user returns to this tab)
+    window.addEventListener('focus', handleFocus);
+    
+    // Listen for custom refresh events
+    window.addEventListener('caseDataRefresh', handleDataRefresh);
+    
+    // Listen for visibility change (when tab becomes visible)
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        refreshData();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('caseDataRefresh', handleDataRefresh);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const allRows = casesData.map((item, idx) => ({
+      id: idx.toString(),
+      ...item,
+      Status: getDisplayStatus(item.CaseID, item.Status) // Use dynamic status
+    }));
     setRows(allRows);
     setFilteredRows(allRows);
-  }, []);
+  }, [refreshKey]); // Depend on refreshKey to trigger updates
 
   useEffect(() => {
     let filtered = rows;

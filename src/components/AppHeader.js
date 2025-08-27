@@ -37,6 +37,9 @@ function AppHeader() {
         subtitle: `Cleared ${keysToRemove.length} task data entries from session storage.`
       });
       
+      // Dispatch custom event to refresh case list
+      window.dispatchEvent(new CustomEvent('caseDataRefresh'));
+      
       // Close the panel after clearing data
       setIsPanelExpanded(false);
       
@@ -140,6 +143,17 @@ function AppHeader() {
                 Prototype administration controls for testing purposes.
               </p>
             </div>
+            
+            <Button
+              kind="primary"
+              size="md"
+              onClick={() => {
+                window.location.href = '/admin/seed-data';
+              }}
+              style={{ width: '100%', marginBottom: '0.5rem' }}
+            >
+              Seed Realistic Data
+            </Button>
             
             <Button
               kind="danger--tertiary"

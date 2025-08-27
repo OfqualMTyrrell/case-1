@@ -18,8 +18,10 @@ import {
   OverflowMenuItem
 } from '@carbon/react';
 import AppHeader from '../components/AppHeader';
+import CaseHeader from '../components/CaseHeader';
 import casesData from '../cases.json';
 import taskConfig from '../data/task-config.json';
+import { getDisplayStatus } from '../utils/caseStatusUtils';
 import './CaseInformation.css';
 import '@carbon/styles/css/styles.css';
 
@@ -28,6 +30,7 @@ function TaskList() {
   const navigate = useNavigate();
   const [caseData, setCaseData] = useState(null);
   const [taskStatuses, setTaskStatuses] = useState({});
+  const [currentCaseStatus, setCurrentCaseStatus] = useState('');
 
   useEffect(() => {
     const foundCase = casesData.find(c => c.CaseID === caseId);
@@ -38,6 +41,42 @@ function TaskList() {
     if (savedStatuses) {
       setTaskStatuses(JSON.parse(savedStatuses));
     }
+    
+    // Set initial case status
+    if (foundCase) {
+      setCurrentCaseStatus(getDisplayStatus(caseId, foundCase.Status));
+    }
+  }, [caseId]);
+
+  // Update case status when task statuses change
+  useEffect(() => {
+    if (caseData) {
+      const updatedStatus = getDisplayStatus(caseId, caseData.Status);
+      setCurrentCaseStatus(updatedStatus);
+    }
+  }, [taskStatuses, caseId, caseData]);
+
+  // Listen for storage changes to refresh task statuses
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const savedStatuses = sessionStorage.getItem(`taskStatuses_${caseId}`);
+      if (savedStatuses) {
+        setTaskStatuses(JSON.parse(savedStatuses));
+      }
+    };
+
+    // Listen for focus events (when user returns from task pages)
+    const handleFocus = () => {
+      handleStorageChange();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('storage', handleStorageChange);
+    };
   }, [caseId]);
 
   useEffect(() => {
@@ -62,7 +101,15 @@ function TaskList() {
   };
 
   const handleTaskClick = (stageId, taskId) => {
-    navigate(`/case/${caseId}/tasks/${stageId}/${taskId}`);
+    const status = getTaskStatus(stageId, taskId);
+    
+    if (status === 'not-started') {
+      // Navigate to the question page (TaskDetail)
+      navigate(`/case/${caseId}/tasks/${stageId}/${taskId}`);
+    } else {
+      // Navigate to the check your answers page
+      navigate(`/case/${caseId}/tasks/${stageId}/${taskId}/check`);
+    }
   };
 
   const getStageProgress = (stage) => {
@@ -129,32 +176,17 @@ function TaskList() {
             </div>
           </Column>
           <Column sm={4} md={8} lg={13}>
-            <Layer>
-              <div style={{ background: 'var(--cds-layer)', padding: '1rem', marginTop: '1em', marginBottom: '1rem', paddingTop: '1em' }}>
-                <Breadcrumb style={{ marginBottom: '1rem', paddingTop: '0.5em' }}>
-                  <BreadcrumbItem href="#" onClick={() => navigate('/cases-v2')}>Cases</BreadcrumbItem>
-                  <BreadcrumbItem href="#" onClick={() => navigate(`/case/${caseId}`)}>{caseData.Title}</BreadcrumbItem>
-                  <BreadcrumbItem isCurrentPage>Tasks</BreadcrumbItem>
-                </Breadcrumb>
-                <h1 style={{ fontSize: '1.5rem', margin: '1rem 0' }}>Tasks for {caseData.Title}</h1>
-                <ProgressIndicator currentIndex={(() => {
-                  const statusFlow = ['Received', 'Triage', 'Review', 'Outcome'];
-                  const status = caseData?.Status?.toLowerCase();
-                  if (!status) return 0;
-                  if (status === 'closed') return 4;
-                  if (status === 'outcome') return 3;
-                  if (status === 'review') return 2;
-                  if (status === 'triage') return 1;
-                  if (status === 'received') return 0;
-                  return 0;
-                })()}>
-                  <ProgressStep label="Received" />
-                  <ProgressStep label="Triage" />
-                  <ProgressStep label="Review" />
-                  <ProgressStep label="Outcome" />
-                </ProgressIndicator>
-              </div>
-            </Layer>
+            <CaseHeader 
+              caseData={caseData}
+              breadcrumbs={[
+                { 
+                  title: caseData.Title, 
+                  path: `/case/${caseId}` 
+                }
+              ]}
+              currentPageTitle="Tasks"
+              currentCaseStatus={currentCaseStatus}
+            />
           </Column>
           <Column sm={4} md={8} lg={8} className="cds--lg:col-start-4">
             {/* Task stages */}
@@ -194,12 +226,7 @@ function TaskList() {
               );
             })}
 
-            <Button 
-              style={{ marginTop: '2rem' }} 
-              onClick={() => navigate(`/case/${caseId}`)}
-            >
-              Back to Case Information
-            </Button>
+
           </Column>
         </Grid>
       </Content>

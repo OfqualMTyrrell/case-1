@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Content, Grid, Column, ContainedList, ContainedListItem, Theme, Button, Link, Breadcrumb, BreadcrumbItem, ProgressIndicator, ProgressStep, OverflowMenu, OverflowMenuItem } from '@carbon/react';
+import { Content, Grid, Column, ContainedList, ContainedListItem, Theme, Button, Link, OverflowMenu, OverflowMenuItem } from '@carbon/react';
 import './CaseInformation.css';
 import casesData from '../cases.json';
 import applicationData from '../data/application-data.json';
 import AppHeader from '../components/AppHeader';
+import CaseHeader from '../components/CaseHeader';
+import { getDisplayStatus } from '../utils/caseStatusUtils';
 import '@carbon/styles/css/styles.css';
 
 const fieldLabels = [
@@ -121,10 +123,55 @@ function CaseInformation() {
   const { id } = useParams();
   const navigate = useNavigate();
   const caseData = casesData.find(c => c.CaseID === id);
+  const [currentCaseStatus, setCurrentCaseStatus] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [id]);
+
+  useEffect(() => {
+    // Set initial case status
+    if (caseData) {
+      setCurrentCaseStatus(getDisplayStatus(id, caseData.Status));
+    }
+  }, [id, caseData]);
+
+  // Update case status when task statuses change
+  useEffect(() => {
+    if (caseData) {
+      const updatedStatus = getDisplayStatus(id, caseData.Status);
+      setCurrentCaseStatus(updatedStatus);
+    }
+  }, [id, caseData]);
+
+  // Listen for storage changes to refresh case status
+  useEffect(() => {
+    const handleStorageChange = () => {
+      if (caseData) {
+        const updatedStatus = getDisplayStatus(id, caseData.Status);
+        setCurrentCaseStatus(updatedStatus);
+      }
+    };
+
+    const handleFocus = () => {
+      handleStorageChange();
+    };
+
+    // Listen for custom refresh events from admin actions
+    const handleDataRefresh = () => {
+      handleStorageChange();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('caseDataRefresh', handleDataRefresh);
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('caseDataRefresh', handleDataRefresh);
+    };
+  }, [id, caseData]);
 
   return (
     <Theme theme="g100" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -152,29 +199,11 @@ function CaseInformation() {
             </div>
           </Column>
           <Column sm={4} md={8} lg={13}>
-            <div style={{ background: 'var(--cds-layer)', padding: '1rem', marginTop: '1em', marginBottom: '1rem', paddingTop: '1em' }}>
-              <Breadcrumb style={{ marginBottom: '1rem', paddingTop: '0.5em' }}>
-                <BreadcrumbItem href="#" onClick={() => navigate(-1)}>Cases</BreadcrumbItem>
-                <BreadcrumbItem isCurrentPage>{caseData ? caseData.Title : 'Case Information'}</BreadcrumbItem>
-              </Breadcrumb>
-              <h1 style={{ fontSize: '1.5rem', margin: '1rem 0' }}>{caseData ? caseData.Title : 'Case Information'}</h1>
-              <ProgressIndicator currentIndex={(() => {
-                const statusFlow = ['Received', 'Triage', 'Review', 'Outcome'];
-                const status = caseData?.Status?.toLowerCase();
-                if (!status) return 0;
-                if (status === 'closed') return 4;
-                if (status === 'outcome') return 3;
-                if (status === 'review') return 2;
-                if (status === 'triage') return 1;
-                if (status === 'received') return 0;
-                return 0;
-              })()}>
-                <ProgressStep label="Received" />
-                <ProgressStep label="Triage" />
-                <ProgressStep label="Review" />
-                <ProgressStep label="Outcome" />
-              </ProgressIndicator>
-            </div>
+            <CaseHeader 
+              caseData={caseData}
+              currentCaseStatus={currentCaseStatus}
+              currentPageTitle={caseData?.Title}
+            />
           </Column>
           <Column sm={4} md={8} lg={8} className="cds--lg:col-start-4">
             {/* Case details section */}
