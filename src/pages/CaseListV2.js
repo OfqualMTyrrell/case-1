@@ -227,7 +227,7 @@ function CaseListV2() {
       <Content>
         <Grid fullWidth columns={16} mode="narrow" gutter={16}>
           <Column lg={4} md={4} sm={4}>
-            <Layer level={0}>
+            <Layer>
               <div style={{ 
                 padding: '1.5rem', 
                 minWidth: 0,

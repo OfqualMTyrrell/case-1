@@ -1,4 +1,13 @@
 /* Root app styles optimized for g100 theme */
+
+/* Ensure g100 theme is applied globally including to portals */
+:root[data-carbon-theme="g100"],
+:root.cds--g100,
+html.cds--g100 {
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
+}
+
 .App {
   background-color: var(--cds-background);
   color: var(--cds-text-primary);
