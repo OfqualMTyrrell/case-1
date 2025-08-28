@@ -394,7 +394,7 @@ function CaseListV2() {
             </Layer>
           </Column>
           <Column lg={12} md={8} sm={4}>
-            <Layer>
+            <Layer level={0}>
               <div style={{ 
                 backgroundColor: 'var(--cds-layer)',
                 borderLeft: '1px solid var(--cds-border-subtle)'
