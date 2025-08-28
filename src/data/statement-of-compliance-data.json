@@ -13,84 +13,87 @@
     "website": "www.assessmentpro.co.uk"
   },
   
+  "regulatorsToNotify": ["Ofqual", "CCEA"],
+  
   "complianceYear": "2024/2025",
   "reportingPeriod": "1 August 2024 to 31 July 2025",
   "submissionDate": "2025-06-02",
   
-  "qualificationPortfolio": {
-    "totalQualifications": 45,
-    "newQualifications": 3,
-    "withdrawnQualifications": 1,
-    "modifiedQualifications": 7
+  "currentCompliance": {
+    "declaration": "We are not currently compliant with all Conditions of Recognition",
+    "nonComplianceDescription": "We have identified issues with our assessment security protocols following a recent internal audit. Specifically, we discovered that some assessment materials were not stored according to the required security standards, and there were gaps in our candidate identity verification procedures during remote assessments conducted in March 2025.",
+    "generalConditions": [
+      "A4 - Conflicts of Interest",
+      "A6 - Provision of Information to Ofqual", 
+      "D2 - Packaging and Storing Assessment Materials",
+      "D4 - Maintaining Records"
+    ],
+    "qualificationConditions": [
+      "E2 - Qualification Titling Requirements",
+      "E7 - Total Qualification Time"
+    ],
+    "subjectConditions": [
+      "Healthcare Professional Standards - Patient Safety Requirements",
+      "IT Security - Data Protection Standards"
+    ],
+    "specialConditions": "Special Condition SC-2025-APU-01: We must implement enhanced candidate verification procedures for all remote assessments by 30 September 2025, including multi-factor authentication and live proctoring for high-stakes assessments.",
+    "addressPlan": "We have engaged a specialist compliance consultancy firm to conduct a full review of our assessment security procedures. We are implementing new secure storage facilities for assessment materials, upgrading our candidate verification systems, and providing additional training to all assessment staff. A dedicated Compliance Officer has been appointed to oversee this remediation work.",
+    "complianceDate": "2025-09-30"
   },
   
-  "candidateData": {
-    "totalCandidates": 12500,
-    "newRegistrations": 8200,
-    "certificatesIssued": 11800,
-    "passRate": "87.3%"
+  "futureCompliance": {
+    "declaration": "We do not believe we will be compliant with all conditions in the next 12 months",
+    "nonComplianceDescription": "We anticipate potential challenges in meeting the new AI-assisted assessment guidelines that are due to be implemented in early 2026. Our current technology infrastructure may not fully support the enhanced monitoring and audit requirements for AI-generated assessment questions and automated marking systems.",
+    "generalConditions": [
+      "A8 - Malpractice and Maladministration",
+      "D6 - Information Management Systems"
+    ],
+    "qualificationConditions": [
+      "E4 - Authentication of Learner Work",
+      "E10 - Recognition of Prior Learning"
+    ],
+    "subjectConditions": [
+      "Digital Technology - AI Ethics Standards",
+      "Assessment Innovation - Automated Marking Requirements"
+    ],
+    "specialConditions": "Anticipated Special Condition for AI Assessment Tools: We expect new requirements around transparency and explainability of AI-assisted marking algorithms, which our current systems cannot fully provide.",
+    "explanation": "Our technology team has assessed the upcoming regulatory changes and identified that our current assessment platform will require significant upgrades to meet the new AI governance standards. The timeline for these changes is tight, and we are dependent on our software vendor's development roadmap, which may not align with the regulatory implementation dates.",
+    "addressPlan": "We are working with our technology partners to develop a comprehensive upgrade plan. This includes investing in new AI transparency tools, enhancing our data analytics capabilities, and potentially partnering with specialist AI assessment providers. We are also budgeting for additional technical staff and considering phased implementation of AI-assisted assessments to manage risk."
   },
   
-  "qualityAssurance": {
-    "internalQualityReviews": "12 quarterly reviews completed",
-    "externalQualityAudits": "2 audits by independent assessors",
-    "nonConformanceReports": 3,
-    "correctiveActions": "All issues resolved within 30 days",
-    "continuousImprovement": "New digital assessment platform implemented"
-  },
-  
-  "riskManagement": {
-    "riskAssessments": "Annual risk assessment completed",
-    "identifiedRisks": ["Staff turnover", "Technology failures", "External economic factors"],
-    "mitigationStrategies": "Succession planning, backup systems, financial reserves",
-    "incidentReports": 2,
-    "lessonsLearned": "Enhanced backup procedures following minor system outage"
-  },
-  
-  "staffingAndGoverance": {
-    "totalStaff": 28,
-    "qualifiedAssessors": 15,
-    "governingBodyMeetings": 6,
-    "trainingHours": 340,
-    "professionalDevelopment": "All staff completed CPD requirements"
-  },
-  
-  "financialInformation": {
-    "annualTurnover": "£2.8 million",
-    "assessmentRevenue": "£2.3 million",
-    "operatingCosts": "£2.1 million",
-    "netProfit": "£0.7 million",
-    "financialStability": "Strong cash flow and reserves maintained"
-  },
-  
-  "declaration": {
-    "declarationStatement": "I declare that the information provided in this compliance statement is accurate and complete to the best of my knowledge.",
-    "responsibleOfficer": "Jennifer Davies",
-    "position": "Chief Executive Officer",
-    "dateOfDeclaration": "2025-06-02",
-    "signature": "J. Davies"
+  "signOff": {
+    "statementAccurate": "Yes",
+    "governingBodyApproval": "Yes", 
+    "chairAndOfficerApproval": "Yes",
+    "responsibleOfficerName": "Jennifer Davies",
+    "chairName": "Professor Michael Thompson"
   },
   
   "supportingEvidence": [
     {
-      "name": "Annual Quality Report 2024-25.pdf",
+      "name": "Internal Audit Report - Assessment Security.pdf",
       "url": "#",
-      "description": "Comprehensive quality assurance review"
+      "description": "Detailed internal audit findings and recommendations"
     },
     {
-      "name": "Financial Statements 2024-25.pdf", 
+      "name": "Compliance Remediation Plan.pdf", 
       "url": "#",
-      "description": "Audited financial statements"
+      "description": "Comprehensive plan to address current non-compliance issues"
     },
     {
-      "name": "Risk Assessment Matrix.xlsx",
+      "name": "Technology Upgrade Assessment.pdf",
       "url": "#", 
-      "description": "Current risk assessments and mitigation plans"
+      "description": "Technical analysis of AI assessment requirements"
     },
     {
-      "name": "Staff Training Records.xlsx",
+      "name": "Governing Body Meeting Minutes - June 2025.pdf",
       "url": "#",
-      "description": "Professional development and training logs"
+      "description": "Minutes confirming approval of statement of compliance submission"
+    },
+    {
+      "name": "Compliance Officer Appointment Letter.pdf",
+      "url": "#",
+      "description": "Documentation of new compliance officer appointment"
     }
   ]
 }
