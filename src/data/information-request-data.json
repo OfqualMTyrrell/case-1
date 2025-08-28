@@ -1,0 +1,85 @@
+{
+  "applicantDetails": {
+    "organisationName": "NextGen Assessments Ltd",
+    "contactPerson": "Dr. Michael Thompson",
+    "position": "Head of Quality Assurance",
+    "email": "m.thompson@nextgenassess.co.uk",
+    "phone": "0207 123 4567",
+    "address": "Innovation Hub, Block C\n25 Technology Street\nLondon EC1V 9NR\nUnited Kingdom"
+  },
+  
+  "requestDetails": {
+    "requestType": "Candidate performance data",
+    "dateOfRequest": "2025-06-05",
+    "urgencyLevel": "Standard",
+    "legalBasis": "Regulatory compliance investigation",
+    "referenceNumber": "REQ-2025-0087"
+  },
+  
+  "informationRequested": {
+    "dataType": "Statistical analysis of candidate performance trends",
+    "timeframe": "Academic year 2023-2024 to 2024-2025",
+    "qualifications": [
+      "Level 2 Certificate in Business Administration",
+      "Level 3 Diploma in Project Management", 
+      "Level 4 Certificate in Data Analysis"
+    ],
+    "specificDataPoints": [
+      "Pass/fail rates by demographic",
+      "Regional performance variations",
+      "Assessment method effectiveness",
+      "Grade distribution analysis",
+      "Candidate progression rates"
+    ]
+  },
+  
+  "purposeOfRequest": "We are conducting a comprehensive review of assessment effectiveness and candidate outcomes as part of our continuous improvement process. This data will help us identify potential areas where our assessment methods could be enhanced to better serve candidate needs and maintain qualification standards.",
+  
+  "detailedJustification": "Following feedback from stakeholders and preliminary internal analysis, we have identified some inconsistencies in candidate performance across different regions and demographic groups. We require detailed performance data to:\n\n1. Investigate potential bias in assessment processes\n2. Evaluate the effectiveness of different assessment delivery methods\n3. Identify regional variations that may indicate training or support issues\n4. Ensure our qualifications are accessible and fair to all candidate groups\n5. Benchmark our performance against sector standards\n\nThis analysis is essential for maintaining the integrity and credibility of our qualifications and ensuring compliance with equality and diversity requirements.",
+  
+  "dataProcessingDetails": {
+    "dataController": "NextGen Assessments Ltd",
+    "dataProtectionOfficer": "Sarah Williams",
+    "dpoEmail": "dpo@nextgenassess.co.uk",
+    "retentionPeriod": "3 years",
+    "processingPurpose": "Quality assurance and regulatory compliance",
+    "lawfulBasis": "Legitimate interest in maintaining assessment quality"
+  },
+  
+  "confidentialityAssurances": {
+    "dataSecurityMeasures": "ISO 27001 certified data handling procedures",
+    "accessRestrictions": "Access limited to senior quality assurance team (5 individuals)",
+    "anonymisationCommitment": "All individual candidate data will be anonymised",
+    "sharingLimitations": "Data will not be shared with third parties",
+    "destructionDate": "Data will be securely destroyed after 3 years"
+  },
+  
+  "technicalRequirements": {
+    "preferredFormat": "Excel spreadsheet with anonymised data",
+    "deliveryMethod": "Secure encrypted email",
+    "contactForQueries": "Dr. Michael Thompson",
+    "alternativeContact": "Sarah Williams (DPO)"
+  },
+  
+  "previousDataRequests": [
+    {
+      "date": "2024-03-15",
+      "type": "Annual performance statistics", 
+      "outcome": "Fulfilled within 20 working days"
+    },
+    {
+      "date": "2023-11-02",
+      "type": "Regional assessment center performance",
+      "outcome": "Fulfilled within 15 working days"
+    }
+  ],
+  
+  "declaration": {
+    "authorisedRepresentative": "Dr. Michael Thompson",
+    "organisationalAuthority": "Head of Quality Assurance",
+    "dataProtectionCompliance": true,
+    "legitimatePurposeConfirmation": true,
+    "accuracyDeclaration": "I confirm that all information provided in this request is accurate and complete",
+    "dateOfDeclaration": "2025-06-05"
+  }
+}

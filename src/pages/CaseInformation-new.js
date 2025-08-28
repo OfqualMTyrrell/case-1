@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Content, Grid, Column, Theme, Button } from '@carbon/react';
+import { Content, Grid, Column, Theme, Button, OverflowMenu, OverflowMenuItem } from '@carbon/react';
 import './CaseInformation.css';
 import casesData from '../cases.json';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
 import CaseDetails from '../components/CaseDetails';
-import CaseNavigation from '../components/CaseNavigation';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
 import '@carbon/styles/css/styles.css';
 
@@ -81,7 +80,21 @@ function CaseInformation() {
       <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
         <Grid fullWidth columns={16} mode="narrow" gutter={16}>
           <Column sm={4} md={4} lg={3}>
-            <CaseNavigation caseId={caseData.CaseID} activePage="information" />
+            {/* Left nav: hidden on small screens, visible on md/lg */}
+            <div style={{ position: 'sticky', top: '2rem', zIndex: 1 }} className="case-nav-list case-nav-lg">
+              <div style={{ marginTop: '2rem' }}>
+                {/* Navigation would go here if needed */}
+              </div>
+            </div>
+            {/* Menu button for nav on small screens */}
+            <div className="case-nav-sm" style={{ display: 'none', justifyContent: 'flex-end', marginBottom: '1rem' }}>
+              <OverflowMenu aria-label="Open navigation menu" flipped>
+                <OverflowMenuItem itemText="Case information" onClick={() => {}} />
+                <OverflowMenuItem itemText="Tasks" onClick={() => navigate(`/case/${caseData.CaseID}/tasks`)} />
+                <OverflowMenuItem itemText="Messages" onClick={() => {}} />
+                <OverflowMenuItem itemText="Timeline" onClick={() => {}} />
+              </OverflowMenu>
+            </div>
           </Column>
           <Column sm={4} md={8} lg={13}>
             <CaseHeader 

@@ -1,0 +1,76 @@
+{
+  "complainantDetails": {
+    "name": "Emily Carter",
+    "email": "emily.carter@email.com",
+    "phone": "07987 654321",
+    "address": "45 Learning Avenue\nEducation Town\nBirmingham B12 8QR\nUnited Kingdom",
+    "relationship": "Candidate"
+  },
+  
+  "complaintDetails": {
+    "dateOfIncident": "2025-05-15",
+    "qualificationName": "Level 3 Certificate in Digital Marketing",
+    "qualificationCode": "DM-L3-2024",
+    "assessmentDate": "2025-05-15",
+    "assessmentCenter": "Birmingham Assessment Centre",
+    "assessmentType": "Written examination and practical assessment"
+  },
+  
+  "complaintSummary": "Candidate alleges unfair treatment during practical assessment, claiming assessor was biased and marking criteria were not clearly explained.",
+  
+  "detailedComplaint": "I am writing to formally complain about the conduct of the practical assessment component of my Level 3 Certificate in Digital Marketing examination on 15th May 2025.\n\nDuring the assessment, I felt that the assessor, Mr. James Wilson, displayed unprofessional behavior and potential bias against me. Specifically:\n\n1. The assessor interrupted my work multiple times with unnecessary comments that broke my concentration\n2. When I asked for clarification on the marking criteria, I was told to 'figure it out yourself'\n3. Other candidates appeared to receive more guidance and support than I did\n4. The assessor made several dismissive comments about my approach before I had completed the task\n\nI believe this treatment affected my performance and resulted in an unfair assessment outcome. I am requesting a review of my assessment and consideration of a re-sit under different assessment conditions.\n\nI have witnesses to some of these incidents, including another candidate who was sitting nearby during the assessment.",
+  
+  "desiredOutcome": "I would like my assessment to be reviewed and marked by an independent assessor, and if bias is found to have occurred, I request a re-sit of the practical component under fair conditions.",
+  
+  "evidenceProvided": [
+    {
+      "name": "Assessment_Incident_Photos.jpg",
+      "url": "#",
+      "description": "Photos of assessment setup and environment"
+    },
+    {
+      "name": "Witness_Statement_Sarah_Jones.pdf",
+      "url": "#", 
+      "description": "Statement from fellow candidate Sarah Jones"
+    },
+    {
+      "name": "Assessment_Booking_Confirmation.pdf",
+      "url": "#",
+      "description": "Original assessment booking details"
+    }
+  ],
+  
+  "previousAttempts": {
+    "contactedAssessmentCenter": true,
+    "dateContacted": "2025-05-20",
+    "responseReceived": true,
+    "responseDate": "2025-05-25",
+    "satisfactoryResponse": false,
+    "reasonForEscalation": "Assessment center dismissed concerns without proper investigation"
+  },
+  
+  "assessmentOutcome": {
+    "overallResult": "Fail",
+    "writtenExamScore": "78%",
+    "practicalAssessmentScore": "42%",
+    "passMarkRequired": "60%",
+    "feedbackProvided": "Limited feedback provided - candidate struggled with practical application"
+  },
+  
+  "organisationInvolved": {
+    "awardingOrganisation": "DigitalSkills Qualifications Ltd",
+    "assessmentCenter": "Birmingham Assessment Centre",
+    "assessor": "Mr. James Wilson",
+    "centerManager": "Mrs. Patricia Brown"
+  },
+  
+  "impactStatement": "This assessment failure has prevented me from progressing to my intended Level 4 qualification and has delayed my career progression by at least 6 months. The unfair treatment has also caused significant stress and undermined my confidence in the assessment process.",
+  
+  "declarationAndConsent": {
+    "truthfulnessDeclaration": true,
+    "consentToInvestigate": true,
+    "consentToContactWitnesses": true,
+    "dataProcessingConsent": true,
+    "signatureDate": "2025-06-03"
+  }
+}

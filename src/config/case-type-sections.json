@@ -1,0 +1,243 @@
+{
+  "recognition-application": {
+    "dataFile": "application-data.json",
+    "sections": [
+      {
+        "title": "Applicant Details",
+        "fields": [
+          { "key": "fullName", "label": "Full name", "type": "text" },
+          { "key": "emailAddress", "label": "Email address", "type": "email" },
+          { "key": "phoneNumber", "label": "Phone number", "type": "phone" },
+          { "key": "jobRole", "label": "Job role", "type": "text" }
+        ]
+      },
+      {
+        "title": "Organisation Details", 
+        "fields": [
+          { "key": "organisationName", "label": "Organisation name", "type": "text" },
+          { "key": "legalName", "label": "Legal name", "type": "text" },
+          { "key": "acronym", "label": "Acronym", "type": "text" },
+          { "key": "website", "label": "Website", "type": "url" },
+          { 
+            "key": "addressCombined", 
+            "label": "Address", 
+            "type": "address",
+            "compose": ["addressLine1", "addressLine2", "addressLine3", "townCity", "postcode", "country"]
+          }
+        ]
+      },
+      {
+        "title": "Organisation Registration",
+        "fields": [
+          { "key": "typeOfOrganisation", "label": "Type of organisation", "type": "text" },
+          { "key": "registeredCompanyNumber", "label": "Registered company number", "type": "text" },
+          { "key": "registeredCharityNumber", "label": "Registered charity number", "type": "text" },
+          { "key": "registeredCountry", "label": "Registered country", "type": "text" },
+          { "key": "otherCountryNumber", "label": "Other country number", "type": "text" }
+        ]
+      },
+      {
+        "title": "Application Details",
+        "fields": [
+          { "key": "qualifications", "label": "Qualifications", "type": "multiline" },
+          { "key": "whyRegulated", "label": "Why regulated?", "type": "multiline" }
+        ]
+      },
+      {
+        "title": "Criteria A",
+        "fields": [
+          { "key": "criteriaA1to3", "label": "Criteria A.1-A.3", "type": "multiline" },
+          { "key": "criteriaA4", "label": "Criteria A.4", "type": "multiline" },
+          { "key": "criteriaA5", "label": "Criteria A.5", "type": "multiline" },
+          { "key": "criteriaA6", "label": "Criteria A.6", "type": "multiline" },
+          { "key": "criteria-a-files", "label": "Criteria A files", "type": "files" }
+        ]
+      },
+      {
+        "title": "Criteria B",
+        "fields": [
+          { "key": "criteriaB1", "label": "Criteria B.1 declaration", "type": "multiline" },
+          { "key": "criteriaB2", "label": "Criteria B.2 declaration", "type": "multiline" }
+        ]
+      },
+      {
+        "title": "Criteria C", 
+        "fields": [
+          { "key": "criterionc1a", "label": "Criterion C.1(a)", "type": "multiline" },
+          { "key": "criterionc1b", "label": "Criterion C.1(b)", "type": "multiline" },
+          { "key": "criteria-c-files", "label": "Criteria C Files", "type": "files" }
+        ]
+      },
+      {
+        "title": "Criteria D",
+        "fields": [
+          { "key": "criteriond1a", "label": "Criterion D.1(a)", "type": "multiline" },
+          { "key": "criteriond1b", "label": "Criterion D.1(b)", "type": "multiline" },
+          { "key": "criteriond1c", "label": "Criterion D.1(c)", "type": "multiline" },
+          { "key": "criteria-d-files", "label": "Criteria D files", "type": "files" }
+        ]
+      }
+    ]
+  },
+  "statement-of-compliance": {
+    "dataFile": "statement-of-compliance-data.json",
+    "sections": [
+      {
+        "title": "Organisation Details",
+        "fields": [
+          { "key": "applicantName", "label": "Organisation name", "type": "text" },
+          { "key": "applicantContactName", "label": "Contact person", "type": "text" },
+          { "key": "applicantEmail", "label": "Email address", "type": "email" },
+          { "key": "applicantPhone", "label": "Phone number", "type": "phone" },
+          { "key": "organisationDetails.legalName", "label": "Legal name", "type": "nested", "path": "organisationDetails.legalName" },
+          { "key": "organisationDetails.companyNumber", "label": "Company number", "type": "nested", "path": "organisationDetails.companyNumber" },
+          { "key": "organisationDetails.address", "label": "Address", "type": "nested", "path": "organisationDetails.address" }
+        ]
+      },
+      {
+        "title": "Compliance Information",
+        "fields": [
+          { "key": "complianceYear", "label": "Compliance year", "type": "text" },
+          { "key": "reportingPeriod", "label": "Reporting period", "type": "text" },
+          { "key": "submissionDate", "label": "Submission date", "type": "date" }
+        ]
+      },
+      {
+        "title": "Qualification Portfolio",
+        "fields": [
+          { "key": "qualificationPortfolio.totalQualifications", "label": "Total qualifications", "type": "nested", "path": "qualificationPortfolio.totalQualifications" },
+          { "key": "qualificationPortfolio.newQualifications", "label": "New qualifications", "type": "nested", "path": "qualificationPortfolio.newQualifications" },
+          { "key": "qualificationPortfolio.withdrawnQualifications", "label": "Withdrawn qualifications", "type": "nested", "path": "qualificationPortfolio.withdrawnQualifications" }
+        ]
+      },
+      {
+        "title": "Candidate Data",
+        "fields": [
+          { "key": "candidateData.totalCandidates", "label": "Total candidates", "type": "nested", "path": "candidateData.totalCandidates" },
+          { "key": "candidateData.newRegistrations", "label": "New registrations", "type": "nested", "path": "candidateData.newRegistrations" },
+          { "key": "candidateData.certificatesIssued", "label": "Certificates issued", "type": "nested", "path": "candidateData.certificatesIssued" },
+          { "key": "candidateData.passRate", "label": "Pass rate", "type": "nested", "path": "candidateData.passRate" }
+        ]
+      },
+      {
+        "title": "Supporting Evidence",
+        "fields": [
+          { "key": "supportingEvidence", "label": "Supporting documents", "type": "files" }
+        ]
+      }
+    ]
+  },
+  "complaint": {
+    "dataFile": "complaint-data.json",
+    "sections": [
+      {
+        "title": "Complainant Details",
+        "fields": [
+          { "key": "complainantDetails.name", "label": "Name", "type": "nested", "path": "complainantDetails.name" },
+          { "key": "complainantDetails.email", "label": "Email", "type": "nested", "path": "complainantDetails.email" },
+          { "key": "complainantDetails.phone", "label": "Phone", "type": "nested", "path": "complainantDetails.phone" },
+          { "key": "complainantDetails.relationship", "label": "Relationship", "type": "nested", "path": "complainantDetails.relationship" },
+          { "key": "complainantDetails.address", "label": "Address", "type": "nested", "path": "complainantDetails.address" }
+        ]
+      },
+      {
+        "title": "Complaint Details",
+        "fields": [
+          { "key": "complaintDetails.dateOfIncident", "label": "Date of incident", "type": "nested", "path": "complaintDetails.dateOfIncident" },
+          { "key": "complaintDetails.qualificationName", "label": "Qualification name", "type": "nested", "path": "complaintDetails.qualificationName" },
+          { "key": "complaintDetails.assessmentDate", "label": "Assessment date", "type": "nested", "path": "complaintDetails.assessmentDate" },
+          { "key": "complaintDetails.assessmentCenter", "label": "Assessment center", "type": "nested", "path": "complaintDetails.assessmentCenter" },
+          { "key": "complaintDetails.assessmentType", "label": "Assessment type", "type": "nested", "path": "complaintDetails.assessmentType" }
+        ]
+      },
+      {
+        "title": "Complaint Summary",
+        "fields": [
+          { "key": "complaintSummary", "label": "Summary", "type": "multiline" },
+          { "key": "detailedComplaint", "label": "Detailed complaint", "type": "multiline" },
+          { "key": "desiredOutcome", "label": "Desired outcome", "type": "multiline" }
+        ]
+      },
+      {
+        "title": "Evidence",
+        "fields": [
+          { "key": "evidenceProvided", "label": "Evidence provided", "type": "files" }
+        ]
+      }
+    ]
+  },
+  "information-request": {
+    "dataFile": "information-request-data.json",
+    "sections": [
+      {
+        "title": "Applicant Details",
+        "fields": [
+          { "key": "applicantDetails.organisationName", "label": "Organisation name", "type": "nested", "path": "applicantDetails.organisationName" },
+          { "key": "applicantDetails.contactPerson", "label": "Contact person", "type": "nested", "path": "applicantDetails.contactPerson" },
+          { "key": "applicantDetails.position", "label": "Position", "type": "nested", "path": "applicantDetails.position" },
+          { "key": "applicantDetails.email", "label": "Email", "type": "nested", "path": "applicantDetails.email" },
+          { "key": "applicantDetails.phone", "label": "Phone", "type": "nested", "path": "applicantDetails.phone" },
+          { "key": "applicantDetails.address", "label": "Address", "type": "nested", "path": "applicantDetails.address" }
+        ]
+      },
+      {
+        "title": "Request Details",
+        "fields": [
+          { "key": "requestDetails.requestType", "label": "Request type", "type": "nested", "path": "requestDetails.requestType" },
+          { "key": "requestDetails.dateOfRequest", "label": "Date of request", "type": "nested", "path": "requestDetails.dateOfRequest" },
+          { "key": "requestDetails.urgencyLevel", "label": "Urgency level", "type": "nested", "path": "requestDetails.urgencyLevel" },
+          { "key": "requestDetails.legalBasis", "label": "Legal basis", "type": "nested", "path": "requestDetails.legalBasis" }
+        ]
+      },
+      {
+        "title": "Information Requested",
+        "fields": [
+          { "key": "informationRequested.dataType", "label": "Data type", "type": "nested", "path": "informationRequested.dataType" },
+          { "key": "informationRequested.timeframe", "label": "Timeframe", "type": "nested", "path": "informationRequested.timeframe" },
+          { "key": "purposeOfRequest", "label": "Purpose of request", "type": "multiline" },
+          { "key": "detailedJustification", "label": "Detailed justification", "type": "multiline" }
+        ]
+      }
+    ]
+  },
+  "expansion-application": {
+    "dataFile": "expansion-application-data.json",
+    "sections": [
+      {
+        "title": "Applicant Details",
+        "fields": [
+          { "key": "applicantDetails.organisationName", "label": "Organisation name", "type": "nested", "path": "applicantDetails.organisationName" },
+          { "key": "applicantDetails.contactPerson", "label": "Contact person", "type": "nested", "path": "applicantDetails.contactPerson" },
+          { "key": "applicantDetails.position", "label": "Position", "type": "nested", "path": "applicantDetails.position" },
+          { "key": "applicantDetails.email", "label": "Email", "type": "nested", "path": "applicantDetails.email" },
+          { "key": "applicantDetails.phone", "label": "Phone", "type": "nested", "path": "applicantDetails.phone" }
+        ]
+      },
+      {
+        "title": "Current Recognition",
+        "fields": [
+          { "key": "currentRecognitionDetails.currentRecognitionNumber", "label": "Recognition number", "type": "nested", "path": "currentRecognitionDetails.currentRecognitionNumber" },
+          { "key": "currentRecognitionDetails.dateOfOriginalRecognition", "label": "Original recognition date", "type": "nested", "path": "currentRecognitionDetails.dateOfOriginalRecognition" },
+          { "key": "currentRecognitionDetails.currentScope", "label": "Current scope", "type": "nested", "path": "currentRecognitionDetails.currentScope" },
+          { "key": "currentRecognitionDetails.yearsInOperation", "label": "Years in operation", "type": "nested", "path": "currentRecognitionDetails.yearsInOperation" }
+        ]
+      },
+      {
+        "title": "Expansion Request",
+        "fields": [
+          { "key": "expansionRequest.proposedNewScope", "label": "Proposed new scope", "type": "nested", "path": "expansionRequest.proposedNewScope" },
+          { "key": "expansionRequest.requestedStartDate", "label": "Requested start date", "type": "nested", "path": "expansionRequest.requestedStartDate" },
+          { "key": "expansionRequest.businessJustification", "label": "Business justification", "type": "nested", "path": "expansionRequest.businessJustification" },
+          { "key": "expansionRequest.newQualificationsProposed", "label": "New qualifications proposed", "type": "nested", "path": "expansionRequest.newQualificationsProposed" },
+          { "key": "expansionRequest.OrangesAndApples", "label": "Oranges and Apples", "type": "nested", "path": "expansionRequest.OrangesAndApples" }
+        ]
+      },
+      {
+        "title": "Supporting Documents",
+        "fields": [
+          { "key": "supportingEvidence", "label": "Supporting evidence", "type": "files" }
+        ]
+      }
+    ]
+  }
+}

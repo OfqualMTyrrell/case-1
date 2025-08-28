@@ -1,0 +1,153 @@
+{
+  "applicantDetails": {
+    "organisationName": "CertifyNow Ltd",
+    "contactPerson": "Amanda Richardson",
+    "position": "Director of Qualifications",
+    "email": "a.richardson@certifynow.co.uk", 
+    "phone": "0161 789 0123",
+    "address": "Qualification House\n88 Learning Boulevard\nManchester M1 7AA\nUnited Kingdom"
+  },
+  
+  "currentRecognitionDetails": {
+    "currentRecognitionNumber": "RN/00234/2019",
+    "dateOfOriginalRecognition": "2019-03-15",
+    "currentScope": "Vocational qualifications in Information Technology - Levels 1-3",
+    "currentQualificationCount": 12,
+    "yearsInOperation": 6
+  },
+  
+  "expansionRequest": {
+    "proposedNewScope": "Health and Social Care qualifications - Levels 1-4",
+    "requestedStartDate": "2026-01-01",
+    "businessJustification": "Significant market demand for health and social care qualifications in our operational region",
+    "newQualificationsProposed": 18,
+    "OrangesAndApples": "Is a good way to test stuff"
+  },
+  
+  "marketAnalysis": {
+    "targetMarket": "Health and social care sector workers seeking professional development",
+    "marketDemandEvidence": "Regional skills analysis shows 40% increase in demand for qualified health and social care workers over next 5 years",
+    "competitorAnalysis": "Three existing providers in region, but significant unmet demand remains",
+    "projectedCandidateNumbers": {
+      "year1": 500,
+      "year2": 850,
+      "year3": 1200,
+      "year5": 2000
+    }
+  },
+  
+  "organisationalReadiness": {
+    "additionalStaffRequired": 8,
+    "recruitmentTimeline": "6 months",
+    "keyStaffIdentified": [
+      {
+        "name": "Dr. Patricia Evans",
+        "role": "Head of Health and Social Care", 
+        "qualifications": "PhD in Health Policy, 15 years NHS experience",
+        "startDate": "2025-09-01"
+      },
+      {
+        "name": "James Mitchell", 
+        "role": "Senior Assessment Specialist",
+        "qualifications": "MSc Healthcare Management, CIPD qualified",
+        "startDate": "2025-10-01"
+      }
+    ]
+  },
+  
+  "resourceRequirements": {
+    "additionalOfficeSpace": "200 square meters",
+    "ITSystemsUpgrade": "Assessment platform expansion - £45,000",
+    "equipmentNeeds": "Simulation equipment for practical assessments - £25,000",
+    "totalInvestmentRequired": "£180,000",
+    "fundingSource": "Retained profits and bank facility"
+  },
+  
+  "qualificationDevelopment": {
+    "developmentApproach": "Partnership with NHS Trust and local colleges",
+    "expertConsultation": "Advisory panel of 12 health and social care professionals",
+    "pilotProgramme": "6-month pilot with 50 candidates across 3 qualifications",
+    "qualityAssurancePlans": "Monthly monitoring visits and quarterly reviews",
+    "assessmentMethods": [
+      "Written examinations",
+      "Practical observations", 
+      "Portfolio assessments",
+      "Professional discussions"
+    ]
+  },
+  
+  "complianceAndQuality": {
+    "currentOfstedGrade": "Good (last inspection March 2024)",
+    "qualityAssuranceRecord": "No major non-conformances in past 3 years",
+    "externalQualityAssurance": "Annual EQA reviews consistently rate as 'Low Risk'",
+    "improvementPlans": "Investment in digital assessment tools and enhanced candidate support"
+  },
+  
+  "riskAssessment": [
+    {
+      "risk": "Delayed recruitment of specialist staff",
+      "likelihood": "Medium",
+      "impact": "Medium", 
+      "mitigation": "Early recruitment campaign and retention incentives"
+    },
+    {
+      "risk": "Lower than projected candidate uptake",
+      "likelihood": "Low",
+      "impact": "High",
+      "mitigation": "Comprehensive marketing strategy and employer engagement"
+    },
+    {
+      "risk": "Regulatory changes affecting scope",
+      "likelihood": "Low", 
+      "impact": "Medium",
+      "mitigation": "Regular monitoring of sector developments and flexible approach"
+    }
+  ],
+  
+  "financialProjections": {
+    "implementationCosts": "£180,000",
+    "operatingCosts": {
+      "year1": "£320,000",
+      "year2": "£480,000", 
+      "year3": "£650,000"
+    },
+    "projectedRevenue": {
+      "year1": "£275,000",
+      "year2": "£520,000",
+      "year3": "£780,000"
+    },
+    "breakEvenPoint": "Month 18",
+    "returnOnInvestment": "22% by year 3"
+  },
+  
+  "supportingEvidence": [
+    {
+      "name": "Market_Demand_Analysis.pdf",
+      "url": "#",
+      "description": "Independent market research report"
+    },
+    {
+      "name": "Financial_Projections_5_Year.xlsx",
+      "url": "#", 
+      "description": "Detailed financial forecasts and assumptions"
+    },
+    {
+      "name": "Staff_Recruitment_Plan.pdf",
+      "url": "#",
+      "description": "Detailed staffing strategy and job descriptions"
+    },
+    {
+      "name": "Quality_Assurance_Framework.pdf",
+      "url": "#",
+      "description": "Proposed QA procedures for new scope"
+    }
+  ],
+  
+  "declaration": {
+    "responsibleOfficer": "Amanda Richardson",
+    "position": "Director of Qualifications", 
+    "declarationStatement": "I confirm that CertifyNow Ltd has the capability, resources and commitment to deliver high-quality health and social care qualifications within the proposed scope.",
+    "dateOfDeclaration": "2025-06-07",
+    "organisationalCommitment": true
+  }
+}
