@@ -1,0 +1,96 @@
+{
+  "applicantName": "AssessmentPro UK Ltd",
+  "applicantContactName": "Jennifer Davies",
+  "applicantEmail": "j.davies@assessmentpro.co.uk",
+  "applicantPhone": "01234 567890",
+  
+  "organisationDetails": {
+    "legalName": "AssessmentPro UK Limited",
+    "tradingName": "AssessmentPro UK",
+    "companyNumber": "12345678",
+    "charityNumber": "CC9876",
+    "address": "123 Education Street\nLearning District\nCoventry CV2 3AB\nUnited Kingdom",
+    "website": "www.assessmentpro.co.uk"
+  },
+  
+  "complianceYear": "2024/2025",
+  "reportingPeriod": "1 August 2024 to 31 July 2025",
+  "submissionDate": "2025-06-02",
+  
+  "qualificationPortfolio": {
+    "totalQualifications": 45,
+    "newQualifications": 3,
+    "withdrawnQualifications": 1,
+    "modifiedQualifications": 7
+  },
+  
+  "candidateData": {
+    "totalCandidates": 12500,
+    "newRegistrations": 8200,
+    "certificatesIssued": 11800,
+    "passRate": "87.3%"
+  },
+  
+  "qualityAssurance": {
+    "internalQualityReviews": "12 quarterly reviews completed",
+    "externalQualityAudits": "2 audits by independent assessors",
+    "nonConformanceReports": 3,
+    "correctiveActions": "All issues resolved within 30 days",
+    "continuousImprovement": "New digital assessment platform implemented"
+  },
+  
+  "riskManagement": {
+    "riskAssessments": "Annual risk assessment completed",
+    "identifiedRisks": ["Staff turnover", "Technology failures", "External economic factors"],
+    "mitigationStrategies": "Succession planning, backup systems, financial reserves",
+    "incidentReports": 2,
+    "lessonsLearned": "Enhanced backup procedures following minor system outage"
+  },
+  
+  "staffingAndGoverance": {
+    "totalStaff": 28,
+    "qualifiedAssessors": 15,
+    "governingBodyMeetings": 6,
+    "trainingHours": 340,
+    "professionalDevelopment": "All staff completed CPD requirements"
+  },
+  
+  "financialInformation": {
+    "annualTurnover": "£2.8 million",
+    "assessmentRevenue": "£2.3 million",
+    "operatingCosts": "£2.1 million",
+    "netProfit": "£0.7 million",
+    "financialStability": "Strong cash flow and reserves maintained"
+  },
+  
+  "declaration": {
+    "declarationStatement": "I declare that the information provided in this compliance statement is accurate and complete to the best of my knowledge.",
+    "responsibleOfficer": "Jennifer Davies",
+    "position": "Chief Executive Officer",
+    "dateOfDeclaration": "2025-06-02",
+    "signature": "J. Davies"
+  },
+  
+  "supportingEvidence": [
+    {
+      "name": "Annual Quality Report 2024-25.pdf",
+      "url": "#",
+      "description": "Comprehensive quality assurance review"
+    },
+    {
+      "name": "Financial Statements 2024-25.pdf", 
+      "url": "#",
+      "description": "Audited financial statements"
+    },
+    {
+      "name": "Risk Assessment Matrix.xlsx",
+      "url": "#", 
+      "description": "Current risk assessments and mitigation plans"
+    },
+    {
+      "name": "Staff Training Records.xlsx",
+      "url": "#",
+      "description": "Professional development and training logs"
+    }
+  ]
+}

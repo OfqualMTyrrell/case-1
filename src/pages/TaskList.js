@@ -13,12 +13,11 @@ import {
   ProgressIndicator, 
   ProgressStep, 
   Tag,
-  Layer,
-  OverflowMenu,
-  OverflowMenuItem
+  Layer
 } from '@carbon/react';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
+import CaseNavigation from '../components/CaseNavigation';
 import casesData from '../cases.json';
 import taskConfig from '../data/task-config.json';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
@@ -156,24 +155,7 @@ function TaskList() {
       <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
         <Grid fullWidth columns={16} mode="narrow" gutter={16}>
           <Column sm={4} md={4} lg={3}>
-            {/* Left nav: hidden on small screens, visible on md/lg */}
-            <div style={{ position: 'sticky', top: '2rem', zIndex: 1 }} className="case-nav-list case-nav-lg">
-              <ContainedList kind="interactive" style={{ marginTop: '2rem' }}>
-                <ContainedListItem onClick={() => navigate(`/case/${caseId}`)}>Case information</ContainedListItem>
-                <ContainedListItem onClick={() => {}} className="case-nav-active">Tasks</ContainedListItem>
-                <ContainedListItem onClick={() => {}}>Messages</ContainedListItem>
-                <ContainedListItem onClick={() => {}}>Timeline</ContainedListItem>
-              </ContainedList>
-            </div>
-            {/* Menu button for nav on small screens */}
-            <div className="case-nav-sm" style={{ display: 'none', justifyContent: 'flex-end', marginBottom: '1rem' }}>
-              <OverflowMenu aria-label="Open navigation menu" flipped>
-                <OverflowMenuItem itemText="Case information" onClick={() => navigate(`/case/${caseId}`)} />
-                <OverflowMenuItem itemText="Tasks" onClick={() => {}} />
-                <OverflowMenuItem itemText="Messages" onClick={() => {}} />
-                <OverflowMenuItem itemText="Timeline" onClick={() => {}} />
-              </OverflowMenu>
-            </div>
+            <CaseNavigation caseId={caseId} activePage="tasks" />
           </Column>
           <Column sm={4} md={8} lg={13}>
             <CaseHeader 
