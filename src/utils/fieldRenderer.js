@@ -79,6 +79,10 @@ export const renderFieldValue = (value, field) => {
     case 'array':
       return renderArray(value);
     default:
+      // Check if the value is an array of simple values (not objects), regardless of field type
+      if (Array.isArray(value) && value.length > 0 && typeof value[0] !== 'object') {
+        return renderArray(value);
+      }
       return renderText(value);
   }
 };
@@ -195,11 +199,19 @@ const renderDate = (date) => {
 };
 
 /**
- * Render array as comma-separated list
+ * Render array as line-separated list
  */
 const renderArray = (array) => {
   if (!Array.isArray(array)) return array;
-  return array.join(', ');
+  
+  if (array.length === 0) return null;
+  
+  return array.map((item, index) => (
+    <React.Fragment key={index}>
+      {String(item)}
+      {index < array.length - 1 && <br />}
+    </React.Fragment>
+  ));
 };
 
 /**

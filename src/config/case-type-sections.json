@@ -91,7 +91,8 @@
           { "key": "applicantPhone", "label": "Phone number", "type": "phone" },
           { "key": "organisationDetails.legalName", "label": "Legal name", "type": "nested", "path": "organisationDetails.legalName" },
           { "key": "organisationDetails.companyNumber", "label": "Company number", "type": "nested", "path": "organisationDetails.companyNumber" },
-          { "key": "organisationDetails.address", "label": "Address", "type": "nested", "path": "organisationDetails.address" }
+          { "key": "organisationDetails.address", "label": "Address", "type": "nested", "path": "organisationDetails.address" },
+          { "key": "regulatorsToNotify", "label": "Regulators to notify", "type": "array" }
         ]
       },
       {
@@ -103,20 +104,39 @@
         ]
       },
       {
-        "title": "Qualification Portfolio",
+        "title": "Current Compliance",
         "fields": [
-          { "key": "qualificationPortfolio.totalQualifications", "label": "Total qualifications", "type": "nested", "path": "qualificationPortfolio.totalQualifications" },
-          { "key": "qualificationPortfolio.newQualifications", "label": "New qualifications", "type": "nested", "path": "qualificationPortfolio.newQualifications" },
-          { "key": "qualificationPortfolio.withdrawnQualifications", "label": "Withdrawn qualifications", "type": "nested", "path": "qualificationPortfolio.withdrawnQualifications" }
+          { "key": "currentCompliance.declaration", "label": "Declaration of current compliance", "type": "nested", "path": "currentCompliance.declaration" },
+          { "key": "currentCompliance.nonComplianceDescription", "label": "Describe the instance of non-compliance", "type": "nested", "path": "currentCompliance.nonComplianceDescription" },
+          { "key": "currentCompliance.generalConditions", "label": "General conditions", "type": "nested", "path": "currentCompliance.generalConditions" },
+          { "key": "currentCompliance.qualificationConditions", "label": "Qualification conditions", "type": "nested", "path": "currentCompliance.qualificationConditions" },
+          { "key": "currentCompliance.subjectConditions", "label": "Subject conditions", "type": "nested", "path": "currentCompliance.subjectConditions" },
+          { "key": "currentCompliance.specialConditions", "label": "CCEA or Ofqual special conditions", "type": "nested", "path": "currentCompliance.specialConditions" },
+          { "key": "currentCompliance.addressPlan", "label": "How do you plan to address non-compliance", "type": "nested", "path": "currentCompliance.addressPlan" },
+          { "key": "currentCompliance.complianceDate", "label": "Date you will be compliant by", "type": "nested", "path": "currentCompliance.complianceDate" }
         ]
       },
       {
-        "title": "Candidate Data",
+        "title": "Future Compliance",
         "fields": [
-          { "key": "candidateData.totalCandidates", "label": "Total candidates", "type": "nested", "path": "candidateData.totalCandidates" },
-          { "key": "candidateData.newRegistrations", "label": "New registrations", "type": "nested", "path": "candidateData.newRegistrations" },
-          { "key": "candidateData.certificatesIssued", "label": "Certificates issued", "type": "nested", "path": "candidateData.certificatesIssued" },
-          { "key": "candidateData.passRate", "label": "Pass rate", "type": "nested", "path": "candidateData.passRate" }
+          { "key": "futureCompliance.declaration", "label": "Declaration of future compliance", "type": "nested", "path": "futureCompliance.declaration" },
+          { "key": "futureCompliance.nonComplianceDescription", "label": "Describe the instance of potential non-compliance", "type": "nested", "path": "futureCompliance.nonComplianceDescription" },
+          { "key": "futureCompliance.generalConditions", "label": "General conditions", "type": "nested", "path": "futureCompliance.generalConditions" },
+          { "key": "futureCompliance.qualificationConditions", "label": "Qualification conditions", "type": "nested", "path": "futureCompliance.qualificationConditions" },
+          { "key": "futureCompliance.subjectConditions", "label": "Subject conditions", "type": "nested", "path": "futureCompliance.subjectConditions" },
+          { "key": "futureCompliance.specialConditions", "label": "CCEA or Ofqual special conditions", "type": "nested", "path": "futureCompliance.specialConditions" },
+          { "key": "futureCompliance.explanation", "label": "Explain how you know you are likely to not comply", "type": "nested", "path": "futureCompliance.explanation" },
+          { "key": "futureCompliance.addressPlan", "label": "How do you plan to address non-compliance", "type": "nested", "path": "futureCompliance.addressPlan" }
+        ]
+      },
+      {
+        "title": "Sign Off by Governing Body",
+        "fields": [
+          { "key": "signOff.statementAccurate", "label": "Confirm statement of compliance is accurate", "type": "nested", "path": "signOff.statementAccurate" },
+          { "key": "signOff.governingBodyApproval", "label": "Confirm the Governing Body have formally approved the Statement of Compliance submission", "type": "nested", "path": "signOff.governingBodyApproval" },
+          { "key": "signOff.chairAndOfficerApproval", "label": "Confirm both the Chair and Responsible Officer have formally approved the Statement of Compliance submission", "type": "nested", "path": "signOff.chairAndOfficerApproval" },
+          { "key": "signOff.responsibleOfficerName", "label": "Name of Responsible Officer", "type": "nested", "path": "signOff.responsibleOfficerName" },
+          { "key": "signOff.chairName", "label": "Name of Chair", "type": "nested", "path": "signOff.chairName" }
         ]
       },
       {

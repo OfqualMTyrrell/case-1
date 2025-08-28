@@ -40,19 +40,23 @@ const CaseSection = ({ section, data, style = {} }) => {
 
           return (
             <ContainedListItem key={field.key}>
-              <div style={{ display: 'flex', width: '100%' }}>
+              <div style={{ display: 'flex', width: '100%', alignItems: 'flex-start', gap: '1rem' }}>
                 <span style={{ 
                   fontWeight: 600, 
-                  minWidth: '196px', 
+                  width: '240px', 
                   flexShrink: 0, 
-                  textAlign: 'left' 
+                  textAlign: 'left',
+                  wordWrap: 'break-word',
+                  hyphens: 'auto',
+                  lineHeight: '1.4'
                 }}>
                   {field.label}
                 </span>
                 <span style={{ 
                   textAlign: 'left', 
-                  flexGrow: 1, 
-                  paddingLeft: '1rem' 
+                  flexGrow: 1,
+                  wordWrap: 'break-word',
+                  lineHeight: '1.4'
                 }}>
                   {renderedValue}
                 </span>
