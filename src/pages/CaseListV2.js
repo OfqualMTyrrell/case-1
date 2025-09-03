@@ -34,7 +34,7 @@ const renderStatusTag = (status) => {
   }
 };
 
-// Helper function to format date from YYYY-MM-DD to DD-MM-YYYY
+// Helper function to format date from YYYY-MM-DD to DD/MM/YYYY
 const formatDate = (dateString) => {
   if (!dateString) return dateString;
   
@@ -42,7 +42,7 @@ const formatDate = (dateString) => {
     // Handle YYYY-MM-DD format specifically
     if (dateString.match(/^\d{4}-\d{2}-\d{2}$/)) {
       const [year, month, day] = dateString.split('-');
-      return `${day}-${month}-${year}`;
+      return `${day}/${month}/${year}`;
     }
     
     // Fallback for other formats
@@ -52,7 +52,7 @@ const formatDate = (dateString) => {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+    return `${day}/${month}/${year}`;
   } catch (error) {
     return dateString; // Return original if parsing fails
   }
@@ -130,6 +130,8 @@ function CaseListV2() {
     const allRows = casesData.map((item, idx) => ({
       id: idx.toString(),
       ...item,
+      ReceivedDate: formatDate(item.ReceivedDate), // Format the date for display
+      OriginalReceivedDate: item.ReceivedDate, // Keep original for filtering
       Status: getDisplayStatus(item.CaseID, item.Status) // Use dynamic status
     }));
     setRows(allRows);
@@ -154,7 +156,7 @@ function CaseListV2() {
       const endDate = new Date(appliedDateRange[1]);
       
       filtered = filtered.filter(row => {
-        const receivedDate = new Date(row.ReceivedDate);
+        const receivedDate = new Date(row.OriginalReceivedDate);
         return receivedDate >= startDate && receivedDate <= endDate;
       });
     }
@@ -302,7 +304,7 @@ function CaseListV2() {
               
               <div style={{ marginTop: '2rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-                  <h6 className="cds--label" style={{ margin: 0 }}>Received Date</h6>
+                  <h6 className="cds--label" style={{ margin: 0 }}>Received date range</h6>
                   {(pendingDateRange[0] && pendingDateRange[1]) && (
                     <Tag 
                       type="high-contrast" 
@@ -320,7 +322,7 @@ function CaseListV2() {
                 </div>
                 <DatePicker 
                   datePickerType="range"
-                  dateFormat="Y-m-d"
+                  dateFormat="d/m/Y"
                   onChange={(dates) => {
                     setPendingDateRange(dates);
                   }}
@@ -328,14 +330,14 @@ function CaseListV2() {
                 >
                   <DatePickerInput
                     id="date-picker-input-id-start"
-                    placeholder="Start date"
-                    labelText=""
+                    placeholder=""
+                    labelText="Start date"
                     size="md"
                   />
                   <DatePickerInput
                     id="date-picker-input-id-finish"
-                    placeholder="End date"
-                    labelText=""
+                    placeholder=""
+                    labelText="End date"
                     size="md"
                   />
                 </DatePicker>
@@ -454,8 +456,6 @@ function CaseListV2() {
                                                         <TableCell key={cell.id}>
                                                             {cell.info?.header === 'Status' 
                                                                 ? renderStatusTag(cell.value)
-                                                                : cell.info?.header === 'Received date'
-                                                                ? formatDate(cell.value)
                                                                 : cell.value
                                                             }
                                                         </TableCell>

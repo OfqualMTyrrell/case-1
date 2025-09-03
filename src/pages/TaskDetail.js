@@ -14,6 +14,8 @@ import {
   SelectItem,
   RadioButton,
   RadioButtonGroup,
+  DatePicker,
+  DatePickerInput,
   InlineNotification
 } from '@carbon/react';
 import AppHeader from '../components/AppHeader';
@@ -176,6 +178,77 @@ function TaskDetail() {
     }
   };
 
+  const handleSaveOnly = () => {
+    // Reset validation errors if saving successfully
+    setNotification(null);
+    
+    // Clean form data to ensure only primitive values are saved
+    const cleanFormData = {};
+    Object.keys(formData).forEach(key => {
+      const value = formData[key];
+      // Only save primitive values (string, number, boolean)
+      if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+        cleanFormData[key] = value;
+      }
+    });
+
+    // Load existing saved data to preserve completion status
+    const existingSavedData = sessionStorage.getItem(`taskData_${caseId}_${stageId}_${taskId}`);
+    let existingData = {};
+    if (existingSavedData) {
+      existingData = JSON.parse(existingSavedData);
+    }
+
+    // Save form data to session storage
+    const dataToSave = {
+      formData: cleanFormData,
+      isCompleted: existingData.isCompleted || false,
+      lastSaved: new Date().toISOString()
+    };
+    
+    console.log('Saving form data (no navigation):', cleanFormData);
+    
+    try {
+      sessionStorage.setItem(`taskData_${caseId}_${stageId}_${taskId}`, JSON.stringify(dataToSave));
+      
+      // Update task status to in-progress if there's any data
+      const statusKey = `${stageId}_${taskId}`;
+      const currentStatuses = JSON.parse(sessionStorage.getItem(`taskStatuses_${caseId}`) || '{}');
+      if (Object.keys(cleanFormData).length > 0) {
+        currentStatuses[statusKey] = existingData.isCompleted ? 'completed' : 'in-progress';
+        sessionStorage.setItem(`taskStatuses_${caseId}`, JSON.stringify(currentStatuses));
+        
+        // Update case status immediately after task status changes
+        if (caseData) {
+          const updatedStatus = getDisplayStatus(caseId, caseData.Status);
+          setCurrentCaseStatus(updatedStatus);
+        }
+      }
+      
+      setHasUnsavedChanges(false);
+      
+      // Show success notification instead of navigating
+      setNotification({
+        kind: 'success',
+        title: 'Saved',
+        subtitle: 'Your progress has been saved successfully.'
+      });
+      
+      // Auto-hide notification after 3 seconds
+      setTimeout(() => {
+        setNotification(null);
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error saving task data:', error);
+      setNotification({
+        kind: 'error',
+        title: 'Save failed',
+        subtitle: 'There was an error saving your progress. Please try again.'
+      });
+    }
+  };
+
   const renderQuestion = (question) => {
     // Get the saved value, ensuring it's properly formatted
     let value = formData[question.id];
@@ -256,6 +329,49 @@ function TaskDetail() {
               />
             ))}
           </RadioButtonGroup>
+        );
+      
+      case 'date':
+        // Convert stored YYYY-MM-DD string back to Date object for DatePicker
+        let datePickerValue = '';
+        if (value && typeof value === 'string') {
+          try {
+            const dateObj = new Date(value);
+            if (!isNaN(dateObj.getTime())) {
+              datePickerValue = [dateObj]; // DatePicker expects array of Date objects
+            }
+          } catch (error) {
+            console.error('Error converting date value:', error);
+          }
+        }
+        
+        return (
+          <DatePicker
+            datePickerType="single"
+            dateFormat="d/m/Y"
+            value={datePickerValue}
+            onChange={(dates) => {
+              let dateValue = '';
+              if (dates && dates.length > 0 && dates[0]) {
+                // Convert Date object to YYYY-MM-DD string for storage
+                const date = dates[0];
+                if (date instanceof Date) {
+                  dateValue = date.toISOString().split('T')[0]; // YYYY-MM-DD format
+                } else {
+                  dateValue = date;
+                }
+              }
+              handleInputChange(question.id, dateValue);
+            }}
+          >
+            <DatePickerInput
+              id={question.id}
+              labelText={question.label}
+              placeholder="DD/MM/YYYY"
+              size="lg"
+              autoFocus={isEditMode && editQuestionId === question.id}
+            />
+          </DatePicker>
         );
       
       default:
@@ -399,8 +515,25 @@ function TaskDetail() {
               display: 'flex', 
               gap: '1rem', 
               marginBottom: '2rem',
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
+              justifyContent: 'flex-end'
             }}>
+              <Button
+                kind="secondary"
+                size="lg"
+                onClick={() => navigate(-1)}
+              >
+                Cancel
+              </Button>
+              
+              <Button
+                kind="tertiary"
+                size="lg"
+                onClick={handleSaveOnly}
+              >
+                Save
+              </Button>
+
               <Button
                 kind="primary"
                 size="lg"
@@ -408,54 +541,9 @@ function TaskDetail() {
               >
                 Save and continue
               </Button>
-              
-              <Button
-                kind="secondary"
-                size="lg"
-                onClick={() => navigate(`/case/${caseId}/tasks`)}
-              >
-                Back to task list
-              </Button>
             </div>
 
-            {/* Task navigation */}
-            <div style={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              alignItems: 'center',
-              marginTop: '2rem',
-              padding: '1rem',
-              background: 'var(--cds-layer-accent)',
-              borderRadius: '4px'
-            }}>
-              <div>
-                {previousTask ? (
-                  <Button
-                    kind="ghost"
-                    size="sm"
-                    onClick={() => navigate(`/case/${caseId}/tasks/${previousTask.stageId}/${previousTask.taskId}`)}
-                  >
-                    ← Previous: {previousTask.name}
-                  </Button>
-                ) : (
-                  <span style={{ color: 'var(--cds-text-disabled)' }}>← Previous task</span>
-                )}
-              </div>
-              
-              <div>
-                {nextTask ? (
-                  <Button
-                    kind="ghost"
-                    size="sm"
-                    onClick={() => navigate(`/case/${caseId}/tasks/${nextTask.stageId}/${nextTask.taskId}`)}
-                  >
-                    Next: {nextTask.name} →
-                  </Button>
-                ) : (
-                  <span style={{ color: 'var(--cds-text-disabled)' }}>Next task →</span>
-                )}
-              </div>
-            </div>
+            
           </Column>
         </Grid>
       </Content>
