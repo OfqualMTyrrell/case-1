@@ -24,7 +24,8 @@
       "outcome_close-case": "completed"
     },
     "OFQ-1005": {
-      "triage_initial-assessment": "completed"
+      "triage_check-information": "completed",
+      "triage_assign-caseworker": "in-progress"
     },
     "OFQ-1006": {
       "triage_check-information": "completed",
@@ -708,6 +709,11 @@
       "outcome_record-follow-up-requirements": "completed",
       "outcome_close-case": "completed"
     },
+    "OFQ-1132": {
+      "triage_check-information": "completed",
+      "triage_assign-caseworker": "completed",
+      "triage_add-triage-notes": "completed"
+    },
     "OFQ-1133": {
       "triage_check-information": "completed",
       "triage_assign-caseworker": "in-progress"
@@ -719,11 +725,16 @@
       "review_add-review-notes": "completed"
     },
     "OFQ-1135": {
-      "triage_initial-assessment": "completed",
-      "triage_assign-recognition-assessor": "completed",
-      "review_criteria-assessment": "completed",
-      "review_site-visit-planning": "completed",
-      "outcome_final-recommendation": "completed"
+      "triage_check-information": "completed",
+      "triage_assign-caseworker": "completed",
+      "triage_add-triage-notes": "completed",
+      "review_add-review-notes": "completed",
+      "review_record-meeting-date": "completed",
+      "review_inherent-risk-exposure": "completed",
+      "review_residual-risk-exposure": "completed",
+      "outcome_record-outcome": "completed",
+      "outcome_record-follow-up-requirements": "completed",
+      "outcome_close-case": "completed"
     },
     "OFQ-1137": {
       "triage_check-information": "completed"
@@ -929,11 +940,9 @@
       "review_record-meeting-date": "in-progress"
     },
     "OFQ-1175": {
-      "triage_initial-assessment": "completed",
-      "triage_assign-recognition-assessor": "completed",
-      "review_criteria-assessment": "completed",
-      "review_site-visit-planning": "completed",
-      "outcome_final-recommendation": "completed"
+      "triage_check-information": "completed",
+      "triage_assign-caseworker": "completed",
+      "triage_add-triage-notes": "completed"
     },
     "OFQ-1177": {
       "triage_check-information": "completed",
@@ -1154,11 +1163,18 @@
       "isCompleted": true,
       "lastSaved": "2025-08-27T10:10:58.579Z"
     },
-    "OFQ-1005_triage_initial-assessment": {
+    "OFQ-1005_triage_check-information": {
       "formData": {
-        "application-complete": "requires-clarification",
-        "eligibility-check": "eligible",
-        "initial-notes": "This is a sample response for initial assessment notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        "information-complete": "partially",
+        "missing-info-details": "This is a sample response for details of missing or incorrect information. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      "isCompleted": true,
+      "lastSaved": "2025-08-27T10:10:58.578Z"
+    },
+    "OFQ-1005_triage_assign-caseworker": {
+      "formData": {
+        "caseworker-selection": "rachel-brown",
+        "assignment-reason": "This is a sample response for reason for assignment. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       "isCompleted": true,
       "lastSaved": "2025-08-27T10:10:58.579Z"
@@ -3049,15 +3065,6 @@
         "closure-confirmation": "ready-to-close",
         "closure-notes": "This is a sample response for closure notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "lessons-learned": "This is a sample response for lessons learned. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      "isCompleted": true,
-      "lastSaved": "2025-08-27T10:10:58.580Z"
-    },
-    "OFQ-1065_triage_initial-assessment": {
-      "formData": {
-        "application-complete": "complete",
-        "eligibility-check": "not-eligible",
-        "initial-notes": "This is a sample response for initial assessment notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       "isCompleted": true,
       "lastSaved": "2025-08-27T10:10:58.580Z"
@@ -5320,6 +5327,31 @@
       "isCompleted": true,
       "lastSaved": "2025-08-27T10:10:58.582Z"
     },
+    "OFQ-1132_triage_check-information": {
+      "formData": {
+        "information-complete": "partially",
+        "missing-info-details": "This is a sample response for details of missing or incorrect information. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      "isCompleted": true,
+      "lastSaved": "2025-08-27T10:10:58.579Z"
+    },
+    "OFQ-1132_triage_assign-caseworker": {
+      "formData": {
+        "caseworker-selection": "jane-lee",
+        "assignment-reason": "This is a sample response for reason for assignment. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      "isCompleted": true,
+      "lastSaved": "2025-08-27T10:10:58.579Z"
+    },
+    "OFQ-1132_triage_add-triage-notes": {
+      "formData": {
+        "triage-priority": "medium",
+        "triage-notes": "This is a sample response for triage notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "estimated-completion": "Sample estimated completion date"
+      },
+      "isCompleted": true,
+      "lastSaved": "2025-08-27T10:10:58.579Z"
+    },
     "OFQ-1133_triage_check-information": {
       "formData": {
         "information-complete": "no",
@@ -6652,49 +6684,30 @@
       "isCompleted": false,
       "lastSaved": "2025-08-27T10:10:58.582Z"
     },
-    "OFQ-1175_triage_initial-assessment": {
+    "OFQ-1175_triage_check-information": {
       "formData": {
-        "application-complete": "incomplete",
-        "eligibility-check": "unclear",
-        "initial-notes": "This is a sample response for initial assessment notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        "information-complete": "partially",
+        "missing-info-details": "This is a sample response for details of missing or incorrect information. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       "isCompleted": true,
-      "lastSaved": "2025-08-27T10:10:58.582Z"
+      "lastSaved": "2025-08-27T10:10:58.579Z"
     },
-    "OFQ-1175_triage_assign-recognition-assessor": {
+    "OFQ-1175_triage_assign-caseworker": {
       "formData": {
-        "assessor-selection": "senior-assessor-1",
-        "complexity-level": "highly-complex"
+        "caseworker-selection": "jane-lee",
+        "assignment-reason": "This is a sample response for reason for assignment. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       "isCompleted": true,
-      "lastSaved": "2025-08-27T10:10:58.582Z"
+      "lastSaved": "2025-08-27T10:10:58.579Z"
     },
-    "OFQ-1175_review_criteria-assessment": {
+    "OFQ-1175_triage_add-triage-notes": {
       "formData": {
-        "criteria-a-assessment": "not-met",
-        "criteria-b-assessment": "not-met",
-        "criteria-assessment-notes": "This is a sample response for criteria assessment notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        "triage-priority": "medium",
+        "triage-notes": "This is a sample response for triage notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "estimated-completion": "Sample estimated completion date"
       },
       "isCompleted": true,
-      "lastSaved": "2025-08-27T10:10:58.582Z"
-    },
-    "OFQ-1175_review_site-visit-planning": {
-      "formData": {
-        "site-visit-required": "virtual-meeting",
-        "visit-date": "Sample proposed visit date",
-        "visit-objectives": "This is a sample response for visit objectives. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      "isCompleted": true,
-      "lastSaved": "2025-08-27T10:10:58.582Z"
-    },
-    "OFQ-1175_outcome_final-recommendation": {
-      "formData": {
-        "recommendation": "refuse-recognition",
-        "recommendation-rationale": "This is a sample response for recommendation rationale. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "conditions": "This is a sample response for conditions (if applicable). Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      "isCompleted": true,
-      "lastSaved": "2025-08-27T10:10:58.582Z"
+      "lastSaved": "2025-08-27T10:10:58.579Z"
     },
     "OFQ-1177_triage_check-information": {
       "formData": {

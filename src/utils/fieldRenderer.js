@@ -184,14 +184,14 @@ const renderPhone = (phone) => {
 };
 
 /**
- * Render date in readable format
+ * Render date in DD/MM/YYYY format
  */
 const renderDate = (date) => {
   try {
     return new Date(date).toLocaleDateString('en-GB', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
     });
   } catch (error) {
     return date;

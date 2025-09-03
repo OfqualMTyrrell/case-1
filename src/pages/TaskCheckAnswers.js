@@ -198,6 +198,28 @@ function TaskCheckAnswers() {
     
     // Format the answer based on question type
     switch (question.type) {
+      case 'text':
+        // For text inputs, preserve line breaks if any
+        if (typeof value === 'string' && value.includes('\n')) {
+          return (
+            <div style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+              {value}
+            </div>
+          );
+        }
+        return value;
+      case 'textarea':
+        // For textarea inputs, always preserve line breaks and formatting
+        return (
+          <div style={{ 
+            whiteSpace: 'pre-wrap', 
+            wordWrap: 'break-word',
+            maxWidth: '100%',
+            lineHeight: '1.5'
+          }}>
+            {value}
+          </div>
+        );
       case 'select':
         // Find the option label for the selected value
         const selectedOption = question.options?.find(opt => opt.value === value);
@@ -206,7 +228,44 @@ function TaskCheckAnswers() {
         // Find the option label for the selected value
         const selectedRadioOption = question.options?.find(opt => opt.value === value);
         return selectedRadioOption ? selectedRadioOption.label : value;
+      case 'date':
+        // Format date as DD/MM/YYYY
+        try {
+          if (!value) return value;
+          
+          // Handle different date formats
+          let dateObj;
+          if (value instanceof Date) {
+            dateObj = value;
+          } else if (typeof value === 'string') {
+            // Handle YYYY-MM-DD format or other ISO formats
+            dateObj = new Date(value);
+          } else {
+            return value;
+          }
+          
+          if (isNaN(dateObj.getTime())) {
+            return value; // Return original if invalid date
+          }
+          
+          return dateObj.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+          });
+        } catch (error) {
+          console.error('Error formatting date:', error);
+          return value;
+        }
       default:
+        // For any other type, check if it's a string with line breaks
+        if (typeof value === 'string' && value.includes('\n')) {
+          return (
+            <div style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+              {value}
+            </div>
+          );
+        }
         return value;
     }
   };
@@ -388,8 +447,18 @@ function TaskCheckAnswers() {
               display: 'flex', 
               gap: '1rem', 
               marginBottom: '2rem',
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
+              justifyContent: 'flex-end'
             }}>
+                            
+              <Button
+                kind="secondary"
+                size="lg"
+                onClick={() => navigate(-1)}
+              >
+                Back
+              </Button>
+
               <Button
                 kind="primary"
                 size="lg"
@@ -397,53 +466,6 @@ function TaskCheckAnswers() {
               >
                 Save and continue
               </Button>
-              
-              <Button
-                kind="secondary"
-                size="lg"
-                onClick={() => navigate(`/case/${caseId}/tasks/${stageId}/${taskId}`)}
-              >
-                Back
-              </Button>
-            </div>
-
-            {/* Task navigation */}
-            <div style={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              alignItems: 'center',
-              marginTop: '2rem',
-              padding: '1rem',
-              background: 'var(--cds-layer-accent)',
-              borderRadius: '4px'
-            }}>
-              <div>
-                {previousTask ? (
-                  <Button
-                    kind="ghost"
-                    size="sm"
-                    onClick={() => navigate(`/case/${caseId}/tasks/${previousTask.stageId}/${previousTask.taskId}`)}
-                  >
-                    ← Previous: {previousTask.name}
-                  </Button>
-                ) : (
-                  <span style={{ color: 'var(--cds-text-disabled)' }}>← Previous task</span>
-                )}
-              </div>
-              
-              <div>
-                {nextTask ? (
-                  <Button
-                    kind="ghost"
-                    size="sm"
-                    onClick={() => navigate(`/case/${caseId}/tasks/${nextTask.stageId}/${nextTask.taskId}`)}
-                  >
-                    Next: {nextTask.name} →
-                  </Button>
-                ) : (
-                  <span style={{ color: 'var(--cds-text-disabled)' }}>Next task →</span>
-                )}
-              </div>
             </div>
           </Column>
         </Grid>
