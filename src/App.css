@@ -12,6 +12,7 @@ html.cds--g10 {
 :root {
   --custom-header-bg: #4a7614;
   --custom-header-text: #ffffff;
+  --custom-header-bg-hover: color-mix(in srgb, var(--custom-header-bg) 85%, #fff 15%);
 }
 
 .App {
@@ -97,7 +98,7 @@ body {
 .custom-app-header .cds--header__menu-item:hover,
 .custom-app-header .cds--header__menu-title:focus,
 .custom-app-header .cds--header__menu-title:hover {
-  background-color: var(--custom-header-bg) !important; /* Optional: lighter green for hover/focus */
+  background-color: var(--custom-header-bg-hover) !important;
   color: var(--custom-header-text) !important;
 }
 
@@ -110,6 +111,24 @@ body {
   fill: var(--custom-header-text) !important;
   color: var(--custom-header-text) !important;
 }
+
+.custom-app-header-icon:hover,
+.custom-app-header-icon:focus {
+  background-color: var(--custom-header-bg-hover) !important;
+}
+
+.custom-app-header-icon:hover svg,
+.custom-app-header-icon:focus svg {
+  fill: var(--custom-header-text) !important;
+  color: var(--custom-header-text) !important;
+}
+
+.custom-app-header .cds--header__menu-title svg,
+.custom-app-header .cds--header__menu-item svg {
+  fill: var(--custom-header-text) !important;
+  color: var(--custom-header-text) !important;
+}
+
 /* END custom header styling */
 
 @keyframes App-logo-spin {
