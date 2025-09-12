@@ -8,6 +8,12 @@ html.cds--g10 {
   color: var(--cds-text-primary, #161616);
 }
 
+/* Styling for custom header colors */
+:root {
+  --custom-header-bg: #4a7614;
+  --custom-header-text: #ffffff;
+}
+
 .App {
   background-color: var(--cds-background, #f4f4f4);
   color: var(--cds-text-primary, #161616);
@@ -23,17 +29,6 @@ html.cds--g10 {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: var(--cds-background, #f4f4f4);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--cds-text-primary, #161616);
 }
 
 .App-link {
@@ -75,6 +70,47 @@ body {
   background: var(--cds-background, #f4f4f4);
   color: var(--cds-text-primary, #161616);
 }
+
+/* Styling for custom header color used in components/AppHeader.js */
+.custom-app-header {
+  background-color: var(--custom-header-bg) !important;
+  color: var(--custom-header-text) !important;
+}
+
+.custom-app-header,
+.custom-app-header .cds--header__nav,
+.custom-app-header .cds--header__menu,
+.custom-app-header .cds--header__menu-item,
+.custom-app-header .cds--header__action,
+.custom-app-header .cds--header__menu-title {
+  background-color: var(--custom-header-bg) !important;
+  color: var(--custom-header-text) !important;
+}
+
+.custom-app-header .cds--header__menu-title,
+.custom-app-header .cds--header__menu-item,
+.custom-app-header .cds--header__action {
+  color: var(--custom-header-text) !important;
+}
+
+.custom-app-header .cds--header__menu-item:focus,
+.custom-app-header .cds--header__menu-item:hover,
+.custom-app-header .cds--header__menu-title:focus,
+.custom-app-header .cds--header__menu-title:hover {
+  background-color: var(--custom-header-bg) !important; /* Optional: lighter green for hover/focus */
+  color: var(--custom-header-text) !important;
+}
+
+.custom-app-header-name {
+  background-color: var(--custom-header-bg) !important;
+  color: var(--custom-header-text) !important;
+}
+
+.custom-app-header-icon svg {
+  fill: var(--custom-header-text) !important;
+  color: var(--custom-header-text) !important;
+}
+/* END custom header styling */
 
 @keyframes App-logo-spin {
   from {

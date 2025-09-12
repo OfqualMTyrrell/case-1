@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Header,
@@ -85,11 +84,11 @@ function AppHeader() {
           }}
         />
       )}
-      <Header aria-label="Ofqual Cases">
-        <HeaderName prefix="Ofqual" href="/">
+      <Header aria-label="Ofqual Cases" className="custom-app-header">
+        <HeaderName prefix="Ofqual" href="/" className="custom-app-header-name">
           Cases
         </HeaderName>
-        <HeaderNavigation aria-label="Ofqual Cases Navigation">
+        <HeaderNavigation aria-label="Ofqual Cases Navigation" className="custom-app-header">
           <HeaderMenuItem href="/cases-v2">Cases</HeaderMenuItem>
           <HeaderMenu aria-label="Profiles" menuLinkName="Profiles">
             <HeaderMenuItem href="/profiles/regulated-organisations">Regulated organisations</HeaderMenuItem>
@@ -103,6 +102,7 @@ function AppHeader() {
             tooltipAlignment="end"
             isActive={isPanelExpanded}
             onClick={togglePanel}
+            className="custom-app-header-icon"
           >
             <Settings size={20} />
           </HeaderGlobalAction>
