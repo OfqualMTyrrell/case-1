@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { GlobalTheme } from '@carbon/react';
@@ -20,16 +17,17 @@ function App() {
   useEffect(() => {
     // Load seeded data on app startup if session storage is empty
     loadSeededDataIfEmpty();
-    
+
     // Set the theme attribute on the document root for portaled components
-    document.documentElement.setAttribute('data-carbon-theme', 'g100');
-    
+    document.documentElement.setAttribute('data-carbon-theme', 'g10');
+
     // Also add the theme class to the document root
-    document.documentElement.classList.add('cds--g100');
+    document.documentElement.classList.remove('cds--g100');
+    document.documentElement.classList.add('cds--g10');
   }, []);
 
   return (
-    <GlobalTheme theme="g100">
+    <GlobalTheme theme="g10">
       <div className="App">
         <Router>
           <Routes>
