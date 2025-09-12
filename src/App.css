@@ -8,10 +8,10 @@ html.cds--g10 {
   color: var(--cds-text-primary, #161616);
 }
 
-/* Styling for custom header colors */
+/* Use Carbon tokens for header background and text */
 :root {
-  --custom-header-bg: #4a7614;
-  --custom-header-text: #ffffff;
+  --custom-header-bg: var(--cds-background-brand, #0f62fe);
+  --custom-header-text: var(--cds-text-on-color, #ffffff);
   --custom-header-bg-hover: color-mix(in srgb, var(--custom-header-bg) 85%, #fff 15%);
 }
 
