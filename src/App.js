@@ -1,9 +1,6 @@
-
-
-
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { GlobalTheme } from '@carbon/react';
+import { Theme } from '@carbon/react'; // <-- Use Theme instead of GlobalTheme
 import CaseList from './pages/CaseList';
 import CaseInformation from './pages/CaseInformation';
 import CaseListV2 from './pages/CaseListV2';
@@ -15,21 +12,17 @@ import AdminDataSeeding from './pages/AdminDataSeeding';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
 import '@carbon/styles/css/styles.css';
 import './App.css';
+import Footer from "./components/Footer"
 
 function App() {
   useEffect(() => {
-    // Load seeded data on app startup if session storage is empty
     loadSeededDataIfEmpty();
-    
-    // Set the theme attribute on the document root for portaled components
     document.documentElement.setAttribute('data-carbon-theme', 'g100');
-    
-    // Also add the theme class to the document root
     document.documentElement.classList.add('cds--g100');
   }, []);
 
   return (
-    <GlobalTheme theme="g100">
+    <Theme theme="g100">
       <div className="App">
         <Router>
           <Routes>
@@ -46,7 +39,8 @@ function App() {
           </Routes>
         </Router>
       </div>
-    </GlobalTheme>
+      <Footer />
+    </Theme>
   );
 }
 
