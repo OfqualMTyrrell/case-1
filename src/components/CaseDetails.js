@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ContainedList, ContainedListItem } from '@carbon/react';
+import { 
+  StructuredListWrapper,
+  StructuredListBody,
+  StructuredListRow,
+  StructuredListCell
+} from '@carbon/react';
 import CaseSection from './CaseSection';
 import { loadCaseTypeData, getCaseTypeSections, isCaseTypeSupported } from '../services/caseTypeService';
 
@@ -59,18 +64,88 @@ const CaseDetails = ({ caseData }) => {
 
   if (!caseData) {
     return (
-      <ContainedList kind="on-page">
-        <ContainedListItem>
-          <span>Case not found.</span>
-        </ContainedListItem>
-      </ContainedList>
+      <StructuredListWrapper>
+        <StructuredListBody>
+          <StructuredListRow>
+            <StructuredListCell>
+              <span>Case not found.</span>
+            </StructuredListCell>
+          </StructuredListRow>
+        </StructuredListBody>
+      </StructuredListWrapper>
     );
   }
 
+  // Generate section IDs for anchor links
+  const generateSectionId = (title) => {
+    return title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  };
+
+  // Build list of all sections (Case Details + case type sections)
+  const allSections = [
+    { title: 'Case Details', id: 'case-details' },
+    ...sections.map(section => ({
+      title: section.title,
+      id: generateSectionId(section.title)
+    }))
+  ];
+
+  const handleSectionClick = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div>
+      {/* Table of Contents */}
+      {allSections.length > 1 && (
+        <div style={{ marginBottom: '2rem' }}>
+          <h2 style={{ 
+            fontSize: '1.25rem', 
+            marginBottom: '1rem', 
+            marginTop: '0.5rem',
+            fontWeight: 400 
+          }}>
+            Contents
+          </h2>
+          <ul style={{ 
+            listStyle: 'none', 
+            padding: 0, 
+            margin: 0 
+          }}>
+            {allSections.map((section, index) => (
+              <li key={section.id} style={{ marginBottom: '0.5rem' }}>
+                <a
+                  href={`#${section.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleSectionClick(section.id);
+                  }}
+                  style={{
+                    color: 'var(--cds-link-primary)',
+                    textDecoration: 'none',
+                    fontSize: '1rem',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textDecoration = 'underline';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textDecoration = 'none';
+                  }}
+                >
+                  {section.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Always show basic case details */}
-      <div style={{ marginBottom: '2rem' }}>
+      <div id="case-details" style={{ marginBottom: '2rem', scrollMarginTop: '5rem' }}>
         <h2 style={{ 
           fontSize: '1.25rem', 
           marginBottom: '1rem', 
@@ -79,38 +154,34 @@ const CaseDetails = ({ caseData }) => {
         }}>
           Case Details
         </h2>
-        <ContainedList kind="on-page">
-          {caseDetailsFields.map(field => {
-            const value = caseData[field.key];
-            if (!value) return null;
+        <StructuredListWrapper>
+          <StructuredListBody>
+            {caseDetailsFields.map(field => {
+              const value = caseData[field.key];
+              if (!value) return null;
 
-            return (
-              <ContainedListItem key={field.key}>
-                <div style={{ display: 'flex', width: '100%', alignItems: 'flex-start', gap: '1rem' }}>
-                  <span style={{ 
-                    fontWeight: 600, 
-                    width: '240px', 
-                    flexShrink: 0, 
-                    textAlign: 'left',
+              return (
+                <StructuredListRow key={field.key}>
+                  <StructuredListCell style={{ 
+                    fontWeight: 600,
+                    width: '240px',
+                    verticalAlign: 'top',
                     wordWrap: 'break-word',
-                    hyphens: 'auto',
-                    lineHeight: '1.4'
+                    hyphens: 'auto'
                   }}>
                     {field.label}
-                  </span>
-                  <span style={{ 
-                    textAlign: 'left', 
-                    flexGrow: 1,
-                    wordWrap: 'break-word',
-                    lineHeight: '1.4'
+                  </StructuredListCell>
+                  <StructuredListCell style={{ 
+                    verticalAlign: 'top',
+                    wordWrap: 'break-word'
                   }}>
                     {value}
-                  </span>
-                </div>
-              </ContainedListItem>
-            );
-          })}
-        </ContainedList>
+                  </StructuredListCell>
+                </StructuredListRow>
+              );
+            })}
+          </StructuredListBody>
+        </StructuredListWrapper>
       </div>
 
       {/* Show case type specific sections if available */}
@@ -121,6 +192,7 @@ const CaseDetails = ({ caseData }) => {
               key={`${section.title}-${index}`}
               section={section}
               data={caseTypeData}
+              sectionId={generateSectionId(section.title)}
             />
           ))}
         </div>

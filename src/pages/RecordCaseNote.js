@@ -18,7 +18,6 @@ import CaseHeader from '../components/CaseHeader';
 import CaseNavigation from '../components/CaseNavigation';
 import casesData from '../cases.json';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
-import '@carbon/styles/css/styles.css';
 
 function RecordCaseNote() {
   const { caseId } = useParams();
@@ -196,7 +195,7 @@ function RecordCaseNote() {
 
   if (!caseData) {
     return (
-      <Theme theme="g100" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <AppHeader />
         <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
           <Grid fullWidth columns={16} mode="narrow" gutter={16}>
@@ -215,7 +214,7 @@ function RecordCaseNote() {
   }
 
   return (
-    <Theme theme="g100" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <AppHeader />
       <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
         <Grid fullWidth columns={16} mode="narrow" gutter={16}>

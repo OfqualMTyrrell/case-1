@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   Header,
   HeaderName,
@@ -13,8 +14,10 @@ import {
   InlineNotification
 } from '@carbon/react';
 import { Settings } from '@carbon/icons-react';
+import './AppHeader.css';
 
 function AppHeader() {
+  const location = useLocation();
   const [notification, setNotification] = useState(null);
   const [isPanelExpanded, setIsPanelExpanded] = useState(false);
 
@@ -85,17 +88,15 @@ function AppHeader() {
           }}
         />
       )}
-      <Header aria-label="Ofqual Cases">
+      <Header aria-label="Ofqual business process management">
         <HeaderName prefix="Ofqual" href="/">
-          Cases
+          BPM
         </HeaderName>
-        <HeaderNavigation aria-label="Ofqual Cases Navigation">
-          <HeaderMenuItem href="/cases-v2">Cases</HeaderMenuItem>
-          <HeaderMenu aria-label="Profiles" menuLinkName="Profiles">
-            <HeaderMenuItem href="/profiles/regulated-organisations">Regulated organisations</HeaderMenuItem>
-            <HeaderMenuItem href="/profiles/subject-matter-specialists">Subject matter specialists</HeaderMenuItem>
-            <HeaderMenuItem href="/profiles/prospective-organisations">Prospective organisations</HeaderMenuItem>
-          </HeaderMenu>
+        <HeaderNavigation aria-label="Ofqual Cases Navigation" style={{ backgroundColor: '#004a4a' }}>
+          <HeaderMenuItem href="/cases-v2" isActive={location.pathname === '/cases-v2' || location.pathname.startsWith('/case/')}>Case management</HeaderMenuItem>
+          <HeaderMenuItem href="/profiles/regulated-organisations" isActive={location.pathname === '/profiles/regulated-organisations'}>Regulated organisations</HeaderMenuItem>
+          <HeaderMenuItem href="/profiles/prospective-organisations" isActive={location.pathname === '/profiles/prospective-organisations'}>Prospective organisations</HeaderMenuItem>
+          <HeaderMenuItem href="/profiles/subject-matter-specialists" isActive={location.pathname === '/profiles/subject-matter-specialists'}>Subject matter specialists</HeaderMenuItem>
         </HeaderNavigation>
         <HeaderGlobalBar>
           <HeaderGlobalAction
@@ -117,7 +118,9 @@ function AppHeader() {
             top: '3rem',
             boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
             maxWidth: '320px',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            backgroundColor: 'var(--cds-background)',
+            color: 'var(--cds-text-primary)'
           }}
         >
           <div style={{ 

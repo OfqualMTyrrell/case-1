@@ -1,0 +1,34 @@
+/* Custom styling for Case Navigation SideNav */
+
+/* Set base font size to 16px (1rem) for SideNav links */
+.cds--side-nav__link {
+  font-size: 1rem !important;
+  line-height: 2 !important;
+  font-weight: 600 !important; /* Normal weight */
+  letter-spacing: 0 !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Ensure link text has proper sizing */
+.cds--side-nav__link-text {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+
+/* Increase spacing between nav items */
+.cds--side-nav__item {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Active state should also use normal weight */
+.cds--side-nav__link--current,
+.cds--side-nav__link[aria-current="page"] {
+  font-weight: 600 !important;
+}
+
+/* Hover state */
+.cds--side-nav__link:hover .cds--side-nav__link-text {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}

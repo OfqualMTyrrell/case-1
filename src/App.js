@@ -8,6 +8,7 @@ import CaseList from './pages/CaseList';
 import CaseInformation from './pages/CaseInformation';
 import CaseListV2 from './pages/CaseListV2';
 import TaskList from './pages/TaskList';
+import TaskListStructuredDemo from './pages/TaskListStructuredDemo';
 import TaskDetail from './pages/TaskDetail';
 import TaskCheckAnswers from './pages/TaskCheckAnswers';
 import RecordCaseNote from './pages/RecordCaseNote';
@@ -22,14 +23,14 @@ function App() {
     loadSeededDataIfEmpty();
     
     // Set the theme attribute on the document root for portaled components
-    document.documentElement.setAttribute('data-carbon-theme', 'g100');
+    document.documentElement.setAttribute('data-carbon-theme', 'white');
     
     // Also add the theme class to the document root
-    document.documentElement.classList.add('cds--g100');
+    document.documentElement.classList.add('cds--white');
   }, []);
 
   return (
-    <GlobalTheme theme="g100">
+    <GlobalTheme theme="white">
       <div className="App">
         <Router>
           <Routes>
@@ -38,6 +39,7 @@ function App() {
             <Route path="/case/:caseId/record-note" element={<RecordCaseNote />} />
             <Route path="/cases-v2" element={<CaseListV2 />} />
             <Route path="/case/:caseId/tasks" element={<TaskList />} />
+            <Route path="/case/:caseId/tasks-structured" element={<TaskListStructuredDemo />} />
             <Route path="/case/:caseId/tasks/:stageId/:taskId" element={<TaskDetail />} />
             <Route path="/case/:caseId/tasks/:stageId/:taskId/edit" element={<TaskDetail />} />
             <Route path="/case/:caseId/tasks/:stageId/:taskId/check" element={<TaskCheckAnswers />} />

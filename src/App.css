@@ -1,9 +1,9 @@
-/* Root app styles optimized for g100 theme */
+/* Root app styles optimized for white theme */
 
-/* Ensure g100 theme is applied globally including to portals */
-:root[data-carbon-theme="g100"],
-:root.cds--g100,
-html.cds--g100 {
+/* Ensure white theme is applied globally including to portals */
+:root[data-carbon-theme="white"],
+:root.cds--white,
+html.cds--white {
   background-color: var(--cds-background);
   color: var(--cds-text-primary);
 }
@@ -40,7 +40,7 @@ html.cds--g100 {
   color: var(--cds-link-primary);
 }
 
-/* Ensure clickable rows have proper hover and focus states for g100 theme */
+/* Ensure clickable rows have proper hover and focus states for white theme */
 .clickable-row:hover {
   background-color: var(--cds-layer-hover) !important;
 }
