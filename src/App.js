@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { GlobalTheme } from '@carbon/react';
@@ -15,6 +12,7 @@ import AdminDataSeeding from './pages/AdminDataSeeding';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
 import '@carbon/styles/css/styles.css';
 import './App.css';
+import Footer from './components/Footer';
 
 function App() {
   useEffect(() => {
@@ -45,6 +43,7 @@ function App() {
             <Route path="/" element={<Navigate to="/cases-v2" replace />} />
           </Routes>
         </Router>
+        <Footer />
       </div>
     </GlobalTheme>
   );
