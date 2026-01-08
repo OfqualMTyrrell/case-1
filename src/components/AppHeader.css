@@ -1,0 +1,172 @@
+/* Custom styling for Ofqual branded header */
+/* Following Carbon Design System customization guidelines */
+
+/* Override Carbon theme tokens for header specifically */
+.cds--header {
+  --cds-background: #043ED1;
+  --cds-layer: #043ED1;
+  --cds-layer-01: #043ED1;
+  --cds-ui-background: #043ED1;
+  background-color: #043ED1 !important;
+}
+
+/* Override Carbon's white theme for header */
+.cds--white .cds--header,
+.cds--white .cds--header__nav,
+.cds--white .cds--header__menu-bar,
+html[data-carbon-theme="white"] .cds--header,
+html[data-carbon-theme="white"] .cds--header__nav,
+html[data-carbon-theme="white"] .cds--header__menu-bar {
+  --cds-background: #043ED1;
+  --cds-layer: #043ED1;
+  --cds-layer-01: #043ED1;
+  --cds-ui-background: #043ED1;
+  background-color: #043ED1 !important;
+}
+
+/* 2. Header navigation bar - where menu items live */
+.cds--header__nav,
+.cds--header nav,
+nav.cds--header__nav {
+  background-color: #043ED1 !important;
+}
+
+/* 3. Header menu bar wrapper - CRITICAL for menu bar background */
+.cds--header__menu-bar,
+ul.cds--header__menu-bar,
+.cds--header .cds--header__menu-bar {
+  background-color: #043ED1 !important;
+}
+
+/* 4. Header name and branding */
+.cds--header__name {
+  color: #ffffff !important;
+}
+
+.cds--header__name--prefix {
+  color: #ffffff !important;
+}
+
+.cds--header__name:hover {
+  background-color: #0036b3 !important;
+}
+
+/* 5. Top-level navigation menu items */
+.cds--header__menu-item {
+  color: #ffffff !important;
+}
+
+.cds--header__menu-item:hover {
+  background-color: #0036b3 !important;
+  color: #ffffff !important;
+}
+
+/* Active state for navigation menu items */
+.cds--header__menu-item[aria-current="page"]::after,
+.cds--header__menu-item--current::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #ffffff !important;
+  content: '';
+}
+
+.cds--header__menu-item[aria-current="page"],
+.cds--header__menu-item--current {
+  position: relative;
+  background-color: transparent !important;
+  font-weight: 600 !important;
+}
+
+/* 6. Menu title (for dropdown menus like "Profiles") */
+.cds--header__menu-title[aria-expanded="false"] {
+  color: #ffffff !important;
+}
+
+.cds--header__menu-title[aria-expanded="true"] {
+  color: #ffffff !important;
+  background-color: #0036b3 !important;
+}
+
+.cds--header__menu-title:hover {
+  background-color: #0036b3 !important;
+  color: #ffffff !important;
+}
+
+/* 7. Dropdown menu arrow icon */
+.cds--header__menu-arrow {
+  background-color: #043ED1 !important;
+  fill: #ffffff !important;
+}
+
+.cds--header__menu-title svg {
+  fill: #ffffff !important;
+}
+
+/* 8. Dropdown menu container */
+.cds--header__menu {
+  background-color: #043ED1 !important;
+}
+
+/* 9. Dropdown menu items */
+.cds--header__menu .cds--header__menu-item {
+  color: #ffffff !important;
+  background-color: #043ED1 !important;
+}
+
+.cds--header__menu .cds--header__menu-item:hover {
+  background-color: #0036b3 !important;
+  color: #ffffff !important;
+}
+
+/* 10. Global action buttons (like Settings icon) */
+.cds--header__action {
+  color: #ffffff !important;
+}
+
+.cds--header__action:hover {
+  background-color: #0036b3 !important;
+}
+
+.cds--header__action svg {
+  fill: #ffffff !important;
+}
+
+.cds--header__action:hover svg {
+  fill: #ffffff !important;
+}
+
+/* 11. Focus states for accessibility */
+.cds--header__menu-item:focus,
+.cds--header__menu-title:focus,
+.cds--header__action:focus {
+  outline: 2px solid #ffffff !important;
+  outline-offset: -2px;
+}
+
+/* 12. Ensure all text and links are white */
+.cds--header a {
+  color: #ffffff !important;
+}
+
+
+/* 13. Header Panel - use white theme, not teal */
+.cds--header .cds--header-panel,
+.cds--white .cds--header .cds--header-panel,
+html[data-carbon-theme="white"] .cds--header .cds--header-panel {
+  --cds-background: #ffffff !important;
+  --cds-layer: #f4f4f4 !important;
+  --cds-layer-01: #f4f4f4 !important;
+  --cds-ui-background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #161616 !important;
+}
+
+.cds--header .cds--header-panel h4,
+.cds--header .cds--header-panel p {
+  color: #161616 !important;
+}
+
+

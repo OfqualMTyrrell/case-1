@@ -25,7 +25,6 @@ import casesData from '../cases.json';
 import taskConfig from '../data/task-config.json';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
 import './CaseInformation.css';
-import '@carbon/styles/css/styles.css';
 
 function TaskDetail() {
   const { caseId, stageId, taskId } = useParams();
@@ -448,7 +447,7 @@ function TaskDetail() {
 
   if (!caseData || !taskData || !stageData) {
     return (
-      <Theme theme="g100" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <AppHeader />
         <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
           <Grid fullWidth columns={16} mode="narrow" gutter={16}>
@@ -468,7 +467,7 @@ function TaskDetail() {
   const previousTask = getPreviousTask();
 
   return (
-    <Theme theme="g100" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <AppHeader />
       <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
         <Grid fullWidth columns={16} mode="narrow" gutter={16}>
@@ -526,20 +525,13 @@ function TaskDetail() {
                 Cancel
               </Button>
               
-              <Button
-                kind="tertiary"
-                size="lg"
-                onClick={handleSaveOnly}
-              >
-                Save
-              </Button>
 
               <Button
                 kind="primary"
                 size="lg"
                 onClick={handleSave}
               >
-                Save and continue
+                Save
               </Button>
             </div>
 

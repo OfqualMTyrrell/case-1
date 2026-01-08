@@ -1,0 +1,68 @@
+// Configure Carbon with productive type scale and 16px base
+// This must be done BEFORE importing any Carbon styles
+@use '@carbon/styles/scss/config' with (
+  $font-path: '~@carbon/styles/fonts',
+  $css--font-face: true,
+  $css--default-type: true,
+  $css--reset: true
+);
+
+// Configure type tokens with 16px base
+@use '@carbon/styles/scss/theme' with (
+  $theme: (
+    // Override type tokens for larger text
+    body-compact-01-font-size: 0.875rem,
+    body-compact-01-line-height: 1.28572,
+    body-compact-01-letter-spacing: 0.16px,
+    
+    body-compact-02-font-size: 1rem,
+    body-compact-02-line-height: 1.5,
+    body-compact-02-letter-spacing: 0,
+    
+    body-01-font-size: 0.875rem,
+    body-01-line-height: 1.42857,
+    body-01-letter-spacing: 0.16px,
+    
+    body-02-font-size: 1rem,
+    body-02-line-height: 1.5,
+    body-02-letter-spacing: 0,
+  )
+);
+
+// Import all Carbon styles
+@use '@carbon/styles';
+
+// Global styles optimized for Carbon g100 theme
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+// Ensure html and body take full height for proper theme coverage
+html, body, #root {
+  height: 100%;
+  background-color: var(--cds-background);
+}
+
+// Code styling
+code {
+  font-family: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: var(--cds-layer);
+  color: var(--cds-text-primary);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
+}
+

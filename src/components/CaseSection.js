@@ -1,8 +1,13 @@
 import React from 'react';
-import { ContainedList, ContainedListItem } from '@carbon/react';
+import { 
+  StructuredListWrapper,
+  StructuredListBody,
+  StructuredListRow,
+  StructuredListCell
+} from '@carbon/react';
 import { getFieldValue, renderFieldValue } from '../utils/fieldRenderer';
 
-const CaseSection = ({ section, data, style = {} }) => {
+const CaseSection = ({ section, data, style = {}, sectionId }) => {
   if (!section || !section.fields || section.fields.length === 0) {
     return null;
   }
@@ -19,8 +24,11 @@ const CaseSection = ({ section, data, style = {} }) => {
     return null;
   }
 
+  // Generate section ID if not provided
+  const id = sectionId || section.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
   return (
-    <div style={{ marginBottom: '2rem', ...style }}>
+    <div id={id} style={{ marginBottom: '2rem', scrollMarginTop: '5rem', ...style }}>
       <h2 style={{ 
         fontSize: '1.25rem', 
         marginBottom: '1rem', 
@@ -29,42 +37,38 @@ const CaseSection = ({ section, data, style = {} }) => {
       }}>
         {section.title}
       </h2>
-      <ContainedList kind="on-page">
-        {fieldsWithData.map(field => {
-          const value = getFieldValue(data, field);
-          const renderedValue = renderFieldValue(value, field);
-          
-          if (renderedValue === null) {
-            return null;
-          }
+      <StructuredListWrapper>
+        <StructuredListBody>
+          {fieldsWithData.map(field => {
+            const value = getFieldValue(data, field);
+            const renderedValue = renderFieldValue(value, field);
+            
+            if (renderedValue === null) {
+              return null;
+            }
 
-          return (
-            <ContainedListItem key={field.key}>
-              <div style={{ display: 'flex', width: '100%', alignItems: 'flex-start', gap: '1rem' }}>
-                <span style={{ 
-                  fontWeight: 600, 
-                  width: '240px', 
-                  flexShrink: 0, 
-                  textAlign: 'left',
+            return (
+              <StructuredListRow key={field.key}>
+                <StructuredListCell style={{ 
+                  fontWeight: 600,
+                  width: '240px',
+                  verticalAlign: 'top',
                   wordWrap: 'break-word',
-                  hyphens: 'auto',
-                  lineHeight: '1.4'
+                  hyphens: 'auto'
                 }}>
                   {field.label}
-                </span>
-                <span style={{ 
-                  textAlign: 'left', 
-                  flexGrow: 1,
-                  wordWrap: 'break-word',
-                  lineHeight: '1.4'
+                </StructuredListCell>
+                <StructuredListCell style={{ 
+                  verticalAlign: 'top',
+                  wordWrap: 'break-word'
                 }}>
                   {renderedValue}
-                </span>
-              </div>
-            </ContainedListItem>
-          );
-        })}
-      </ContainedList>
+                </StructuredListCell>
+              </StructuredListRow>
+            );
+          })}
+        </StructuredListBody>
+      </StructuredListWrapper>
     </div>
   );
 };

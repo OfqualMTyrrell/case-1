@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Content, Grid, Column, DataTable, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableContainer, TableToolbar, TableToolbarContent, TableToolbarSearch, Checkbox, Tag, FilterableMultiSelect, Pagination, Button, DatePicker, DatePickerInput, Layer } from '@carbon/react';
+import { Content, Grid, Column, DataTable, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableContainer, TableToolbar, TableToolbarContent, TableToolbarSearch, Checkbox, Tag, FilterableMultiSelect, Pagination, Button, DatePicker, DatePickerInput, Layer, Accordion, AccordionItem } from '@carbon/react';
 import casesData from '../cases.json';
 import AppHeader from '../components/AppHeader';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
-import '@carbon/styles/css/styles.css';
 
 const headers = [
   { key: 'CaseID', header: 'CaseID' },
@@ -68,12 +67,14 @@ function CaseListV2() {
   const [pendingStatusFilter, setPendingStatusFilter] = useState([]);
   const [pendingCaseTypeFilter, setPendingCaseTypeFilter] = useState([]);
   const [pendingSubmittedByFilter, setPendingSubmittedByFilter] = useState([]);
+  const [pendingCaseLeadFilter, setPendingCaseLeadFilter] = useState([]);
   const [pendingDateRange, setPendingDateRange] = useState([null, null]);
   
   // Applied filters (used for actual filtering)
   const [appliedStatusFilter, setAppliedStatusFilter] = useState([]);
   const [appliedCaseTypeFilter, setAppliedCaseTypeFilter] = useState([]);
   const [appliedSubmittedByFilter, setAppliedSubmittedByFilter] = useState([]);
+  const [appliedCaseLeadFilter, setAppliedCaseLeadFilter] = useState([]);
   const [appliedDateRange, setAppliedDateRange] = useState([null, null]);
   
   const [page, setPage] = useState(1);
@@ -176,13 +177,19 @@ function CaseListV2() {
       filtered = filtered.filter(row => appliedSubmittedByFilter.includes(row.SubmittedBy));
     }
     
+    // Apply case lead filter
+    if (appliedCaseLeadFilter.length > 0) {
+      filtered = filtered.filter(row => appliedCaseLeadFilter.includes(row.CaseLead));
+    }
+    
     setFilteredRows(filtered);
     setPage(1); // Reset to first page when filters change
-  }, [appliedStatusFilter, appliedCaseTypeFilter, appliedSubmittedByFilter, appliedDateRange, rows, searchTerm]);
+  }, [appliedStatusFilter, appliedCaseTypeFilter, appliedSubmittedByFilter, appliedCaseLeadFilter, appliedDateRange, rows, searchTerm]);
 
   const statusOptions = getUnique(casesData, 'Status');
   const caseTypeOptions = getUnique(casesData, 'CaseType');
   const submittedByOptions = getUnique(casesData, 'SubmittedBy');
+  const caseLeadOptions = getUnique(casesData, 'CaseLead');
 
   const totalItems = filteredRows.length;
   const pagedRows = filteredRows.slice((page - 1) * pageSize, page * pageSize);
@@ -192,6 +199,7 @@ function CaseListV2() {
     setAppliedStatusFilter(pendingStatusFilter);
     setAppliedCaseTypeFilter(pendingCaseTypeFilter);
     setAppliedSubmittedByFilter(pendingSubmittedByFilter);
+    setAppliedCaseLeadFilter(pendingCaseLeadFilter);
     setAppliedDateRange(pendingDateRange);
   };
 
@@ -200,10 +208,12 @@ function CaseListV2() {
     setPendingStatusFilter([]);
     setPendingCaseTypeFilter([]);
     setPendingSubmittedByFilter([]);
+    setPendingCaseLeadFilter([]);
     setPendingDateRange([null, null]);
     setAppliedStatusFilter([]);
     setAppliedCaseTypeFilter([]);
     setAppliedSubmittedByFilter([]);
+    setAppliedCaseLeadFilter([]);
     setAppliedDateRange([null, null]);
   };
 
@@ -212,6 +222,7 @@ function CaseListV2() {
     return JSON.stringify(pendingStatusFilter) !== JSON.stringify(appliedStatusFilter) ||
            JSON.stringify(pendingCaseTypeFilter) !== JSON.stringify(appliedCaseTypeFilter) ||
            JSON.stringify(pendingSubmittedByFilter) !== JSON.stringify(appliedSubmittedByFilter) ||
+           JSON.stringify(pendingCaseLeadFilter) !== JSON.stringify(appliedCaseLeadFilter) ||
            JSON.stringify(pendingDateRange) !== JSON.stringify(appliedDateRange);
   };
 
@@ -220,7 +231,29 @@ function CaseListV2() {
     return appliedStatusFilter.length > 0 || 
            appliedCaseTypeFilter.length > 0 || 
            appliedSubmittedByFilter.length > 0 ||
+           appliedCaseLeadFilter.length > 0 ||
            (appliedDateRange[0] && appliedDateRange[1]);
+  };
+
+  // Clear individual pending filter sections
+  const clearPendingCaseTypeFilter = () => {
+    setPendingCaseTypeFilter([]);
+  };
+
+  const clearPendingSubmittedByFilter = () => {
+    setPendingSubmittedByFilter([]);
+  };
+
+  const clearPendingDateRangeFilter = () => {
+    setPendingDateRange([null, null]);
+  };
+
+  const clearPendingStatusFilter = () => {
+    setPendingStatusFilter([]);
+  };
+
+  const clearPendingCaseLeadFilter = () => {
+    setPendingCaseLeadFilter([]);
   };
 
   return (
@@ -229,171 +262,251 @@ function CaseListV2() {
       <Content>
         <Grid fullWidth columns={16} mode="narrow" gutter={16}>
           <Column lg={4} md={4} sm={4}>
-            <Layer>
-              <div style={{ 
-                padding: '1.5rem', 
-                minWidth: 0,
-                borderRight: '1px solid var(--cds-border-subtle)'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-                  <h6 className="cds--label" style={{ margin: 0 }}>Status</h6>
-                  {pendingStatusFilter.length > 0 && (
-                    <Tag 
-                      type="high-contrast" 
-                      size="md" 
-                      style={{ marginLeft: 8 }}
-                      filter
-                      onClose={() => {
-                        setPendingStatusFilter([]);
-                      }}
-                    title="Click to clear status filter selections"
+            <div style={{  
+              minWidth: 0,
+              borderRight: '1px solid var(--cds-border-subtle)'
+            }}>
+              <style>{`
+                  .filters-heading {
+                    font-size: 1rem !important;
+                    line-height: 1.29 !important;
+                    font-weight: 600 !important;
+                  }
+                  .cds--accordion__title,
+                  .cds--accordion__content {
+                    font-size: 1rem !important;
+                    line-height: 1.5 !important;
+                  }
+                `}</style>
+                <h3 className="filters-heading" style={{ 
+                  padding: '1rem 1rem 0.5rem 1rem', 
+                  margin: 0
+                }}>
+                  Filters
+                </h3>
+                <Accordion isFlush>
+                  {/* Case Type Filter */}
+                  <AccordionItem 
+                    title={
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span>Case type</span>
+                        {pendingCaseTypeFilter.length > 0 && (
+                          <Tag 
+                            type="high-contrast" 
+                            size="sm"
+                            filter
+                            onClose={(e) => {
+                              e.stopPropagation();
+                              clearPendingCaseTypeFilter();
+                            }}
+                            title="Clear case type selections"
+                          >
+                            {pendingCaseTypeFilter.length}
+                          </Tag>
+                        )}
+                      </div>
+                    }
+                    open={true}
                   >
-                    {pendingStatusFilter.length}
-                  </Tag>
-                )}
-              </div>
-              <div role="group" aria-label="Status filters">
-                {statusOptions.map(status => (
-                  <Checkbox
-                    key={status}
-                    id={`status-checkbox-${status}`}
-                    labelText={status}
-                    checked={pendingStatusFilter.includes(status)}
-                    onChange={(e, { checked }) => {
-                      setPendingStatusFilter(checked
-                        ? [...pendingStatusFilter, status]
-                        : pendingStatusFilter.filter(s => s !== status)
-                      );
-                    }}
-                  />
-                ))}
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', margin: '2rem 0 1rem 0' }}>
-                <h6 className="cds--label" style={{ margin: 0 }}>Case Type</h6>
-                {pendingCaseTypeFilter.length > 0 && (
-                  <Tag 
-                    type="high-contrast" 
-                    size="md" 
-                    style={{ marginLeft: 8 }}
-                    filter
-                    onClose={() => {
-                      setPendingCaseTypeFilter([]);
-                    }}
-                    title="Click to clear case type filter selections"
+                    <div role="group" aria-label="Case type filters" style={{ paddingTop: '0.5rem' }}>
+                      {caseTypeOptions.map(type => (
+                        <Checkbox
+                          key={type}
+                          id={`case-type-checkbox-${type}`}
+                          labelText={type}
+                          checked={pendingCaseTypeFilter.includes(type)}
+                          onChange={(e, { checked }) => {
+                            setPendingCaseTypeFilter(checked
+                              ? [...pendingCaseTypeFilter, type]
+                              : pendingCaseTypeFilter.filter(t => t !== type)
+                            );
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </AccordionItem>
+
+                  {/* Submitted By Filter */}
+                  <AccordionItem 
+                    title={
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span>Submitted by</span>
+                        {pendingSubmittedByFilter.length > 0 && (
+                          <Tag 
+                            type="high-contrast" 
+                            size="sm"
+                            filter
+                            onClose={(e) => {
+                              e.stopPropagation();
+                              clearPendingSubmittedByFilter();
+                            }}
+                            title="Clear submitted by selections"
+                          >
+                            {pendingSubmittedByFilter.length}
+                          </Tag>
+                        )}
+                      </div>
+                    }
+                    open={false}
                   >
-                    {pendingCaseTypeFilter.length}
-                  </Tag>
-                )}
-              </div>
-              <div role="group" aria-label="Case type filters">
-                {caseTypeOptions.map(type => (
-                  <Checkbox
-                    key={type}
-                    id={`case-type-checkbox-${type}`}
-                    labelText={type}
-                    checked={pendingCaseTypeFilter.includes(type)}
-                    onChange={(e, { checked }) => {
-                      setPendingCaseTypeFilter(checked
-                        ? [...pendingCaseTypeFilter, type]
-                        : pendingCaseTypeFilter.filter(t => t !== type)
-                      );
-                    }}
-                  />
-                ))}
-              </div>
-              
-              <div style={{ marginTop: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-                  <h6 className="cds--label" style={{ margin: 0 }}>Received date range</h6>
-                  {(pendingDateRange[0] && pendingDateRange[1]) && (
-                    <Tag 
-                      type="high-contrast" 
-                      size="md" 
-                      style={{ marginLeft: 8 }}
-                      filter
-                      onClose={() => {
-                        setPendingDateRange([null, null]);
-                      }}
-                      title="Click to clear date range selection"
-                    >
-                      Range
-                    </Tag>
-                  )}
+                    <div style={{ paddingTop: '0.5rem' }}>
+                      <FilterableMultiSelect
+                        id="submitted-by-filter-v2"
+                        items={submittedByOptions.map(submitter => ({ id: submitter, text: submitter }))}
+                        itemToString={item => item?.text || ''}
+                        titleText="Submitted by"
+                        onChange={({ selectedItems }) => setPendingSubmittedByFilter(selectedItems.map(item => item.text))}
+                        selectedItems={pendingSubmittedByFilter.map(submitter => ({ id: submitter, text: submitter }))}
+                      />
+                    </div>
+                  </AccordionItem>
+
+                  {/* Date Range Filter */}
+                  <AccordionItem 
+                    title={
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span>Received date</span>
+                        {(pendingDateRange[0] && pendingDateRange[1]) && (
+                          <Tag 
+                            type="high-contrast" 
+                            size="sm"
+                            filter
+                            onClose={(e) => {
+                              e.stopPropagation();
+                              clearPendingDateRangeFilter();
+                            }}
+                            title="Clear date range selection"
+                          >
+                            Range
+                          </Tag>
+                        )}
+                      </div>
+                    }
+                    open={pendingDateRange[0] && pendingDateRange[1]}
+                  >
+                    <div style={{ paddingTop: '0.5rem' }}>
+                      <DatePicker 
+                        datePickerType="range"
+                        dateFormat="d/m/Y"
+                        onChange={(dates) => {
+                          setPendingDateRange(dates);
+                        }}
+                        value={pendingDateRange}
+                      >
+                        <DatePickerInput
+                          id="date-picker-input-id-start"
+                          placeholder=""
+                          labelText="Start date"
+                          size="md"
+                        />
+                        <DatePickerInput
+                          id="date-picker-input-id-finish"
+                          placeholder=""
+                          labelText="End date"
+                          size="md"
+                        />
+                      </DatePicker>
+                    </div>
+                  </AccordionItem>
+
+                  {/* Status Filter */}
+                  <AccordionItem 
+                    title={
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span>Status</span>
+                        {pendingStatusFilter.length > 0 && (
+                          <Tag 
+                            type="high-contrast" 
+                            size="sm"
+                            filter
+                            onClose={(e) => {
+                              e.stopPropagation();
+                              clearPendingStatusFilter();
+                            }}
+                            title="Clear status selections"
+                          >
+                            {pendingStatusFilter.length}
+                          </Tag>
+                        )}
+                      </div>
+                    }
+                    open={pendingStatusFilter.length > 0}
+                  >
+                    <div role="group" aria-label="Status filters" style={{ paddingTop: '0.5rem' }}>
+                      {statusOptions.map(status => (
+                        <Checkbox
+                          key={status}
+                          id={`status-checkbox-${status}`}
+                          labelText={status}
+                          checked={pendingStatusFilter.includes(status)}
+                          onChange={(e, { checked }) => {
+                            setPendingStatusFilter(checked
+                              ? [...pendingStatusFilter, status]
+                              : pendingStatusFilter.filter(s => s !== status)
+                            );
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </AccordionItem>
+
+                  {/* Case Lead Filter */}
+                  <AccordionItem 
+                    title={
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span>Case lead</span>
+                        {pendingCaseLeadFilter.length > 0 && (
+                          <Tag 
+                            type="high-contrast" 
+                            size="sm"
+                            filter
+                            onClose={(e) => {
+                              e.stopPropagation();
+                              clearPendingCaseLeadFilter();
+                            }}
+                            title="Clear case lead selections"
+                          >
+                            {pendingCaseLeadFilter.length}
+                          </Tag>
+                        )}
+                      </div>
+                    }
+                    open={pendingCaseLeadFilter.length > 0}
+                  >
+                    <div style={{ paddingTop: '0.5rem' }}>
+                      <FilterableMultiSelect
+                        id="case-lead-filter-v2"
+                        items={caseLeadOptions.map(lead => ({ id: lead, text: lead }))}
+                        itemToString={item => item?.text || ''}
+                        titleText="Case lead"
+                        onChange={({ selectedItems }) => setPendingCaseLeadFilter(selectedItems.map(item => item.text))}
+                        selectedItems={pendingCaseLeadFilter.map(lead => ({ id: lead, text: lead }))}
+                      />
+                    </div>
+                  </AccordionItem>
+                </Accordion>
+                
+                {/* Filter Action Buttons */}
+                <div style={{ margin: '1rem', display: 'flex', gap: '1px' }}>
+                  <Button
+                    kind="ghost"
+                    size="lg"
+                    onClick={handleClearFilters}
+                    style={{ flex: 1, maxWidth: 'none' }}
+                  >
+                    Clear filters
+                  </Button>
+                  <Button
+                    kind="primary"
+                    size="lg"
+                    onClick={handleApplyFilters}
+                    disabled={!hasFilterChanges()}
+                    style={{ flex: 1, maxWidth: 'none' }}
+                  >
+                    Apply filters
+                  </Button>
                 </div>
-                <DatePicker 
-                  datePickerType="range"
-                  dateFormat="d/m/Y"
-                  onChange={(dates) => {
-                    setPendingDateRange(dates);
-                  }}
-                  value={pendingDateRange}
-                >
-                  <DatePickerInput
-                    id="date-picker-input-id-start"
-                    placeholder=""
-                    labelText="Start date"
-                    size="md"
-                  />
-                  <DatePickerInput
-                    id="date-picker-input-id-finish"
-                    placeholder=""
-                    labelText="End date"
-                    size="md"
-                  />
-                </DatePicker>
               </div>
-              
-              <div style={{ display: 'flex', alignItems: 'center', margin: '2rem 0 1rem 0' }}>
-                <h6 className="cds--label" style={{ margin: 0 }}>Submitted By</h6>
-                {pendingSubmittedByFilter.length > 0 && (
-                  <Tag 
-                    type="high-contrast" 
-                    size="md" 
-                    style={{ marginLeft: 8 }}
-                    filter
-                    onClose={() => {
-                      setPendingSubmittedByFilter([]);
-                    }}
-                    title="Click to clear submitted by filter selections"
-                  >
-                    {pendingSubmittedByFilter.length}
-                  </Tag>
-                )}
-              </div>
-              <div role="group" aria-label="Submitted by filters">
-                <FilterableMultiSelect
-                  id="submitted-by-filter-v2"
-                  items={submittedByOptions.map(submitter => ({ id: submitter, text: submitter }))}
-                  itemToString={item => item?.text || ''}
-                  titleText=""
-                  onChange={({ selectedItems }) => setPendingSubmittedByFilter(selectedItems.map(item => item.text))}
-                  selectedItems={pendingSubmittedByFilter.map(submitter => ({ id: submitter, text: submitter }))}
-                  className="left-aligned-multiselect"
-                />
-              </div>
-              
-              {/* Filter Action Buttons */}
-              <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1px' }}>
-                <Button
-                  kind="ghost"
-                  size="lg"
-                  onClick={handleClearFilters}
-                  style={{ flex: 1, maxWidth: 'none' }}
-                >
-                  Clear filters
-                </Button>
-                <Button
-                  kind="primary"
-                  size="lg"
-                  onClick={handleApplyFilters}
-                  disabled={!hasFilterChanges()}
-                  style={{ flex: 1, maxWidth: 'none' }}
-                >
-                  Apply filters
-                </Button>
-              </div>
-              </div>
-            </Layer>
           </Column>
           <Column lg={12} md={8} sm={4}>
             <Layer level={0}>
@@ -401,6 +514,14 @@ function CaseListV2() {
                 backgroundColor: 'var(--cds-layer)',
                 borderLeft: '1px solid var(--cds-border-subtle)'
               }}>
+                <h2 style={{ 
+                  padding: '1rem 1rem 0.5rem 1rem', 
+                  margin: 0,
+                  fontSize: '1.75rem',
+                  fontWeight: 400
+                }}>
+                  All cases
+                </h2>
                 <DataTable rows={pagedRows} headers={headers} isSortable>
                         {({
                             rows,

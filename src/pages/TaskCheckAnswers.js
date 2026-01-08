@@ -4,8 +4,10 @@ import {
   Content, 
   Grid, 
   Column, 
-  ContainedList,
-  ContainedListItem,
+  StructuredListWrapper,
+  StructuredListBody,
+  StructuredListRow,
+  StructuredListCell,
   Theme, 
   Button, 
   Form,
@@ -21,7 +23,6 @@ import casesData from '../cases.json';
 import taskConfig from '../data/task-config.json';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
 import './CaseInformation.css';
-import '@carbon/styles/css/styles.css';
 
 function TaskCheckAnswers() {
   const { caseId, stageId, taskId } = useParams();
@@ -339,7 +340,7 @@ function TaskCheckAnswers() {
 
   if (!caseData || !taskData || !stageData) {
     return (
-      <Theme theme="g100" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <AppHeader />
         <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
           <Grid fullWidth columns={16} mode="narrow" gutter={16}>
@@ -359,7 +360,7 @@ function TaskCheckAnswers() {
   const previousTask = getPreviousTask();
 
   return (
-    <Theme theme="g100" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <AppHeader />
       <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
         <Grid fullWidth columns={16} mode="narrow" gutter={16}>
@@ -394,30 +395,38 @@ function TaskCheckAnswers() {
                 title={notification.title}
                 subtitle={notification.subtitle}
                 onCloseButtonClick={() => setNotification(null)}
+                lowContrast
                 style={{ marginBottom: '1rem' }}
               />
             )}
             <h2 style={{ fontSize: '1.5rem', margin: '1rem 0' }}>Check your answers</h2>
 
-            <ContainedList style={{ marginBottom: '2rem' }}>
-              {taskData.questions.map((question) => (
-                <ContainedListItem key={question.id}>
-                  <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'flex-start', 
-                    width: '100%',
-                    gap: '1rem'
-                  }}>
-                    <div style={{ flex: '0 0 30%', minWidth: 0 }}>
-                      <strong>{question.label}</strong>
+            <StructuredListWrapper style={{ marginBottom: '2rem' }}>
+              <StructuredListBody>
+                {taskData.questions.map((question) => (
+                  <StructuredListRow key={question.id}>
+                    <StructuredListCell style={{ 
+                      fontWeight: 600,
+                      width: '30%',
+                      verticalAlign: 'top',
+                      wordWrap: 'break-word',
+                      hyphens: 'auto'
+                    }}>
+                      {question.label}
                       {question.required && (
-                        <span style={{ marginLeft: '4px' }}>*</span>
+                        <span style={{ marginLeft: '4px', color: 'var(--cds-support-error)' }}>*</span>
                       )}
-                    </div>
-                    <div style={{ flex: '1', minWidth: 0 }}>
+                    </StructuredListCell>
+                    <StructuredListCell style={{ 
+                      verticalAlign: 'top',
+                      wordWrap: 'break-word'
+                    }}>
                       {getAnswerDisplay(question)}
-                    </div>
-                    <div style={{ flex: '0 0 auto' }}>
+                    </StructuredListCell>
+                    <StructuredListCell style={{ 
+                      verticalAlign: 'top',
+                      width: 'auto'
+                    }}>
                       {(!question.required || (formData[question.id] && formData[question.id] !== '')) && (
                         <Link 
                           onClick={() => handleEditAnswer(question.id)}
@@ -426,14 +435,14 @@ function TaskCheckAnswers() {
                           Edit
                         </Link>
                       )}
-                    </div>
-                  </div>
-                </ContainedListItem>
-              ))}
-            </ContainedList>
+                    </StructuredListCell>
+                  </StructuredListRow>
+                ))}
+              </StructuredListBody>
+            </StructuredListWrapper>
 
             <Form style={{ marginBottom: '2rem' }}>
-              <FormGroup style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+              <FormGroup legendText="Task completion" style={{ marginTop: '2rem', marginBottom: '2rem' }}>
                 <Checkbox
                   id="task-completion"
                   labelText="Have you completed this task?"
@@ -464,7 +473,7 @@ function TaskCheckAnswers() {
                 size="lg"
                 onClick={handleSave}
               >
-                Save and continue
+                Save
               </Button>
             </div>
           </Column>

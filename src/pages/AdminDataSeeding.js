@@ -16,7 +16,6 @@ import { seedRealisticTaskData, clearSessionData } from '../utils/caseStatusUtil
 import { refreshSeededData } from '../utils/seededDataLoader';
 import casesData from '../cases.json';
 import AppHeader from '../components/AppHeader';
-import '@carbon/styles/css/styles.css';
 
 function AdminDataSeeding() {
   const navigate = useNavigate();

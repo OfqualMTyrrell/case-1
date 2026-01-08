@@ -16,7 +16,7 @@ import taskConfig from '../data/task-config.json';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
 import './CaseInformation.css';
 
-function TaskList() {
+function TaskListStructuredDemo() {
   const { caseId } = useParams();
   const navigate = useNavigate();
   const [caseData, setCaseData] = useState(null);
@@ -138,7 +138,7 @@ function TaskList() {
                   path: `/case/${caseId}` 
                 }
               ]}
-              currentPageTitle="Tasks"
+              currentPageTitle="Tasks (Structured List Demo)"
               currentCaseStatus={currentCaseStatus}
             />
           </Column>
@@ -155,4 +155,4 @@ function TaskList() {
   );
 }
 
-export default TaskList;
+export default TaskListStructuredDemo;

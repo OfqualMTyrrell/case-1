@@ -1,4 +1,30 @@
-/* Global styles optimized for Carbon g100 theme */
+/* Global styles optimized for Carbon white theme with 16px base */
+
+/* Set root font size to 16px - this is the base for all rem units */
+html {
+  font-size: 16px !important;
+}
+
+/* Override Carbon component font sizes directly using more specific selectors */
+body,
+.cds--body-compact-02,
+.cds--body-02,
+.cds--structured-list-td,
+.cds--structured-list-th,
+.cds--data-table td,
+.cds--data-table-content,
+.cds--contained-list-item__content,
+.cds--text-input,
+.cds--text-area,
+.cds--select-input,
+.cds--dropdown .cds--list-box__menu-item__option,
+.cds--list-box__menu-item,
+p {
+  font-size: 1rem !important; /* 16px */
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+}
+
 body {
   margin: 0;
   font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,6 +40,86 @@ body {
 html, body, #root {
   height: 100%;
   background-color: var(--cds-background);
+}
+
+/* Override Carbon headings to use larger productive type scale */
+h1,
+.cds--heading-06 {
+  font-size: 2.625rem !important; /* 42px */
+  line-height: 1.19 !important;
+  font-weight: 300 !important;
+  letter-spacing: 0 !important;
+  margin: 0 0 1rem 0;
+}
+
+h2,
+.cds--heading-05 {
+  font-size: 2rem !important; /* 32px */
+  line-height: 1.25 !important;
+  font-weight: 300 !important;
+  letter-spacing: 0 !important;
+  margin: 0 0 1rem 0;
+}
+
+h3,
+.cds--heading-04 {
+  font-size: 1.75rem !important; /* 28px */
+  line-height: 1.29 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  margin: 0 0 1rem 0;
+}
+
+h4,
+.cds--heading-03 {
+  font-size: 1.25rem !important; /* 20px */
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  margin: 0 0 1rem 0;
+}
+
+h5,
+.cds--heading-02,
+.cds--heading-compact-02 {
+  font-size: 1rem !important; /* 16px */
+  line-height: 1.5 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  margin: 0 0 0.75rem 0;
+}
+
+h6,
+.cds--heading-01,
+.cds--heading-compact-01 {
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1.29 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16px !important;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Keep tags slightly smaller but readable */
+.cds--tag {
+  font-size: 0.875rem !important; /* 14px */
+}
+
+/* Labels and helper text */
+.cds--label,
+.cds--form__helper-text {
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1.29 !important;
+  letter-spacing: 0.16px !important;
+}
+
+/* Code styling */
+code {
+  font-family: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: var(--cds-layer);
+  color: var(--cds-text-primary);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
 }
 
 code {

@@ -20,7 +20,6 @@ import './CaseList.css';
 import casesData from '../cases.json';
 import AppHeader from '../components/AppHeader';
 import TableToolbarFilter from '../components/TableToolbarFilter';
-import '@carbon/styles/css/styles.css';
 
 const headers = [
   { key: 'CaseID', header: 'CaseID' },
@@ -100,7 +99,7 @@ function CaseList() {
   }, []);
 
   return (
-    <Theme theme="g100" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <AppHeader />
       <Content style={{ width: '100%', margin: '0 auto', flex: 1 }}>
         <Grid fullWidth narrow>

@@ -414,17 +414,16 @@
               ]
             },
             {
-              "id": "assign-caseworker",
-              "name": "Assign a caseworker",
+              "id": "assign-reviewers",
+              "name": "Assign reviewers",
               "order": 2,
               "questions": [
                 {
-                  "id": "caseworker-selection",
+                  "id": "lead-reviewer-selection",
                   "type": "select",
-                  "label": "Assign Caseworker",
+                  "label": "Assign a Lead reviewer",
                   "required": true,
                   "options": [
-                    { "value": "", "label": "Select a caseworker..." },
                     { "value": "jane-lee", "label": "Jane Lee" },
                     { "value": "mike-brown", "label": "Mike Brown" },
                     { "value": "sarah-black", "label": "Sarah Black" },
@@ -436,12 +435,44 @@
                   ]
                 },
                 {
-                  "id": "assignment-reason",
+                  "id": "c-reviewer-selection",
+                  "type": "select",
+                  "label": "Assign a C1b reviewer",
+                  "required": true,
+                  "options": [
+                    { "value": "jane-lee", "label": "Jane Lee" },
+                    { "value": "mike-brown", "label": "Mike Brown" },
+                    { "value": "sarah-black", "label": "Sarah Black" },
+                    { "value": "alex-green", "label": "Alex Green" },
+                    { "value": "lisa-white", "label": "Lisa White" },
+                    { "value": "tom-black", "label": "Tom Black" },
+                    { "value": "rachel-brown", "label": "Rachel Brown" },
+                    { "value": "chris-green", "label": "Chris Green" }
+                  ]
+                },
+                                {
+                  "id": "d-reviewer-selection",
+                  "type": "select",
+                  "label": "Assign a D reviewer",
+                  "required": true,
+                  "options": [
+                    { "value": "jane-lee", "label": "Jane Lee" },
+                    { "value": "mike-brown", "label": "Mike Brown" },
+                    { "value": "sarah-black", "label": "Sarah Black" },
+                    { "value": "alex-green", "label": "Alex Green" },
+                    { "value": "lisa-white", "label": "Lisa White" },
+                    { "value": "tom-black", "label": "Tom Black" },
+                    { "value": "rachel-brown", "label": "Rachel Brown" },
+                    { "value": "chris-green", "label": "Chris Green" }
+                  ]
+                },
+                {
+                  "id": "assignment-notes",
                   "type": "textarea",
-                  "label": "Reason for assignment",
+                  "label": "Assignment notes",
                   "required": false,
                   "rows": 3,
-                  "placeholder": "Please provide any specific reasons for this assignment..."
+                  "placeholder": "Jot down any issues or reasons for these assignments"
                 }
               ]
             },

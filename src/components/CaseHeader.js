@@ -76,7 +76,7 @@ function CaseHeader({
   return (
     <Layer>
       <div style={{ 
-        background: 'var(--cds-layer)', 
+        background: 'var(--cds-layer-01)', 
         padding: '1rem', 
         marginTop: '1em', 
         marginBottom: '1rem', 
