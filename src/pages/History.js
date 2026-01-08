@@ -86,7 +86,6 @@ function History() {
         </Column>
         <Column sm={4} md={8} lg={12}>
           <Content>
-            <h2>Case History</h2>
             <DataTable rows={normalizedRows} headers={headers} isSortable>
               {({ rows, headers, getHeaderProps, getRowProps, getTableProps }) => (
                 <TableContainer title="Case History">
