@@ -10,6 +10,7 @@ import TaskDetail from './pages/TaskDetail';
 import TaskCheckAnswers from './pages/TaskCheckAnswers';
 import RecordCaseNote from './pages/RecordCaseNote';
 import AdminDataSeeding from './pages/AdminDataSeeding';
+import History from './pages/History';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
 import '@carbon/styles/css/styles.css';
 import './App.css';
@@ -35,6 +36,7 @@ function App() {
             <Route path="/cases" element={<CaseList />} />
             <Route path="/case/:id" element={<CaseInformation />} />
             <Route path="/case/:caseId/record-note" element={<RecordCaseNote />} />
+            <Route path="/case/:caseId/history" element={<History />} />
             <Route path="/cases-v2" element={<CaseListV2 />} />
             <Route path="/case/:caseId/tasks" element={<TaskList />} />
             <Route path="/case/:caseId/tasks-structured" element={<TaskListStructuredDemo />} />
