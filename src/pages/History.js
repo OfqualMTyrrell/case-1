@@ -1,9 +1,10 @@
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Content, Grid, Column, Theme, DataTable, TableContainer, Table, TableHead,
-  TableRow, TableHeader, TableBody, TableCell, TableToolbar, TableToolbarContent, TableToolbarSearch
+  TableRow, TableHeader, TableBody, TableCell, TableToolbar, TableToolbarContent, TableToolbarSearch,
+  Pagination
 } from '@carbon/react';
 import casesData from '../cases.json';
 import AppHeader from '../components/AppHeader';
@@ -39,6 +40,13 @@ function hashString(str) {
 function History() {
   const { caseId } = useParams();
   const caseData = casesData.find(c => c.CaseID === caseId);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
 
   const headers = [
     { key: 'date', header: 'Date' },
@@ -64,6 +72,22 @@ function History() {
     });
   }, [caseData, caseId]);
 
+  // Filter rows based on search term
+  const filteredRows = useMemo(() => {
+    if (!searchTerm) return normalizedRows;
+    return normalizedRows.filter(row =>
+      row.activity.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      row.user.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [normalizedRows, searchTerm]);
+
+  // Paginate the filtered rows
+  const currentPageRows = useMemo(() => {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return filteredRows.slice(startIndex, endIndex);
+  }, [filteredRows, currentPage, pageSize]);
+
   // Optional: early return if case not found
   if (!caseData) {
     return (
@@ -86,12 +110,17 @@ function History() {
         </Column>
         <Column sm={4} md={8} lg={12}>
           <Content>
-            <DataTable rows={normalizedRows} headers={headers} isSortable>
+            <DataTable rows={currentPageRows} headers={headers} isSortable>
               {({ rows, headers, getHeaderProps, getRowProps, getTableProps }) => (
                 <TableContainer title="Case History">
                   <TableToolbar>
                     <TableToolbarContent>
-                      <TableToolbarSearch />
+                      <TableToolbarSearch
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        placeholder="Search activity and users..."
+                        persistent
+                      />
                     </TableToolbarContent>
                   </TableToolbar>
                   <Table {...getTableProps()}>
@@ -117,6 +146,16 @@ function History() {
                 </TableContainer>
               )}
             </DataTable>
+            <Pagination
+              totalItems={filteredRows.length}
+              pageSize={pageSize}
+              pageSizes={[10, 20, 50, 100]}
+              currentPage={currentPage}
+              onChange={({ page, pageSize }) => {
+                setCurrentPage(page);
+                setPageSize(pageSize);
+              }}
+            />
           </Content>
         </Column>
       </Grid>
