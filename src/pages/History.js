@@ -50,7 +50,7 @@ function History() {
 
   const headers = [
     { key: 'date', header: 'Date' },
-    { key: 'activity', header: 'Activity' },
+    { key: 'summary', header: 'Activity' },
     { key: 'user', header: 'User' },
   ];
 
@@ -62,11 +62,11 @@ function History() {
 
     return items.map((h, i) => {
       // Build a stable ID using the content; index used only as tie-breaker.
-      const contentId = hashString(`${h.date}|${h.activity}|${h.user}`);
+      const contentId = hashString(`${h.date}|${h.summary}|${h.user}`);
       return {
         id: `${caseId}-${contentId}-${i}`,
         date: h.date,
-        activity: h.activity,
+        summary: h.summary,
         user: h.user,
       };
     });
@@ -76,7 +76,7 @@ function History() {
   const filteredRows = useMemo(() => {
     if (!searchTerm) return normalizedRows;
     return normalizedRows.filter(row =>
-      row.activity.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      row.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
       row.user.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [normalizedRows, searchTerm]);

@@ -11,6 +11,7 @@ import TaskCheckAnswers from './pages/TaskCheckAnswers';
 import RecordCaseNote from './pages/RecordCaseNote';
 import AdminDataSeeding from './pages/AdminDataSeeding';
 import History from './pages/History';
+import Test from './pages/Test';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
 import '@carbon/styles/css/styles.css';
 import './App.css';
@@ -44,6 +45,7 @@ function App() {
             <Route path="/case/:caseId/tasks/:stageId/:taskId/edit" element={<TaskDetail />} />
             <Route path="/case/:caseId/tasks/:stageId/:taskId/check" element={<TaskCheckAnswers />} />
             <Route path="/admin/seed-data" element={<AdminDataSeeding />} />
+            <Route path="/test" element={<Test />} />
             <Route path="/" element={<Navigate to="/cases-v2" replace />} />
           </Routes>
         </Router>
