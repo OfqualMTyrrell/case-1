@@ -1,10 +1,11 @@
 
 import React, { useMemo, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   Content, Grid, Column, Theme, DataTable, TableContainer, Table, TableHead,
   TableRow, TableHeader, TableBody, TableCell, TableToolbar, TableToolbarContent, TableToolbarSearch,
   TableExpandHeader, TableExpandRow, TableExpandedRow,
+  Button,
   Pagination
 } from '@carbon/react';
 import casesData from '../cases.json';
@@ -40,6 +41,7 @@ function hashString(str) {
 
 function History() {
   const { caseId } = useParams();
+  const navigate = useNavigate();
   const caseData = casesData.find(c => c.CaseID === caseId);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -132,6 +134,9 @@ function History() {
                         placeholder="Search activity and users..."
                         persistent
                       />
+                      <Button onClick={() => navigate(`/case/${caseId}/add-note`)}>
+                        Add case note
+                      </Button>
                     </TableToolbarContent>
                   </TableToolbar>
                   <Table {...getTableProps()}>
