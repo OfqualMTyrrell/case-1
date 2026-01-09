@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import {
   Content, Grid, Column, Theme, DataTable, TableContainer, Table, TableHead,
   TableRow, TableHeader, TableBody, TableCell, TableToolbar, TableToolbarContent, TableToolbarSearch,
+  TableExpandHeader, TableExpandRow, TableExpandedRow,
   Pagination
 } from '@carbon/react';
 import casesData from '../cases.json';
@@ -43,6 +44,7 @@ function History() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const [expandedRowIds, setExpandedRowIds] = useState([]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -68,6 +70,7 @@ function History() {
         date: h.date,
         summary: h.summary,
         user: h.user,
+        description: h.description || null,
       };
     });
   }, [caseData, caseId]);
@@ -87,6 +90,14 @@ function History() {
     const endIndex = startIndex + pageSize;
     return filteredRows.slice(startIndex, endIndex);
   }, [filteredRows, currentPage, pageSize]);
+
+  const onExpand = (rowId) => {
+    setExpandedRowIds((prev) =>
+      prev.includes(rowId)
+        ? prev.filter((id) => id !== rowId)
+        : [...prev, rowId]
+    );
+  };
 
   // Optional: early return if case not found
   if (!caseData) {
@@ -126,6 +137,7 @@ function History() {
                   <Table {...getTableProps()}>
                     <TableHead>
                       <TableRow>
+                        <TableExpandHeader />
                         {headers.map((header) => (
                           <TableHeader key={header.key} {...getHeaderProps({ header })}>
                             {header.header}
@@ -134,13 +146,39 @@ function History() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {rows.map((row) => (
-                        <TableRow key={row.id} {...getRowProps({ row })}>
-                          {row.cells.map((cell) => (
-                            <TableCell key={cell.id}>{cell.value}</TableCell>
-                          ))}
-                        </TableRow>
-                      ))}
+                      {rows.map((row) => {
+                        const originalRow = filteredRows.find(r => r.id === row.id);
+                        return (
+                          <React.Fragment key={row.id}>
+                            {originalRow && originalRow.description ? (
+                              <TableExpandRow
+                                {...getRowProps({ row })}
+                                isExpanded={expandedRowIds.includes(row.id)}
+                                onExpand={() => onExpand(row.id)}
+                                expandHeader="expand"
+                              >
+                                {row.cells.map((cell) => (
+                                  <TableCell key={cell.id}>{cell.value}</TableCell>
+                                ))}
+                              </TableExpandRow>
+                            ) : (
+                              <TableRow {...getRowProps({ row })}>
+                                <TableCell></TableCell>
+                                {row.cells.map((cell) => (
+                                  <TableCell key={cell.id}>{cell.value}</TableCell>
+                                ))}
+                              </TableRow>
+                            )}
+                            {expandedRowIds.includes(row.id) && originalRow && originalRow.description && (
+                              <TableExpandedRow colSpan={headers.length + 1}>
+                                <div style={{ padding: '1rem' }}>
+                                  {originalRow.description}
+                                </div>
+                              </TableExpandedRow>
+                            )}
+                          </React.Fragment>
+                        );
+                      })}
                     </TableBody>
                   </Table>
                 </TableContainer>
