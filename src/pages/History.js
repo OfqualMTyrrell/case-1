@@ -12,6 +12,7 @@ import casesData from '../cases.json';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
 import CaseNavigation from '../components/CaseNavigation';
+import './CaseInformation.css';
 
 /**
  * Parse "DD/MM/YYYY HH:mm:ss" (fixed format) into a Date (local time).
@@ -114,15 +115,26 @@ function History() {
   }
 
   return (
-    <Theme theme="white">
+    <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <AppHeader />
-      <CaseHeader caseData={caseData} />
-      <Grid>
-        <Column sm={4} md={8} lg={4}>
-          <CaseNavigation caseId={caseId} activePage="history" />
-        </Column>
-        <Column sm={4} md={8} lg={12}>
-          <Content>
+      <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
+        <Grid fullWidth columns={16} mode="narrow" gutter={16}>
+          <Column sm={4} md={4} lg={3}>
+            <CaseNavigation caseId={caseId} activePage="history" />
+          </Column>
+          <Column sm={4} md={8} lg={13}>
+            <CaseHeader 
+              caseData={caseData}
+              breadcrumbs={[
+                { 
+                  title: caseData.Title, 
+                  path: `/case/${caseId}` 
+                }
+              ]}
+              currentPageTitle="History"
+            />
+          </Column>
+          <Column sm={4} md={8} lg={13} className="cds--lg:col-start-4">
             <DataTable rows={currentPageRows} headers={headers} isSortable>
               {({ rows, headers, getHeaderProps, getRowProps, getTableProps }) => (
                 <TableContainer title="Case History">
@@ -199,9 +211,9 @@ function History() {
                 setPageSize(pageSize);
               }}
             />
-          </Content>
-        </Column>
-      </Grid>
+          </Column>
+        </Grid>
+      </Content>
     </Theme>
   );
 }
