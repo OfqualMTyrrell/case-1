@@ -6,9 +6,11 @@ import {
   TableRow, TableHeader, TableBody, TableCell, TableToolbar, TableToolbarContent, TableToolbarSearch,
   TableExpandHeader, TableExpandRow, TableExpandedRow,
   Button,
-  Pagination
+  Pagination,
+  Link
 } from '@carbon/react';
 import casesData from '../cases.json';
+import messagesData from '../data/messages-data.json';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
 import CaseNavigation from '../components/CaseNavigation';
@@ -61,9 +63,42 @@ function History() {
 
   // Prepare rows: sort newest first and add stable ephemeral IDs.
   const normalizedRows = useMemo(() => {
-    const items = (caseData?.history ?? [])
-      .slice()
-      .sort((a, b) => parseFixedDate(b.date) - parseFixedDate(a.date));
+    // Get case history from JSON
+    const caseHistory = (caseData?.history ?? []).slice();
+    
+    // Get message history from session storage
+    const historyKey = `caseHistory_${caseId}`;
+    const storedHistory = sessionStorage.getItem(historyKey);
+    const messageHistory = storedHistory ? JSON.parse(storedHistory) : [];
+    
+    // Get messages from JSON data to create history entries
+    const jsonMessages = messagesData.filter(msg => msg.caseId === caseId);
+    const jsonMessageHistory = jsonMessages.map(msg => {
+      const date = new Date(msg.timestamp);
+      const dateStr = date.toLocaleString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).replace(',', '');
+      
+      // Determine if sent or received (simple heuristic: if from contains case lead, it's sent)
+      const isSent = caseData?.CaseLead && msg.from.includes(caseData.CaseLead);
+      
+      return {
+        date: dateStr,
+        summary: isSent ? `Message sent to ${msg.to}` : `Message received from ${msg.from}`,
+        user: msg.from,
+        description: `From: ${msg.from}\nTo: ${msg.to}\nSubject: ${msg.subject}\n\nView message: /case/${caseId}/messages?selected=${msg.id}`,
+        messageId: msg.id
+      };
+    });
+    
+    // Merge all history entries
+    const allHistory = [...caseHistory, ...messageHistory, ...jsonMessageHistory];
+    const items = allHistory.sort((a, b) => parseFixedDate(b.date) - parseFixedDate(a.date));
 
     return items.map((h, i) => {
       // Build a stable ID using the content; index used only as tie-breaker.
@@ -74,6 +109,7 @@ function History() {
         summary: h.summary,
         user: h.user,
         description: h.description || null,
+        messageId: h.messageId || null,
       };
     });
   }, [caseData, caseId]);
@@ -188,8 +224,19 @@ function History() {
                             )}
                             {expandedRowIds.includes(row.id) && originalRow && originalRow.description && (
                               <TableExpandedRow colSpan={headers.length + 1}>
-                                <div style={{ padding: '1rem' }}>
-                                  {originalRow.description}
+                                <div style={{ padding: '1rem', whiteSpace: 'pre-wrap' }}>
+                                  {originalRow.description.split('\n').map((line, idx) => {
+                                    // Check if line contains a message link
+                                    if (line.startsWith('View message: ')) {
+                                      const path = line.replace('View message: ', '');
+                                      return (
+                                        <div key={idx}>
+                                          <Link href={path}>View message</Link>
+                                        </div>
+                                      );
+                                    }
+                                    return <div key={idx}>{line}</div>;
+                                  })}
                                 </div>
                               </TableExpandedRow>
                             )}
