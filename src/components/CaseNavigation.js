@@ -16,7 +16,7 @@ function CaseNavigation({ caseId, activePage = 'information' }) {
     { key: 'information', label: 'Case information', path: `/case/${caseId}` },
     { key: 'tasks', label: 'Tasks', path: `/case/${caseId}/tasks` },
     { key: 'messages', label: 'Messages', path: '#' }, // placeholder
-    { key: 'timeline', label: 'Timeline', path: '#' } // placeholder
+    { key: 'history', label: 'History', path: `/case/${caseId}/history` }
   ];
 
   const handleNavClick = (item) => {
