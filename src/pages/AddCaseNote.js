@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Content, Button, TextArea, Grid, Column } from '@carbon/react';
+import { Content, Button, TextArea, Grid, Column, Theme } from '@carbon/react';
 import casesData from '../cases.json';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
@@ -57,15 +57,26 @@ function AddCaseNote() {
   }
 
   return (
-    <>
+    <Theme theme="white" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <AppHeader />
-      <CaseHeader caseData={caseData} />
-      <Grid>
-        <Column sm={4} md={8} lg={4}>
-          <CaseNavigation caseId={caseId} activePage="add-note" />
-        </Column>
-        <Column sm={4} md={8} lg={12}>
-          <Content>
+      <Content style={{ width: '100%', margin: '0 auto', flex: 1, padding: 0, paddingTop: '1em' }}>
+        <Grid fullWidth columns={16} mode="narrow" gutter={16}>
+          <Column sm={4} md={4} lg={3}>
+            <CaseNavigation caseId={caseId} activePage="history" />
+          </Column>
+          <Column sm={4} md={8} lg={13}>
+            <CaseHeader 
+              caseData={caseData}
+              breadcrumbs={[
+                { 
+                  title: caseData.Title, 
+                  path: `/case/${caseId}` 
+                }
+              ]}
+              currentPageTitle="History"
+            />
+          </Column>
+          <Column sm={4} md={8} lg={13} className="cds--lg:col-start-4">
             <h2>Add Case Note</h2>
             <TextArea
               placeholder="Enter the case note description..."
@@ -81,10 +92,10 @@ function AddCaseNote() {
                 Save
               </Button>
             </div>
-          </Content>
-        </Column>
-      </Grid>
-    </>
+          </Column>
+        </Grid>
+      </Content>
+    </Theme>
   );
 }
 
