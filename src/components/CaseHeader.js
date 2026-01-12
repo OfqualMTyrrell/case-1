@@ -64,8 +64,7 @@ function CaseHeader({
   };
 
   const handleSendMessage = () => {
-    // TODO: Implement messaging functionality
-    console.log('Send message - not implemented yet');
+    navigate(`/case/${caseData.CaseID}/messages/compose`);
   };
 
   const handleCancelCase = () => {

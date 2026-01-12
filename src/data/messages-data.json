@@ -1,0 +1,116 @@
+[
+  {
+    "id": "msg-001",
+    "caseId": "OFQ-1001",
+    "to": "Jane Lee",
+    "from": "Assessment Partners UK",
+    "fromEmail": "contact@apuk.org.uk",
+    "subject": "RE: Request for additional information",
+    "body": "Dear Jane,\n\nThank you for your recent correspondence regarding our Statement of Compliance submission.\n\nWe have prepared the additional documentation you requested in your previous message. The updated evidence files have been compiled and are ready for your review.\n\nPlease let us know if you require any further information or clarification on any aspect of our submission.\n\nBest regards,\nAssessment Partners UK",
+    "timestamp": "2025-07-15T14:30:00Z",
+    "isRead": false,
+    "attachments": [
+      {
+        "name": "Updated_Evidence_2025.pdf",
+        "size": "2.4 MB"
+      }
+    ]
+  },
+  {
+    "id": "msg-002",
+    "caseId": "OFQ-1001",
+    "to": "Assessment Partners UK",
+    "from": "Jane Lee",
+    "fromEmail": "jane.lee@ofqual.gov.uk",
+    "subject": "Request for additional information",
+    "body": "Dear Assessment Partners UK,\n\nThank you for your Statement of Compliance submission received on 2nd June 2025.\n\nFollowing our initial review, we require some additional information to complete our assessment:\n\n1. Updated evidence of your quality assurance procedures\n2. Details of any changes to your assessment methodology since your last submission\n3. Confirmation of current assessor qualifications\n\nPlease provide this information within 10 working days.\n\nKind regards,\nJane Lee\nCase Lead",
+    "timestamp": "2025-07-10T09:15:00Z",
+    "isRead": true,
+    "attachments": []
+  },
+  {
+    "id": "msg-003",
+    "caseId": "OFQ-1001",
+    "to": "Jane Lee",
+    "from": "Assessment Partners UK",
+    "fromEmail": "contact@apuk.org.uk",
+    "subject": "RE: Submission received - OFQ-1001",
+    "body": "Dear Jane,\n\nThank you for confirming receipt of our Statement of Compliance submission.\n\nWe appreciate your team's prompt response and look forward to working with you throughout the review process.\n\nIf you need any clarification or additional information, please don't hesitate to contact us.\n\nBest regards,\nAssessment Partners UK",
+    "timestamp": "2025-06-05T16:45:00Z",
+    "isRead": true,
+    "attachments": []
+  },
+  {
+    "id": "msg-004",
+    "caseId": "OFQ-1001",
+    "to": "Assessment Partners UK",
+    "from": "Jane Lee",
+    "fromEmail": "jane.lee@ofqual.gov.uk",
+    "subject": "Submission received - OFQ-1001",
+    "body": "Dear Assessment Partners UK,\n\nThis is to confirm we have received your Statement of Compliance submission on 2nd June 2025.\n\nYour case reference is OFQ-1001.\n\nWe will review your submission and contact you if we require any additional information. You can expect an initial response within 15 working days.\n\nYou can track the progress of your case through your online portal.\n\nKind regards,\nJane Lee\nCase Lead",
+    "timestamp": "2025-06-02T11:20:00Z",
+    "isRead": false,
+    "attachments": []
+  },
+  {
+    "id": "msg-005",
+    "caseId": "OFQ-1002",
+    "to": "Michael Torres",
+    "from": "Emily Carter",
+    "fromEmail": "emily.carter@email.com",
+    "subject": "Follow-up on complaint - OFQ-1002",
+    "body": "Dear Michael,\n\nI wanted to follow up on my complaint submitted on 15th June regarding the assessment irregularities.\n\nHave there been any developments in the investigation? I have not received an update in over two weeks.\n\nI remain available to provide any additional information that may assist with your review.\n\nKind regards,\nEmily Carter",
+    "timestamp": "2025-07-12T10:30:00Z",
+    "isRead": false,
+    "attachments": []
+  },
+  {
+    "id": "msg-006",
+    "caseId": "OFQ-1002",
+    "to": "Emily Carter",
+    "from": "Michael Torres",
+    "fromEmail": "michael.torres@ofqual.gov.uk",
+    "subject": "RE: Complaint acknowledgement - OFQ-1002",
+    "body": "Dear Ms Carter,\n\nThank you for your complaint regarding assessment irregularities.\n\nWe are currently reviewing the information you provided and may need to contact you for additional details during our investigation.\n\nYou can expect an update within 20 working days of receipt of your complaint.\n\nKind regards,\nMichael Torres\nCase Lead",
+    "timestamp": "2025-06-18T14:00:00Z",
+    "isRead": true,
+    "attachments": []
+  },
+  {
+    "id": "msg-007",
+    "caseId": "OFQ-1003",
+    "to": "Sarah Johnson",
+    "from": "TechCert Solutions",
+    "fromEmail": "admin@techcert.co.uk",
+    "subject": "Response to information request - OFQ-1003",
+    "body": "Dear Sarah,\n\nPlease find attached our response to your information request dated 1st July 2025.\n\nWe have included all the requested documentation:\n- Current assessor list with qualifications\n- Quality assurance procedures documentation\n- Sample assessment materials\n- Centre approval certificates\n\nPlease let us know if you need any clarification on the materials provided.\n\nBest regards,\nTechCert Solutions",
+    "timestamp": "2025-07-14T11:00:00Z",
+    "isRead": false,
+    "attachments": [
+      {
+        "name": "Assessor_List_2025.xlsx",
+        "size": "156 KB"
+      },
+      {
+        "name": "QA_Procedures.pdf",
+        "size": "1.2 MB"
+      },
+      {
+        "name": "Sample_Materials.zip",
+        "size": "5.8 MB"
+      }
+    ]
+  },
+  {
+    "id": "msg-008",
+    "caseId": "OFQ-1004",
+    "to": "Assessment Excellence Ltd",
+    "from": "David Chen",
+    "fromEmail": "david.chen@ofqual.gov.uk",
+    "subject": "Application for recognition - next steps",
+    "body": "Dear Assessment Excellence Ltd,\n\nThank you for your application for recognition as an awarding organisation.\n\nWe have completed our initial review and would like to schedule a site visit to your premises as part of the assessment process.\n\nPlease provide three available dates within the next four weeks when your team would be available for a full-day site assessment.\n\nKind regards,\nDavid Chen\nCase Lead",
+    "timestamp": "2025-07-08T13:30:00Z",
+    "isRead": true,
+    "attachments": []
+  }
+]
