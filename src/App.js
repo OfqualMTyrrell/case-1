@@ -9,7 +9,12 @@ import TaskListStructuredDemo from './pages/TaskListStructuredDemo';
 import TaskDetail from './pages/TaskDetail';
 import TaskCheckAnswers from './pages/TaskCheckAnswers';
 import RecordCaseNote from './pages/RecordCaseNote';
+import CaseMessages from './pages/CaseMessages';
+import MessageReply from './pages/MessageReply';
+import MessageCompose from './pages/MessageCompose';
 import AdminDataSeeding from './pages/AdminDataSeeding';
+import History from './pages/History';
+import AddCaseNote from './pages/AddCaseNote';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
 import '@carbon/styles/css/styles.css';
 import './App.css';
@@ -35,6 +40,11 @@ function App() {
             <Route path="/cases" element={<CaseList />} />
             <Route path="/case/:id" element={<CaseInformation />} />
             <Route path="/case/:caseId/record-note" element={<RecordCaseNote />} />
+            <Route path="/case/:caseId/history" element={<History />} />
+            <Route path="/case/:caseId/add-note" element={<AddCaseNote />} />
+            <Route path="/case/:caseId/messages" element={<CaseMessages />} />
+            <Route path="/case/:caseId/messages/reply/:messageId" element={<MessageReply />} />
+            <Route path="/case/:caseId/messages/compose" element={<MessageCompose />} />
             <Route path="/cases-v2" element={<CaseListV2 />} />
             <Route path="/case/:caseId/tasks" element={<TaskList />} />
             <Route path="/case/:caseId/tasks-structured" element={<TaskListStructuredDemo />} />

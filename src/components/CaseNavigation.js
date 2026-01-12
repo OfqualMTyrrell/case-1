@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   SideNav, 
   SideNavItems, 
@@ -11,18 +11,27 @@ import './CaseNavigation.css';
 
 function CaseNavigation({ caseId, activePage = 'information' }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navigationItems = [
     { key: 'information', label: 'Case information', path: `/case/${caseId}` },
     { key: 'tasks', label: 'Tasks', path: `/case/${caseId}/tasks` },
-    { key: 'messages', label: 'Messages', path: '#' }, // placeholder
-    { key: 'timeline', label: 'Timeline', path: '#' } // placeholder
+    { key: 'messages', label: 'Messages', path: `/case/${caseId}/messages` },
+    { key: 'history', label: 'History', path: `/case/${caseId}/history` }
   ];
 
   const handleNavClick = (item) => {
     if (item.path !== '#') {
       navigate(item.path);
     }
+  };
+
+  const isActiveNavItem = (item) => {
+    if (activePage) {
+      return activePage === item.key;
+    }
+    // Fallback to checking location pathname
+    return location.pathname.includes(item.path) && item.path !== '#';
   };
 
   return (
@@ -45,8 +54,8 @@ function CaseNavigation({ caseId, activePage = 'information' }) {
                   e.preventDefault();
                   handleNavClick(item);
                 }}
-                isActive={activePage === item.key}
-                aria-current={activePage === item.key ? 'page' : undefined}
+                isActive={isActiveNavItem(item)}
+                aria-current={isActiveNavItem(item) ? 'page' : undefined}
               >
                 {item.label}
               </SideNavLink>
