@@ -133,6 +133,32 @@ function MessageReply() {
     sentMessages.push(newMessage);
     sessionStorage.setItem(sentMessagesKey, JSON.stringify(sentMessages));
     
+    // Add history entry
+    const historyKey = `caseHistory_${caseId}`;
+    const existingHistory = sessionStorage.getItem(historyKey);
+    const history = existingHistory ? JSON.parse(existingHistory) : [];
+    
+    const now = new Date();
+    const dateStr = now.toLocaleString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    }).replace(',', '');
+    
+    const historyEntry = {
+      date: dateStr,
+      summary: `Message sent to ${formData.to}`,
+      user: newMessage.from,
+      description: `From: ${newMessage.from}\nTo: ${formData.to}\nSubject: ${formData.subject}\n\nView message: /case/${caseId}/messages?selected=${newMessage.id}`,
+      messageId: newMessage.id
+    };
+    
+    history.unshift(historyEntry);
+    sessionStorage.setItem(historyKey, JSON.stringify(history));
+    
     // Clear draft
     const draftKey = `messageDraft_${caseId}_reply_${messageId}`;
     sessionStorage.removeItem(draftKey);
