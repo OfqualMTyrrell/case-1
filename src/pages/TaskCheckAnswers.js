@@ -107,13 +107,22 @@ function TaskCheckAnswers() {
     setHasUnsavedChanges(true);
   };
 
+  // Check if a question should be displayed based on conditional logic
+  const shouldDisplayQuestion = (question) => {
+    if (!question.conditionalOn) return true;
+    
+    const { field, value } = question.conditionalOn;
+    return formData[field] === value;
+  };
+
   const handleSave = () => {
     // Ensure isCompleted is a boolean value
     const completionStatus = Boolean(isCompleted);
     
     // If trying to mark as complete, validate required fields
     if (completionStatus) {
-      const requiredFields = taskData.questions.filter(q => q.required);
+      // Only validate fields that should be displayed based on conditional logic
+      const requiredFields = taskData.questions.filter(q => q.required && shouldDisplayQuestion(q));
       const missingFields = requiredFields.filter(q => !formData[q.id] || formData[q.id] === '');
       
       if (missingFields.length > 0) {
@@ -403,7 +412,7 @@ function TaskCheckAnswers() {
 
             <StructuredListWrapper style={{ marginBottom: '2rem' }}>
               <StructuredListBody>
-                {taskData.questions.map((question) => (
+                {taskData.questions.filter(question => shouldDisplayQuestion(question)).map((question) => (
                   <StructuredListRow key={question.id}>
                     <StructuredListCell style={{ 
                       fontWeight: 600,

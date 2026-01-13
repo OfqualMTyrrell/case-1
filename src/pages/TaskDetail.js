@@ -16,7 +16,8 @@ import {
   RadioButtonGroup,
   DatePicker,
   DatePickerInput,
-  InlineNotification
+  InlineNotification,
+  FilterableMultiSelect
 } from '@carbon/react';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
@@ -114,16 +115,26 @@ function TaskDetail() {
     setHasUnsavedChanges(true);
   };
 
+  // Check if a question should be displayed based on conditional logic
+  const shouldDisplayQuestion = (question) => {
+    if (!question.conditionalOn) return true;
+    
+    const { field, value } = question.conditionalOn;
+    return formData[field] === value;
+  };
+
   const handleSave = () => {
     // Reset validation errors if saving successfully
     setNotification(null);
     
-    // Clean form data to ensure only primitive values are saved
+    // Clean form data to ensure only primitive values and arrays are saved
     const cleanFormData = {};
     Object.keys(formData).forEach(key => {
       const value = formData[key];
-      // Only save primitive values (string, number, boolean)
+      // Save primitive values (string, number, boolean) and arrays
       if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+        cleanFormData[key] = value;
+      } else if (Array.isArray(value)) {
         cleanFormData[key] = value;
       }
     });
@@ -373,6 +384,34 @@ function TaskDetail() {
           </DatePicker>
         );
       
+      case 'multiselect':
+        // Handle array values for FilterableMultiSelect
+        const multiselectValue = Array.isArray(formData[question.id]) 
+          ? formData[question.id] 
+          : [];
+        
+        const multiselectItems = question.options.map(option => ({
+          id: option.value,
+          text: option.label
+        }));
+        
+        return (
+          <FilterableMultiSelect
+            id={question.id}
+            titleText={question.label}
+            items={multiselectItems}
+            itemToString={(item) => (item ? item.text : '')}
+            initialSelectedItems={multiselectItems.filter(item => 
+              multiselectValue.includes(item.id)
+            )}
+            onChange={({ selectedItems }) => {
+              const selectedValues = selectedItems.map(item => item.id);
+              handleInputChange(question.id, selectedValues);
+            }}
+            placeholder={question.placeholder || 'Select options'}
+          />
+        );
+      
       default:
         return null;
     }
@@ -504,9 +543,11 @@ function TaskDetail() {
             <h2 style={{ fontSize: '1rem', margin: '1rem 0' }}>{taskData.name}</h2>
             <Form style={{ marginBottom: '2rem' }}>
               {taskData.questions.map((question, index) => (
-                <FormGroup key={question.id} style={{ marginBottom: '1.5rem' }}>
-                  {renderQuestion(question)}
-                </FormGroup>
+                shouldDisplayQuestion(question) && (
+                  <FormGroup key={question.id} style={{ marginBottom: '1.5rem' }}>
+                    {renderQuestion(question)}
+                  </FormGroup>
+                )
               ))}
             </Form>
 

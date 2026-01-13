@@ -788,6 +788,597 @@
           ]
         }
       ]
+    },
+    "Statement of compliance": {
+      "stages": [
+        {
+          "id": "triage",
+          "name": "Triage",
+          "order": 1,
+          "tasks": [
+            {
+              "id": "check-submission-completeness",
+              "name": "Check Submission Completeness",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "submission-complete",
+                  "type": "radio",
+                  "label": "Is the Statement of Compliance submission complete?",
+                  "options": [
+                    { "value": "complete", "label": "Complete" },
+                    { "value": "incomplete", "label": "Incomplete - Missing sections" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "missing-sections",
+                  "type": "textarea",
+                  "label": "What sections are missing or incomplete?",
+                  "placeholder": "List the missing or incomplete sections...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "submission-complete",
+                    "value": "incomplete"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "triage-notes",
+                  "type": "textarea",
+                  "label": "Triage notes",
+                  "placeholder": "Add any additional notes about the submission...",
+                  "rows": 4,
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "assign-reviewers",
+              "name": "Assign Reviewers",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "lead-reviewer",
+                  "type": "text",
+                  "label": "Lead Reviewer",
+                  "placeholder": "Enter lead reviewer name",
+                  "required": true
+                },
+                {
+                  "id": "specialist-reviewer",
+                  "type": "text",
+                  "label": "Specialist Reviewer (if required)",
+                  "placeholder": "Enter specialist reviewer name",
+                  "required": false
+                },
+                {
+                  "id": "assignment-notes",
+                  "type": "textarea",
+                  "label": "Assignment notes",
+                  "placeholder": "Add any notes about reviewer assignment...",
+                  "rows": 3,
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "initial-risk-assessment",
+              "name": "Initial Risk Assessment",
+              "order": 3,
+              "questions": [
+                {
+                  "id": "initial-risk-level",
+                  "type": "select",
+                  "label": "Initial risk level",
+                  "options": [
+                    { "value": "low", "label": "Low" },
+                    { "value": "medium", "label": "Medium" },
+                    { "value": "high", "label": "High" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "risk-factors",
+                  "type": "textarea",
+                  "label": "Key risk factors",
+                  "placeholder": "Describe the key factors influencing this risk assessment...",
+                  "rows": 4,
+                  "required": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "review",
+          "name": "Review",
+          "order": 2,
+          "tasks": [
+            {
+              "id": "assess-current-compliance",
+              "name": "Assess Current Compliance",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "general-conditions-compliant",
+                  "type": "radio",
+                  "label": "Are the general conditions currently being met?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" },
+                    { "value": "partial", "label": "Partially" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "general-conditions-notes",
+                  "type": "textarea",
+                  "label": "General conditions assessment notes",
+                  "placeholder": "Provide details about general conditions compliance...",
+                  "rows": 4,
+                  "required": false
+                },
+                {
+                  "id": "qualification-conditions-compliant",
+                  "type": "radio",
+                  "label": "Are the qualification conditions currently being met?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" },
+                    { "value": "partial", "label": "Partially" },
+                    { "value": "na", "label": "Not Applicable" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "qualification-conditions-notes",
+                  "type": "textarea",
+                  "label": "Qualification conditions assessment notes",
+                  "placeholder": "Provide details about qualification conditions compliance...",
+                  "rows": 4,
+                  "required": false
+                },
+                {
+                  "id": "subject-conditions-compliant",
+                  "type": "radio",
+                  "label": "Are the subject conditions currently being met?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" },
+                    { "value": "partial", "label": "Partially" },
+                    { "value": "na", "label": "Not Applicable" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "subject-conditions-notes",
+                  "type": "textarea",
+                  "label": "Subject conditions assessment notes",
+                  "placeholder": "Provide details about subject conditions compliance...",
+                  "rows": 4,
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "assess-future-compliance",
+              "name": "Assess Future Compliance",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "future-general-conditions",
+                  "type": "radio",
+                  "label": "Will the general conditions continue to be met?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" },
+                    { "value": "uncertain", "label": "Uncertain" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "future-general-conditions-notes",
+                  "type": "textarea",
+                  "label": "Future general conditions assessment notes",
+                  "placeholder": "Explain your assessment of future compliance with general conditions...",
+                  "rows": 4,
+                  "required": false
+                },
+                {
+                  "id": "future-qualification-conditions",
+                  "type": "radio",
+                  "label": "Will the qualification conditions continue to be met?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" },
+                    { "value": "uncertain", "label": "Uncertain" },
+                    { "value": "na", "label": "Not Applicable" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "future-qualification-conditions-notes",
+                  "type": "textarea",
+                  "label": "Future qualification conditions assessment notes",
+                  "placeholder": "Explain your assessment of future compliance with qualification conditions...",
+                  "rows": 4,
+                  "required": false
+                },
+                {
+                  "id": "future-subject-conditions",
+                  "type": "radio",
+                  "label": "Will the subject conditions continue to be met?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" },
+                    { "value": "uncertain", "label": "Uncertain" },
+                    { "value": "na", "label": "Not Applicable" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "future-subject-conditions-notes",
+                  "type": "textarea",
+                  "label": "Future subject conditions assessment notes",
+                  "placeholder": "Explain your assessment of future compliance with subject conditions...",
+                  "rows": 4,
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "assess-supporting-evidence",
+              "name": "Assess Supporting Evidence",
+              "order": 3,
+              "questions": [
+                {
+                  "id": "evidence-quality",
+                  "type": "select",
+                  "label": "Overall quality of supporting evidence",
+                  "options": [
+                    { "value": "excellent", "label": "Excellent - Comprehensive and well documented" },
+                    { "value": "good", "label": "Good - Adequate documentation" },
+                    { "value": "fair", "label": "Fair - Some gaps in documentation" },
+                    { "value": "poor", "label": "Poor - Significant documentation gaps" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "evidence-gaps",
+                  "type": "textarea",
+                  "label": "What evidence gaps or concerns were identified?",
+                  "placeholder": "Describe any missing evidence or concerns...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "evidence-quality",
+                    "value": "fair"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "evidence-gaps-poor",
+                  "type": "textarea",
+                  "label": "What evidence gaps or concerns were identified?",
+                  "placeholder": "Describe any missing evidence or concerns...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "evidence-quality",
+                    "value": "poor"
+                  },
+                  "required": true
+                },
+                {
+                  "id": "evidence-notes",
+                  "type": "textarea",
+                  "label": "Evidence assessment notes",
+                  "placeholder": "Add any additional notes about the supporting evidence...",
+                  "rows": 4,
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "inherent-risk-assessment",
+              "name": "Inherent Risk Assessment",
+              "order": 4,
+              "questions": [
+                {
+                  "id": "inherent-risk-level",
+                  "type": "select",
+                  "label": "Inherent risk level",
+                  "options": [
+                    { "value": "low", "label": "Low" },
+                    { "value": "medium-low", "label": "Medium-Low" },
+                    { "value": "medium", "label": "Medium" },
+                    { "value": "medium-high", "label": "Medium-High" },
+                    { "value": "high", "label": "High" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "inherent-risk-factors",
+                  "type": "textarea",
+                  "label": "Inherent risk factors",
+                  "placeholder": "Describe the inherent risks before considering controls...",
+                  "rows": 4,
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "residual-risk-assessment",
+              "name": "Residual Risk Assessment",
+              "order": 5,
+              "questions": [
+                {
+                  "id": "controls-adequate",
+                  "type": "radio",
+                  "label": "Are current controls adequate?",
+                  "options": [
+                    { "value": "yes", "label": "Yes - Controls are effective" },
+                    { "value": "partial", "label": "Partially - Some improvements needed" },
+                    { "value": "no", "label": "No - Significant improvements required" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "control-improvements",
+                  "type": "textarea",
+                  "label": "What control improvements are needed?",
+                  "placeholder": "Describe required improvements to controls...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "controls-adequate",
+                    "value": "partial"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "control-improvements-no",
+                  "type": "textarea",
+                  "label": "What control improvements are needed?",
+                  "placeholder": "Describe required improvements to controls...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "controls-adequate",
+                    "value": "no"
+                  },
+                  "required": true
+                },
+                {
+                  "id": "residual-risk-level",
+                  "type": "select",
+                  "label": "Residual risk level (after controls)",
+                  "options": [
+                    { "value": "low", "label": "Low" },
+                    { "value": "medium-low", "label": "Medium-Low" },
+                    { "value": "medium", "label": "Medium" },
+                    { "value": "medium-high", "label": "Medium-High" },
+                    { "value": "high", "label": "High" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "residual-risk-notes",
+                  "type": "textarea",
+                  "label": "Residual risk assessment notes",
+                  "placeholder": "Explain the residual risk after considering controls...",
+                  "rows": 4,
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "review-meeting-requirements",
+              "name": "Review Meeting Requirements",
+              "order": 6,
+              "questions": [
+                {
+                  "id": "meeting-required",
+                  "type": "radio",
+                  "label": "Is a review meeting required?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "meeting-date",
+                  "type": "date",
+                  "label": "Scheduled meeting date",
+                  "conditionalOn": {
+                    "field": "meeting-required",
+                    "value": "yes"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "meeting-attendees",
+                  "type": "textarea",
+                  "label": "Meeting attendees",
+                  "placeholder": "List attendees...",
+                  "rows": 3,
+                  "conditionalOn": {
+                    "field": "meeting-required",
+                    "value": "yes"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "meeting-notes",
+                  "type": "textarea",
+                  "label": "Meeting notes or rationale",
+                  "placeholder": "Add meeting notes or explain why no meeting is required...",
+                  "rows": 4,
+                  "required": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "outcome",
+          "name": "Outcome",
+          "order": 3,
+          "tasks": [
+            {
+              "id": "compliance-determination",
+              "name": "Compliance Determination",
+              "order": 1,
+              "questions": [
+                {
+                  "id": "compliance-decision",
+                  "type": "select",
+                  "label": "Compliance determination",
+                  "options": [
+                    { "value": "compliant", "label": "Compliant - No action required" },
+                    { "value": "compliant-monitoring", "label": "Compliant - Monitoring required" },
+                    { "value": "non-compliant-minor", "label": "Non-compliant - Minor issues" },
+                    { "value": "non-compliant-major", "label": "Non-compliant - Major issues" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "compliance-rationale",
+                  "type": "textarea",
+                  "label": "Rationale for compliance determination",
+                  "placeholder": "Explain the reasoning for this determination...",
+                  "rows": 6,
+                  "required": true
+                },
+                {
+                  "id": "non-compliance-details",
+                  "type": "textarea",
+                  "label": "Details of non-compliance",
+                  "placeholder": "Describe the specific non-compliance issues...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "compliance-decision",
+                    "value": "non-compliant-minor"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "non-compliance-details-major",
+                  "type": "textarea",
+                  "label": "Details of non-compliance",
+                  "placeholder": "Describe the specific non-compliance issues...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "compliance-decision",
+                    "value": "non-compliant-major"
+                  },
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "set-monitoring-requirements",
+              "name": "Set Monitoring Requirements",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "monitoring-required",
+                  "type": "radio",
+                  "label": "Is ongoing monitoring required?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "monitoring-frequency",
+                  "type": "select",
+                  "label": "Monitoring frequency",
+                  "options": [
+                    { "value": "monthly", "label": "Monthly" },
+                    { "value": "quarterly", "label": "Quarterly" },
+                    { "value": "biannual", "label": "Bi-annual" },
+                    { "value": "annual", "label": "Annual" }
+                  ],
+                  "conditionalOn": {
+                    "field": "monitoring-required",
+                    "value": "yes"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "monitoring-next-review",
+                  "type": "date",
+                  "label": "Next review date",
+                  "conditionalOn": {
+                    "field": "monitoring-required",
+                    "value": "yes"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "monitoring-requirements",
+                  "type": "textarea",
+                  "label": "Specific monitoring requirements",
+                  "placeholder": "Describe what needs to be monitored and how...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "monitoring-required",
+                    "value": "yes"
+                  },
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "close-soc-case",
+              "name": "Close Statement of Compliance Case",
+              "order": 3,
+              "questions": [
+                {
+                  "id": "resubmission-required",
+                  "type": "radio",
+                  "label": "Is resubmission required?",
+                  "options": [
+                    { "value": "yes", "label": "Yes - Provider must resubmit" },
+                    { "value": "no", "label": "No - Case can be closed" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "resubmission-deadline",
+                  "type": "date",
+                  "label": "Resubmission deadline",
+                  "conditionalOn": {
+                    "field": "resubmission-required",
+                    "value": "yes"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "resubmission-requirements",
+                  "type": "textarea",
+                  "label": "What must be included in the resubmission?",
+                  "placeholder": "Describe what the provider needs to address...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "resubmission-required",
+                    "value": "yes"
+                  },
+                  "required": false
+                },
+                {
+                  "id": "closure-notes",
+                  "type": "textarea",
+                  "label": "Case closure notes",
+                  "placeholder": "Add any final notes about this case...",
+                  "rows": 4,
+                  "required": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
 }
