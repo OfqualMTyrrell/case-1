@@ -1,0 +1,98 @@
+[
+  {
+    "RNNumber": "RN5123",
+    "Name": "Assessment Partners UK",
+    "LegalName": "Assessment Partners United Kingdom Limited",
+    "Acronym": "APUK",
+    "RecognisedOn": "2018-03-15",
+    "PortfolioLead": "Sarah Black"
+  },
+  {
+    "RNNumber": "RN5089",
+    "Name": "QualiTrust Limited",
+    "LegalName": "QualiTrust Assessment Services Limited",
+    "Acronym": "QTL",
+    "RecognisedOn": "2017-09-22",
+    "PortfolioLead": "Mike Brown"
+  },
+  {
+    "RNNumber": "RN5201",
+    "Name": "British Academy of Assessment Standards",
+    "LegalName": "British Academy of Assessment Standards",
+    "Acronym": "BAAS",
+    "RecognisedOn": "2019-11-08",
+    "PortfolioLead": "Jane Lee"
+  },
+  {
+    "RNNumber": "RN5156",
+    "Name": "Certification Excellence Corporation",
+    "LegalName": "Certification Excellence Corporation UK Ltd",
+    "Acronym": "CEX",
+    "RecognisedOn": "2018-07-14",
+    "PortfolioLead": "Alex Green"
+  },
+  {
+    "RNNumber": "RN5034",
+    "Name": "National Education Assessment Board",
+    "LegalName": "National Education Assessment Board",
+    "Acronym": "NEAB",
+    "RecognisedOn": "2016-05-20",
+    "PortfolioLead": "Lisa White"
+  },
+  {
+    "RNNumber": "RN5178",
+    "Name": "Professional Qualifications Standards Bureau",
+    "LegalName": "Professional Qualifications Standards Bureau Limited",
+    "Acronym": "PQSB",
+    "RecognisedOn": "2019-01-30",
+    "PortfolioLead": "Tom Black"
+  },
+  {
+    "RNNumber": "RN5067",
+    "Name": "EduAssess UK",
+    "LegalName": "EduAssess United Kingdom Limited",
+    "Acronym": "EAUK",
+    "RecognisedOn": "2017-02-18",
+    "PortfolioLead": "Rachel Brown"
+  },
+  {
+    "RNNumber": "RN5145",
+    "Name": "Premier EdCert",
+    "LegalName": "Premier Educational Certification Limited",
+    "Acronym": "PEC",
+    "RecognisedOn": "2018-10-05",
+    "PortfolioLead": "Chris Green"
+  },
+  {
+    "RNNumber": "RN5112",
+    "Name": "Horizon Skills Board",
+    "LegalName": "Horizon Skills Assessment Board Limited",
+    "Acronym": "HSB",
+    "RecognisedOn": "2018-04-12",
+    "PortfolioLead": "Sarah Black"
+  },
+  {
+    "RNNumber": "RN5190",
+    "Name": "Global Qualifications Board",
+    "LegalName": "Global Qualifications Assessment Board International",
+    "Acronym": "GQB",
+    "RecognisedOn": "2019-06-25",
+    "PortfolioLead": "Mike Brown"
+  },
+  {
+    "RNNumber": "RN5098",
+    "Name": "NextGen Assessments",
+    "LegalName": "NextGen Assessment Services Limited",
+    "Acronym": "NGA",
+    "RecognisedOn": "2017-12-01",
+    "PortfolioLead": "Jane Lee"
+  },
+  {
+    "RNNumber": "RN5167",
+    "Name": "STEMCert UK",
+    "LegalName": "STEM Certification United Kingdom Limited",
+    "Acronym": "STEMUK",
+    "RecognisedOn": "2018-08-19",
+    "PortfolioLead": "Alex Green"
+  }
+]
