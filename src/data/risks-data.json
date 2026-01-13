@@ -1,0 +1,65 @@
+[
+  {
+    "id": "RISK-001",
+    "aoName": "Assessment Partners UK",
+    "description": "Potential data breach due to outdated security protocols in online assessment platform",
+    "riskLevel": "High",
+    "dateIdentified": "2025-11-15",
+    "status": "Active",
+    "mitigation": "Security audit scheduled for January 2026, immediate patching of critical vulnerabilities underway"
+  },
+  {
+    "id": "RISK-002",
+    "aoName": "Assessment Partners UK",
+    "description": "Assessment delivery delays due to legacy IT infrastructure limitations",
+    "riskLevel": "Medium",
+    "dateIdentified": "2025-11-28",
+    "status": "Active",
+    "mitigation": "Infrastructure modernization project initiated, temporary capacity expansion in place"
+  },
+  {
+    "id": "RISK-003",
+    "aoName": "Assessment Partners UK",
+    "description": "Insufficient marking capacity for peak assessment period across multiple qualifications",
+    "riskLevel": "Medium-High",
+    "dateIdentified": "2025-12-08",
+    "status": "Mitigated",
+    "mitigation": "Additional 45 markers recruited and training completed. Contingency plan established with partner organizations."
+  },
+  {
+    "id": "RISK-004",
+    "aoName": "Assessment Partners UK",
+    "description": "Quality assurance processes not consistently meeting regulatory standards across all centres",
+    "riskLevel": "High",
+    "dateIdentified": "2025-12-01",
+    "status": "Active",
+    "mitigation": "New QA framework implementation underway. Enhanced centre monitoring and support programme launched."
+  },
+  {
+    "id": "RISK-005",
+    "aoName": "QualiTrust Limited",
+    "description": "Centre compliance monitoring gaps identified in remote assessment locations",
+    "riskLevel": "Medium",
+    "dateIdentified": "2025-12-18",
+    "status": "Active",
+    "mitigation": "Enhanced remote monitoring procedures being rolled out. Investment in monitoring technology approved."
+  },
+  {
+    "id": "RISK-006",
+    "aoName": "British Academy of Assessment Standards",
+    "description": "Results processing system vulnerability discovered during routine security review",
+    "riskLevel": "Low",
+    "dateIdentified": "2025-11-25",
+    "status": "Closed",
+    "mitigation": "System patch applied successfully. No evidence of exploitation. Enhanced monitoring in place."
+  },
+  {
+    "id": "RISK-007",
+    "aoName": "Certification Excellence Corporation",
+    "description": "Malpractice detection system showing reduced effectiveness with new AI-assisted cheating methods",
+    "riskLevel": "Medium-High",
+    "dateIdentified": "2025-12-10",
+    "status": "Active",
+    "mitigation": "AI-enhanced detection tools under evaluation. Partnership with technology providers to develop countermeasures."
+  }
+]
