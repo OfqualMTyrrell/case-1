@@ -123,7 +123,21 @@ function TaskCheckAnswers() {
     if (completionStatus) {
       // Only validate fields that should be displayed based on conditional logic
       const requiredFields = taskData.questions.filter(q => q.required && shouldDisplayQuestion(q));
-      const missingFields = requiredFields.filter(q => !formData[q.id] || formData[q.id] === '');
+      const missingFields = requiredFields.filter(q => {
+        const value = formData[q.id];
+        // For repeatable groups, check if array has required instances
+        if (q.type === 'repeatable-group') {
+          const minInstances = q.minInstances || 0;
+          if (!Array.isArray(value)) return minInstances > 0;
+          return value.length < minInstances;
+        }
+        // For arrays (multiselect), check if empty
+        if (Array.isArray(value)) {
+          return value.length === 0;
+        }
+        // For other types, check if empty or falsy
+        return !value || value === '';
+      });
       
       if (missingFields.length > 0) {
         const fieldNames = missingFields.map(f => f.label).join(', ');
@@ -139,12 +153,14 @@ function TaskCheckAnswers() {
     // Reset validation errors if saving successfully
     setNotification(null);
     
-    // Clean form data to ensure only primitive values are saved
+    // Clean form data to ensure only primitive values and arrays are saved
     const cleanFormData = {};
     Object.keys(formData).forEach(key => {
       const value = formData[key];
-      // Only save primitive values (string, number, boolean)
+      // Save primitive values (string, number, boolean) and arrays (including arrays of objects)
       if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+        cleanFormData[key] = value;
+      } else if (Array.isArray(value)) {
         cleanFormData[key] = value;
       } else if (value && typeof value === 'object' && value.value !== undefined) {
         // Handle objects with value property (like Select components)
@@ -190,6 +206,52 @@ function TaskCheckAnswers() {
 
   const getAnswerDisplay = (question) => {
     const value = formData[question.id];
+    
+    // Handle repeatable groups
+    if (question.type === 'repeatable-group') {
+      if (!Array.isArray(value) || value.length === 0) {
+        if (question.required) {
+          return (
+            <Link 
+              onClick={() => navigate(`/case/${caseId}/tasks/${stageId}/${taskId}/edit?question=${question.id}`)}
+              style={{ cursor: 'pointer' }}
+            >
+              Add {question.label.toLowerCase()}
+            </Link>
+          );
+        } else {
+          return <span style={{ color: 'var(--cds-text-secondary)' }}>No entries added</span>;
+        }
+      }
+      
+      // Display all instances of the repeatable group
+      return (
+        <div>
+          {value.map((instance, index) => (
+            <div key={index} style={{ 
+              marginBottom: '1rem', 
+              paddingBottom: '1rem',
+              borderBottom: index < value.length - 1 ? '1px solid var(--cds-border-subtle)' : 'none'
+            }}>
+              <h5 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+                {question.label} {index + 1}
+              </h5>
+              {question.questions.map(subQuestion => {
+                const subValue = instance[subQuestion.id];
+                const displayValue = formatSubQuestionValue(subQuestion, subValue);
+                
+                return (
+                  <div key={subQuestion.id} style={{ marginBottom: '0.5rem' }}>
+                    <strong style={{ fontSize: '0.875rem' }}>{subQuestion.label}:</strong>{' '}
+                    <span style={{ fontSize: '0.875rem' }}>{displayValue}</span>
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      );
+    }
     
     if (!value || value === '') {
       if (question.required) {
@@ -267,6 +329,32 @@ function TaskCheckAnswers() {
           console.error('Error formatting date:', error);
           return value;
         }
+      case 'time':
+        // Display time value as-is (should be in HH:MM AM/PM format)
+        return value;
+      case 'multiselect':
+        // Handle array values from FilterableMultiSelect
+        if (Array.isArray(value) && value.length > 0) {
+          // Map each value to its corresponding label
+          const selectedLabels = value.map(val => {
+            const selectedOption = question.options?.find(opt => opt.value === val);
+            return selectedOption ? selectedOption.label : val;
+          });
+          
+          // Display each label on a new line
+          return (
+            <div style={{ 
+              whiteSpace: 'pre-wrap', 
+              wordWrap: 'break-word',
+              lineHeight: '1.5'
+            }}>
+              {selectedLabels.join('\n')}
+            </div>
+          );
+        } else if (Array.isArray(value) && value.length === 0) {
+          return <span style={{ color: 'var(--cds-text-secondary)' }}>None selected</span>;
+        }
+        return value;
       default:
         // For any other type, check if it's a string with line breaks
         if (typeof value === 'string' && value.includes('\n')) {
@@ -276,6 +364,33 @@ function TaskCheckAnswers() {
             </div>
           );
         }
+        return value;
+    }
+  };
+
+  // Helper function to format sub-question values in repeatable groups
+  const formatSubQuestionValue = (subQuestion, value) => {
+    if (!value || value === '') {
+      return <span style={{ color: 'var(--cds-text-secondary)' }}>Not provided</span>;
+    }
+    
+    switch (subQuestion.type) {
+      case 'select':
+        const selectedOption = subQuestion.options?.find(opt => opt.value === value);
+        return selectedOption ? selectedOption.label : value;
+      case 'textarea':
+        return (
+          <div style={{ 
+            whiteSpace: 'pre-wrap', 
+            wordWrap: 'break-word',
+            maxWidth: '100%',
+            lineHeight: '1.5',
+            marginTop: '0.25rem'
+          }}>
+            {value}
+          </div>
+        );
+      default:
         return value;
     }
   };

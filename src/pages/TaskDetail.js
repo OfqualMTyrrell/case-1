@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Content, 
@@ -16,15 +16,21 @@ import {
   RadioButtonGroup,
   DatePicker,
   DatePickerInput,
+  TimePicker,
+  TimePickerSelect,
+  SelectItem as TimeSelectItem,
   InlineNotification,
-  FilterableMultiSelect
+  FilterableMultiSelect,
+  Layer
 } from '@carbon/react';
+import { Add, TrashCan } from '@carbon/icons-react';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
 import CaseNavigation from '../components/CaseNavigation';
 import casesData from '../cases.json';
 import taskConfig from '../data/task-config.json';
 import { getDisplayStatus } from '../utils/caseStatusUtils';
+import { getDynamicOptions } from '../utils/caseFilters';
 import './CaseInformation.css';
 
 function TaskDetail() {
@@ -108,10 +114,40 @@ function TaskDetail() {
   }, [caseId, stageId, taskId]);
 
   const handleInputChange = (questionId, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [questionId]: value
-    }));
+    // Handle bracket notation for repeatable groups: groupId[0].subQuestionId
+    const bracketMatch = questionId.match(/^(.+?)\[(\d+)\]\.(.+)$/);
+    
+    if (bracketMatch) {
+      const [, groupId, indexStr, subQuestionId] = bracketMatch;
+      const index = parseInt(indexStr, 10);
+      
+      setFormData(prev => {
+        const groupArray = Array.isArray(prev[groupId]) ? [...prev[groupId]] : [];
+        
+        // Ensure the array has enough elements
+        while (groupArray.length <= index) {
+          groupArray.push({});
+        }
+        
+        // Update the specific sub-question value
+        groupArray[index] = {
+          ...groupArray[index],
+          [subQuestionId]: value
+        };
+        
+        return {
+          ...prev,
+          [groupId]: groupArray
+        };
+      });
+    } else {
+      // Regular field update
+      setFormData(prev => ({
+        ...prev,
+        [questionId]: value
+      }));
+    }
+    
     setHasUnsavedChanges(true);
   };
 
@@ -123,6 +159,160 @@ function TaskDetail() {
     return formData[field] === value;
   };
 
+  // Get the awarding organisation name from the current case
+  const aoName = useMemo(() => {
+    if (!caseData) return '';
+    return caseData.AwardingOrganisation || caseData.SubmittedBy || '';
+  }, [caseData]);
+
+  // Render a repeatable group of questions
+  const renderRepeatableGroup = (question) => {
+    const groupId = question.id;
+    const groupArray = Array.isArray(formData[groupId]) ? formData[groupId] : [];
+    const minInstances = question.minInstances || 0;
+    
+    const handleAddInstance = () => {
+      const newArray = [...groupArray, {}];
+      setFormData(prev => ({
+        ...prev,
+        [groupId]: newArray
+      }));
+      setHasUnsavedChanges(true);
+    };
+    
+    const handleRemoveInstance = (index) => {
+      const newArray = groupArray.filter((_, i) => i !== index);
+      setFormData(prev => ({
+        ...prev,
+        [groupId]: newArray
+      }));
+      setHasUnsavedChanges(true);
+    };
+    
+    return (
+      <div style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>
+        <h4 style={{ marginBottom: '1rem', fontSize: '0.875rem', fontWeight: 600 }}>
+          {question.label}
+        </h4>
+        
+        {groupArray.length === 0 && minInstances === 0 && (
+          <p style={{ marginBottom: '1rem', color: 'var(--cds-text-secondary)', fontSize: '0.875rem' }}>
+            No entries yet. Click the button below to add one.
+          </p>
+        )}
+        
+        {groupArray.map((instance, index) => (
+          <Layer key={index} style={{ 
+            marginBottom: '1.5rem', 
+            padding: '1rem', 
+            border: '1px solid var(--cds-border-subtle)',
+            position: 'relative'
+          }}>
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              alignItems: 'center',
+              marginBottom: '1rem'
+            }}>
+              <h5 style={{ fontSize: '0.875rem', fontWeight: 600 }}>
+                {question.label} {index + 1}
+              </h5>
+              {groupArray.length > minInstances && (
+                <Button
+                  kind="ghost"
+                  size="sm"
+                  renderIcon={TrashCan}
+                  iconDescription="Remove"
+                  hasIconOnly
+                  onClick={() => handleRemoveInstance(index)}
+                />
+              )}
+            </div>
+            
+            {question.questions.map(subQuestion => {
+              const fieldId = `${groupId}[${index}].${subQuestion.id}`;
+              const fieldValue = instance[subQuestion.id] || '';
+              
+              return (
+                <FormGroup key={fieldId} style={{ marginBottom: '1rem' }}>
+                  {renderSubQuestion(subQuestion, fieldId, fieldValue, index)}
+                </FormGroup>
+              );
+            })}
+          </Layer>
+        ))}
+        
+        <Button
+          kind="tertiary"
+          size="md"
+          renderIcon={Add}
+          onClick={handleAddInstance}
+        >
+          {question.addButtonText || 'Add entry'}
+        </Button>
+      </div>
+    );
+  };
+
+  // Render a sub-question within a repeatable group
+  const renderSubQuestion = (question, fieldId, value, instanceIndex) => {
+    // Get dynamic options if configured
+    let options = question.options || [];
+    if (question.dynamicOptions && aoName) {
+      const dynamicOpts = getDynamicOptions(question, aoName);
+      options = dynamicOpts.length > 0 ? dynamicOpts : [];
+    }
+    
+    switch (question.type) {
+      case 'text':
+        return (
+          <TextInput
+            id={fieldId}
+            labelText={question.label}
+            placeholder={question.placeholder || ''}
+            value={value}
+            onChange={(e) => handleInputChange(fieldId, e.target.value)}
+            size="lg"
+          />
+        );
+      
+      case 'textarea':
+        return (
+          <TextArea
+            id={fieldId}
+            labelText={question.label}
+            placeholder={question.placeholder || ''}
+            value={value}
+            onChange={(e) => handleInputChange(fieldId, e.target.value)}
+            rows={question.rows || 4}
+          />
+        );
+      
+      case 'select':
+        return (
+          <Select
+            id={fieldId}
+            labelText={question.label}
+            value={value}
+            onChange={(e) => handleInputChange(fieldId, e.target.value)}
+            size="lg"
+          >
+            <SelectItem value="" text={options.length === 0 ? "No options available" : "Please select an option"} />
+            {options.map(option => (
+              <SelectItem
+                key={option.value}
+                value={option.value}
+                text={option.label}
+              />
+            ))}
+          </Select>
+        );
+      
+      default:
+        return null;
+    }
+  };
+
   const handleSave = () => {
     // Reset validation errors if saving successfully
     setNotification(null);
@@ -131,7 +321,7 @@ function TaskDetail() {
     const cleanFormData = {};
     Object.keys(formData).forEach(key => {
       const value = formData[key];
-      // Save primitive values (string, number, boolean) and arrays
+      // Save primitive values (string, number, boolean) and arrays (including arrays of objects)
       if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
         cleanFormData[key] = value;
       } else if (Array.isArray(value)) {
@@ -192,12 +382,14 @@ function TaskDetail() {
     // Reset validation errors if saving successfully
     setNotification(null);
     
-    // Clean form data to ensure only primitive values are saved
+    // Clean form data to ensure only primitive values and arrays are saved
     const cleanFormData = {};
     Object.keys(formData).forEach(key => {
       const value = formData[key];
-      // Only save primitive values (string, number, boolean)
+      // Save primitive values (string, number, boolean) and arrays (including arrays of objects)
       if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+        cleanFormData[key] = value;
+      } else if (Array.isArray(value)) {
         cleanFormData[key] = value;
       }
     });
@@ -260,18 +452,30 @@ function TaskDetail() {
   };
 
   const renderQuestion = (question) => {
+    // Handle repeatable groups
+    if (question.type === 'repeatable-group') {
+      return renderRepeatableGroup(question);
+    }
+    
     // Get the saved value, ensuring it's properly formatted
     let value = formData[question.id];
     
     // Handle different value types and ensure they're strings for form inputs
     if (value === null || value === undefined) {
-      value = '';
+      value = question.defaultValue || '';
     } else if (typeof value === 'object' && value.value !== undefined) {
       // Handle cases where Carbon components might save objects
       value = value.value;
     } else {
       // Ensure value is a string
       value = String(value);
+    }
+    
+    // Get dynamic options if configured
+    let options = question.options || [];
+    if (question.dynamicOptions && aoName) {
+      const dynamicOpts = getDynamicOptions(question, aoName);
+      options = dynamicOpts.length > 0 ? dynamicOpts : [];
     }
     
     switch (question.type) {
@@ -310,8 +514,8 @@ function TaskDetail() {
             onChange={(e) => handleInputChange(question.id, e.target.value)}
             size="lg"
           >
-            <SelectItem value="" text="Please select an option" />
-            {question.options.map(option => (
+            <SelectItem value="" text={options.length === 0 ? "No options available" : "Please select an option"} />
+            {options.map(option => (
               <SelectItem
                 key={option.value}
                 value={option.value}
@@ -382,6 +586,22 @@ function TaskDetail() {
               autoFocus={isEditMode && editQuestionId === question.id}
             />
           </DatePicker>
+        );
+      
+      case 'time':
+        return (
+          <TimePicker
+            id={question.id}
+            size="md"
+            labelText={question.label}
+            value={value}
+            onChange={(e) => handleInputChange(question.id, e.target.value)}
+          >
+            <TimePickerSelect id={`${question.id}-period`} labelText="AM/PM">
+              <TimeSelectItem value="AM" text="AM" />
+              <TimeSelectItem value="PM" text="PM" />
+            </TimePickerSelect>
+          </TimePicker>
         );
       
       case 'multiselect':

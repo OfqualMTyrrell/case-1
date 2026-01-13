@@ -7437,5 +7437,212 @@
         "summary": "SMS application received"
       }
     ]
+  },
+  {
+    "CaseID": "OFQ-1191",
+    "Title": "Assessment Partners UK - New qualification approval process query",
+    "CaseType": "AO Enquiry",
+    "SubmittedBy": "Assessment Partners UK",
+    "AwardingOrganisation": "Assessment Partners UK",
+    "ReceivedDate": "2025-11-15",
+    "Status": "Triage",
+    "CaseLead": "Sarah Black",
+    "LastUpdatedDate": "2025-11-16",
+    "history": [
+      {
+        "date": "16/11/2025 10:30:22",
+        "user": "Sarah Black",
+        "summary": "AO Enquiry received and assigned"
+      },
+      {
+        "date": "15/11/2025 14:20:45",
+        "user": "System",
+        "summary": "Case created"
+      }
+    ]
+  },
+  {
+    "CaseID": "OFQ-1192",
+    "Title": "QualiTrust Limited - Centre monitoring requirements clarification",
+    "CaseType": "AO Enquiry",
+    "SubmittedBy": "QualiTrust Limited",
+    "AwardingOrganisation": "QualiTrust Limited",
+    "ReceivedDate": "2025-12-03",
+    "Status": "Review",
+    "CaseLead": "Mike Brown",
+    "LastUpdatedDate": "2025-12-10",
+    "history": [
+      {
+        "date": "10/12/2025 15:45:33",
+        "user": "Mike Brown",
+        "summary": "Enquiry response being prepared"
+      },
+      {
+        "date": "03/12/2025 11:20:18",
+        "user": "System",
+        "summary": "Case created"
+      }
+    ]
+  },
+  {
+    "CaseID": "OFQ-1193",
+    "Title": "British Academy of Assessment Standards - Quality assurance reporting guidance",
+    "CaseType": "AO Enquiry",
+    "SubmittedBy": "British Academy of Assessment Standards",
+    "AwardingOrganisation": "British Academy of Assessment Standards",
+    "ReceivedDate": "2026-01-08",
+    "Status": "Closed",
+    "CaseLead": "Lisa White",
+    "LastUpdatedDate": "2026-01-12",
+    "history": [
+      {
+        "date": "12/01/2026 16:30:44",
+        "user": "Lisa White",
+        "summary": "Enquiry resolved and closed"
+      },
+      {
+        "date": "08/01/2026 09:15:22",
+        "user": "System",
+        "summary": "Case created"
+      }
+    ]
+  },
+  {
+    "CaseID": "OFQ-1194",
+    "Title": "Certification Excellence Corporation - Malpractice reporting procedures enquiry",
+    "CaseType": "AO Enquiry",
+    "SubmittedBy": "Certification Excellence Corporation",
+    "AwardingOrganisation": "Certification Excellence Corporation",
+    "ReceivedDate": "2025-11-28",
+    "Status": "Triage",
+    "CaseLead": "Rachel Brown",
+    "LastUpdatedDate": "2025-11-29",
+    "history": [
+      {
+        "date": "29/11/2025 10:50:18",
+        "user": "Rachel Brown",
+        "summary": "Enquiry being triaged"
+      },
+      {
+        "date": "28/11/2025 14:35:44",
+        "user": "System",
+        "summary": "Case created"
+      }
+    ]
+  },
+  {
+    "CaseID": "OFQ-1195",
+    "Title": "Assessment Partners UK - Security vulnerability notification",
+    "CaseType": "Event Notification",
+    "SubmittedBy": "Assessment Partners UK",
+    "AwardingOrganisation": "Assessment Partners UK",
+    "ReceivedDate": "2025-11-16",
+    "Status": "Review",
+    "CaseLead": "Alex Green",
+    "LastUpdatedDate": "2025-11-20",
+    "history": [
+      {
+        "date": "20/11/2025 11:45:22",
+        "user": "Alex Green",
+        "summary": "Event notification under review"
+      },
+      {
+        "date": "16/11/2025 15:20:44",
+        "user": "System",
+        "summary": "Event notification received"
+      }
+    ]
+  },
+  {
+    "CaseID": "OFQ-1196",
+    "Title": "Assessment Partners UK - IT infrastructure issue notification",
+    "CaseType": "Event Notification",
+    "SubmittedBy": "Assessment Partners UK",
+    "AwardingOrganisation": "Assessment Partners UK",
+    "ReceivedDate": "2025-11-29",
+    "Status": "Triage",
+    "CaseLead": "Jane Lee",
+    "LastUpdatedDate": "2025-12-02",
+    "history": [
+      {
+        "date": "02/12/2025 09:30:18",
+        "user": "Jane Lee",
+        "summary": "Event notification being triaged"
+      },
+      {
+        "date": "29/11/2025 16:45:33",
+        "user": "System",
+        "summary": "Event notification received"
+      }
+    ]
+  },
+  {
+    "CaseID": "OFQ-1197",
+    "Title": "Assessment Partners UK - Marker capacity concerns notification",
+    "CaseType": "Event Notification",
+    "SubmittedBy": "Assessment Partners UK",
+    "AwardingOrganisation": "Assessment Partners UK",
+    "ReceivedDate": "2025-12-09",
+    "Status": "Closed",
+    "CaseLead": "Tom Black",
+    "LastUpdatedDate": "2025-12-18",
+    "history": [
+      {
+        "date": "18/12/2025 14:20:44",
+        "user": "Tom Black",
+        "summary": "Event notification closed - capacity issue resolved"
+      },
+      {
+        "date": "09/12/2025 10:35:18",
+        "user": "System",
+        "summary": "Event notification received"
+      }
+    ]
+  },
+  {
+    "CaseID": "OFQ-1198",
+    "Title": "Assessment Partners UK - Quality assurance inconsistencies complaint",
+    "CaseType": "Complaint",
+    "SubmittedBy": "Emma Richardson",
+    "AwardingOrganisation": "Assessment Partners UK",
+    "ReceivedDate": "2025-12-02",
+    "Status": "Review",
+    "CaseLead": "Sarah Black",
+    "LastUpdatedDate": "2025-12-08",
+    "history": [
+      {
+        "date": "08/12/2025 16:30:22",
+        "user": "Sarah Black",
+        "summary": "Complaint under review - centre visit planned"
+      },
+      {
+        "date": "02/12/2025 11:45:33",
+        "user": "System",
+        "summary": "Complaint received"
+      }
+    ]
+  },
+  {
+    "CaseID": "OFQ-1199",
+    "Title": "Assessment Partners UK - Centre monitoring practices concerns",
+    "CaseType": "Whistleblowing",
+    "SubmittedBy": "Anonymous",
+    "AwardingOrganisation": "Assessment Partners UK",
+    "ReceivedDate": "2025-12-16",
+    "Status": "Review",
+    "CaseLead": "Mike Brown",
+    "LastUpdatedDate": "2025-12-22",
+    "history": [
+      {
+        "date": "22/12/2025 14:50:44",
+        "user": "Mike Brown",
+        "summary": "Whistleblowing case under investigation - initial evidence gathered"
+      },
+      {
+        "date": "16/12/2025 09:20:18",
+        "user": "System",
+        "summary": "Whistleblowing case received"
+      }
+    ]
   }
 ]

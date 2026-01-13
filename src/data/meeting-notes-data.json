@@ -1,0 +1,58 @@
+[
+  {
+    "id": "MEET-001",
+    "aoName": "Assessment Partners UK",
+    "meetingDate": "2025-11-18",
+    "attendees": "Sarah Black (Ofqual), David Thompson (APUK CEO), Margaret Foster (APUK Head of Quality)",
+    "summary": "Annual compliance review and Statement of Compliance preparation meeting",
+    "notes": "Discussed Statement of Compliance requirements for 2026. APUK confirmed readiness to submit by deadline. Reviewed progress on addressing previous compliance concerns. Noted ongoing work on IT infrastructure improvements and quality assurance framework enhancements. Action: APUK to provide updated risk register by end of November."
+  },
+  {
+    "id": "MEET-002",
+    "aoName": "Assessment Partners UK",
+    "meetingDate": "2025-12-03",
+    "attendees": "Jane Lee (Ofqual), David Thompson (APUK), Sarah Mitchell (APUK IT Director)",
+    "summary": "Follow-up on security risk assessment findings",
+    "notes": "Reviewed progress on security protocol updates following identification of potential vulnerabilities. APUK provided evidence of immediate patching actions and comprehensive security audit planning. Discussed timeline for infrastructure modernization. Further monitoring required. Next review scheduled for mid-January 2026."
+  },
+  {
+    "id": "MEET-003",
+    "aoName": "Assessment Partners UK",
+    "meetingDate": "2025-12-15",
+    "attendees": "Mike Brown (Ofqual), Margaret Foster (APUK), James Wilson (APUK Operations Manager)",
+    "summary": "Quality assurance framework implementation review",
+    "notes": "APUK presented progress on new QA framework rollout across all assessment centres. Discussed training completion rates (78% to date) and implementation challenges. Reviewed sample centre audit reports showing improvements in standardization. Action items agreed for remaining centre onboarding in Q1 2026."
+  },
+  {
+    "id": "MEET-004",
+    "aoName": "Assessment Partners UK",
+    "meetingDate": "2026-01-08",
+    "attendees": "Alex Green (Ofqual), David Thompson (APUK), Margaret Foster (APUK)",
+    "summary": "Pre-submission Statement of Compliance final review",
+    "notes": "Final review of APUK Statement of Compliance submission. Clarified remaining documentation requirements and evidence formatting. APUK provided responses to outstanding queries from November meeting. Confirmed submission deadline of January 31, 2026. Overall positive assessment of compliance trajectory."
+  },
+  {
+    "id": "MEET-005",
+    "aoName": "QualiTrust Limited",
+    "meetingDate": "2025-12-18",
+    "attendees": "Lisa White (Ofqual), Amanda Rogers (QTL), Peter Collins (QTL)",
+    "summary": "Centre monitoring and remote assessment discussion",
+    "notes": "QTL presented enhanced monitoring procedures for remote assessment locations. Discussed implementation timeline and resource requirements. Reviewed investment in monitoring technology. Positive progress noted in addressing compliance gaps."
+  },
+  {
+    "id": "MEET-006",
+    "aoName": "British Academy of Assessment Standards",
+    "meetingDate": "2025-11-22",
+    "attendees": "Tom Black (Ofqual), Richard Hughes (BAAS)",
+    "summary": "System vulnerability remediation update",
+    "notes": "BAAS confirmed successful patch deployment for results processing system. Testing completed with no issues identified. Enhanced monitoring procedures in place. Risk formally closed."
+  },
+  {
+    "id": "MEET-007",
+    "aoName": "Certification Excellence Corporation",
+    "meetingDate": "2025-12-12",
+    "attendees": "Rachel Brown (Ofqual), Marcus Anderson (CEX), Sophie Turner (CEX)",
+    "summary": "Malpractice detection system enhancement review",
+    "notes": "CEX demonstrated new AI-enhanced detection tools in development. Discussed pilot program results and scalability challenges. Reviewed partnership with technology providers to counter emerging AI-assisted cheating methods. Follow-up meeting scheduled for February 2026."
+  }
+]

@@ -798,13 +798,13 @@
           "tasks": [
             {
               "id": "check-submission-completeness",
-              "name": "Check Submission Completeness",
+              "name": "Check submission completeness",
               "order": 1,
               "questions": [
                 {
                   "id": "submission-complete",
                   "type": "radio",
-                  "label": "Is the Statement of Compliance submission complete?",
+                  "label": "Is all of the required information present?",
                   "options": [
                     { "value": "complete", "label": "Complete" },
                     { "value": "incomplete", "label": "Incomplete - Missing sections" }
@@ -814,7 +814,7 @@
                 {
                   "id": "missing-sections",
                   "type": "textarea",
-                  "label": "What sections are missing or incomplete?",
+                  "label": "What information is missing ?",
                   "placeholder": "List the missing or incomplete sections...",
                   "rows": 4,
                   "conditionalOn": {
@@ -834,43 +834,79 @@
               ]
             },
             {
-              "id": "assign-reviewers",
-              "name": "Assign Reviewers",
+              "id": "assign-regulator-follow-up-lead",
+              "name": "Assign Regulator Follow-up Lead",
               "order": 2,
               "questions": [
                 {
-                  "id": "lead-reviewer",
-                  "type": "text",
-                  "label": "Lead Reviewer",
-                  "placeholder": "Enter lead reviewer name",
+                  "id": "regulator-follow-up-lead",
+                  "type": "radio",
+                  "label": "Who is the Regulator Follow-up Lead?",
+                  "options": [
+                    { "value": "ofqual", "label": "Ofqual" },
+                    { "value": "ccea", "label": "CCEA" }
+                  ],
                   "required": true
-                },
-                {
-                  "id": "specialist-reviewer",
-                  "type": "text",
-                  "label": "Specialist Reviewer (if required)",
-                  "placeholder": "Enter specialist reviewer name",
-                  "required": false
-                },
-                {
-                  "id": "assignment-notes",
-                  "type": "textarea",
-                  "label": "Assignment notes",
-                  "placeholder": "Add any notes about reviewer assignment...",
-                  "rows": 3,
-                  "required": false
                 }
               ]
             },
             {
-              "id": "initial-risk-assessment",
-              "name": "Initial Risk Assessment",
+              "id": "assign-case-lead",
+              "name": "Assign Case Lead",
               "order": 3,
               "questions": [
                 {
-                  "id": "initial-risk-level",
+                  "id": "case-lead-selection",
                   "type": "select",
-                  "label": "Initial risk level",
+                  "label": "Case Lead",
+                  "required": true,
+                  "options": [
+                    { "value": "", "label": "Select a case lead..." },
+                    { "value": "jane-lee", "label": "Jane Lee" },
+                    { "value": "mike-brown", "label": "Mike Brown" },
+                    { "value": "sarah-black", "label": "Sarah Black" },
+                    { "value": "alex-green", "label": "Alex Green" },
+                    { "value": "lisa-white", "label": "Lisa White" },
+                    { "value": "tom-black", "label": "Tom Black" },
+                    { "value": "rachel-brown", "label": "Rachel Brown" },
+                    { "value": "chris-green", "label": "Chris Green" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "assign-reviewers",
+              "name": "Assign Reviewers",
+              "order": 4,
+              "questions": [
+                {
+                  "id": "reviewers-selection",
+                  "type": "multiselect",
+                  "label": "Reviewer",
+                  "placeholder": "Select reviewers...",
+                  "required": true,
+                  "options": [
+                    { "value": "jane-lee", "label": "Jane Lee" },
+                    { "value": "mike-brown", "label": "Mike Brown" },
+                    { "value": "sarah-black", "label": "Sarah Black" },
+                    { "value": "alex-green", "label": "Alex Green" },
+                    { "value": "lisa-white", "label": "Lisa White" },
+                    { "value": "tom-black", "label": "Tom Black" },
+                    { "value": "rachel-brown", "label": "Rachel Brown" },
+                    { "value": "chris-green", "label": "Chris Green" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "initial-triage-assessment",
+              "name": "Initial triage assessment",
+              "order": 5,
+              "questions": [
+                {
+                  "id": "review-priority-level",
+                  "type": "select",
+                  "label": "Review priority level",
                   "options": [
                     { "value": "low", "label": "Low" },
                     { "value": "medium", "label": "Medium" },
@@ -879,11 +915,30 @@
                   "required": true
                 },
                 {
-                  "id": "risk-factors",
+                  "id": "review-considerations",
                   "type": "textarea",
-                  "label": "Key risk factors",
-                  "placeholder": "Describe the key factors influencing this risk assessment...",
+                  "label": "Review considerations",
+                  "placeholder": "Describe any considerations for reviewers to be aware of.",
                   "rows": 4,
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "add-review-date",
+              "name": "Add the review date",
+              "order": 6,
+              "questions": [
+                {
+                  "id": "review-meeting-date",
+                  "type": "date",
+                  "label": "Review meeting date",
+                  "required": true
+                },
+                {
+                  "id": "review-meeting-time",
+                  "type": "time",
+                  "label": "Review meeting time",
                   "required": true
                 }
               ]
@@ -896,288 +951,14 @@
           "order": 2,
           "tasks": [
             {
-              "id": "assess-current-compliance",
-              "name": "Assess Current Compliance",
+              "id": "check-event-notifications",
+              "name": "Check Event Notifications",
               "order": 1,
               "questions": [
                 {
-                  "id": "general-conditions-compliant",
+                  "id": "has-event-notifications",
                   "type": "radio",
-                  "label": "Are the general conditions currently being met?",
-                  "options": [
-                    { "value": "yes", "label": "Yes" },
-                    { "value": "no", "label": "No" },
-                    { "value": "partial", "label": "Partially" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "general-conditions-notes",
-                  "type": "textarea",
-                  "label": "General conditions assessment notes",
-                  "placeholder": "Provide details about general conditions compliance...",
-                  "rows": 4,
-                  "required": false
-                },
-                {
-                  "id": "qualification-conditions-compliant",
-                  "type": "radio",
-                  "label": "Are the qualification conditions currently being met?",
-                  "options": [
-                    { "value": "yes", "label": "Yes" },
-                    { "value": "no", "label": "No" },
-                    { "value": "partial", "label": "Partially" },
-                    { "value": "na", "label": "Not Applicable" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "qualification-conditions-notes",
-                  "type": "textarea",
-                  "label": "Qualification conditions assessment notes",
-                  "placeholder": "Provide details about qualification conditions compliance...",
-                  "rows": 4,
-                  "required": false
-                },
-                {
-                  "id": "subject-conditions-compliant",
-                  "type": "radio",
-                  "label": "Are the subject conditions currently being met?",
-                  "options": [
-                    { "value": "yes", "label": "Yes" },
-                    { "value": "no", "label": "No" },
-                    { "value": "partial", "label": "Partially" },
-                    { "value": "na", "label": "Not Applicable" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "subject-conditions-notes",
-                  "type": "textarea",
-                  "label": "Subject conditions assessment notes",
-                  "placeholder": "Provide details about subject conditions compliance...",
-                  "rows": 4,
-                  "required": false
-                }
-              ]
-            },
-            {
-              "id": "assess-future-compliance",
-              "name": "Assess Future Compliance",
-              "order": 2,
-              "questions": [
-                {
-                  "id": "future-general-conditions",
-                  "type": "radio",
-                  "label": "Will the general conditions continue to be met?",
-                  "options": [
-                    { "value": "yes", "label": "Yes" },
-                    { "value": "no", "label": "No" },
-                    { "value": "uncertain", "label": "Uncertain" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "future-general-conditions-notes",
-                  "type": "textarea",
-                  "label": "Future general conditions assessment notes",
-                  "placeholder": "Explain your assessment of future compliance with general conditions...",
-                  "rows": 4,
-                  "required": false
-                },
-                {
-                  "id": "future-qualification-conditions",
-                  "type": "radio",
-                  "label": "Will the qualification conditions continue to be met?",
-                  "options": [
-                    { "value": "yes", "label": "Yes" },
-                    { "value": "no", "label": "No" },
-                    { "value": "uncertain", "label": "Uncertain" },
-                    { "value": "na", "label": "Not Applicable" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "future-qualification-conditions-notes",
-                  "type": "textarea",
-                  "label": "Future qualification conditions assessment notes",
-                  "placeholder": "Explain your assessment of future compliance with qualification conditions...",
-                  "rows": 4,
-                  "required": false
-                },
-                {
-                  "id": "future-subject-conditions",
-                  "type": "radio",
-                  "label": "Will the subject conditions continue to be met?",
-                  "options": [
-                    { "value": "yes", "label": "Yes" },
-                    { "value": "no", "label": "No" },
-                    { "value": "uncertain", "label": "Uncertain" },
-                    { "value": "na", "label": "Not Applicable" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "future-subject-conditions-notes",
-                  "type": "textarea",
-                  "label": "Future subject conditions assessment notes",
-                  "placeholder": "Explain your assessment of future compliance with subject conditions...",
-                  "rows": 4,
-                  "required": false
-                }
-              ]
-            },
-            {
-              "id": "assess-supporting-evidence",
-              "name": "Assess Supporting Evidence",
-              "order": 3,
-              "questions": [
-                {
-                  "id": "evidence-quality",
-                  "type": "select",
-                  "label": "Overall quality of supporting evidence",
-                  "options": [
-                    { "value": "excellent", "label": "Excellent - Comprehensive and well documented" },
-                    { "value": "good", "label": "Good - Adequate documentation" },
-                    { "value": "fair", "label": "Fair - Some gaps in documentation" },
-                    { "value": "poor", "label": "Poor - Significant documentation gaps" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "evidence-gaps",
-                  "type": "textarea",
-                  "label": "What evidence gaps or concerns were identified?",
-                  "placeholder": "Describe any missing evidence or concerns...",
-                  "rows": 4,
-                  "conditionalOn": {
-                    "field": "evidence-quality",
-                    "value": "fair"
-                  },
-                  "required": false
-                },
-                {
-                  "id": "evidence-gaps-poor",
-                  "type": "textarea",
-                  "label": "What evidence gaps or concerns were identified?",
-                  "placeholder": "Describe any missing evidence or concerns...",
-                  "rows": 4,
-                  "conditionalOn": {
-                    "field": "evidence-quality",
-                    "value": "poor"
-                  },
-                  "required": true
-                },
-                {
-                  "id": "evidence-notes",
-                  "type": "textarea",
-                  "label": "Evidence assessment notes",
-                  "placeholder": "Add any additional notes about the supporting evidence...",
-                  "rows": 4,
-                  "required": false
-                }
-              ]
-            },
-            {
-              "id": "inherent-risk-assessment",
-              "name": "Inherent Risk Assessment",
-              "order": 4,
-              "questions": [
-                {
-                  "id": "inherent-risk-level",
-                  "type": "select",
-                  "label": "Inherent risk level",
-                  "options": [
-                    { "value": "low", "label": "Low" },
-                    { "value": "medium-low", "label": "Medium-Low" },
-                    { "value": "medium", "label": "Medium" },
-                    { "value": "medium-high", "label": "Medium-High" },
-                    { "value": "high", "label": "High" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "inherent-risk-factors",
-                  "type": "textarea",
-                  "label": "Inherent risk factors",
-                  "placeholder": "Describe the inherent risks before considering controls...",
-                  "rows": 4,
-                  "required": true
-                }
-              ]
-            },
-            {
-              "id": "residual-risk-assessment",
-              "name": "Residual Risk Assessment",
-              "order": 5,
-              "questions": [
-                {
-                  "id": "controls-adequate",
-                  "type": "radio",
-                  "label": "Are current controls adequate?",
-                  "options": [
-                    { "value": "yes", "label": "Yes - Controls are effective" },
-                    { "value": "partial", "label": "Partially - Some improvements needed" },
-                    { "value": "no", "label": "No - Significant improvements required" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "control-improvements",
-                  "type": "textarea",
-                  "label": "What control improvements are needed?",
-                  "placeholder": "Describe required improvements to controls...",
-                  "rows": 4,
-                  "conditionalOn": {
-                    "field": "controls-adequate",
-                    "value": "partial"
-                  },
-                  "required": false
-                },
-                {
-                  "id": "control-improvements-no",
-                  "type": "textarea",
-                  "label": "What control improvements are needed?",
-                  "placeholder": "Describe required improvements to controls...",
-                  "rows": 4,
-                  "conditionalOn": {
-                    "field": "controls-adequate",
-                    "value": "no"
-                  },
-                  "required": true
-                },
-                {
-                  "id": "residual-risk-level",
-                  "type": "select",
-                  "label": "Residual risk level (after controls)",
-                  "options": [
-                    { "value": "low", "label": "Low" },
-                    { "value": "medium-low", "label": "Medium-Low" },
-                    { "value": "medium", "label": "Medium" },
-                    { "value": "medium-high", "label": "Medium-High" },
-                    { "value": "high", "label": "High" }
-                  ],
-                  "required": true
-                },
-                {
-                  "id": "residual-risk-notes",
-                  "type": "textarea",
-                  "label": "Residual risk assessment notes",
-                  "placeholder": "Explain the residual risk after considering controls...",
-                  "rows": 4,
-                  "required": false
-                }
-              ]
-            },
-            {
-              "id": "review-meeting-requirements",
-              "name": "Review Meeting Requirements",
-              "order": 6,
-              "questions": [
-                {
-                  "id": "meeting-required",
-                  "type": "radio",
-                  "label": "Is a review meeting required?",
+                  "label": "Are there any Event Notifications in the last 12 months that impact AO compliance?",
                   "options": [
                     { "value": "yes", "label": "Yes" },
                     { "value": "no", "label": "No" }
@@ -1185,34 +966,456 @@
                   "required": true
                 },
                 {
-                  "id": "meeting-date",
-                  "type": "date",
-                  "label": "Scheduled meeting date",
+                  "id": "event-notifications-list",
+                  "type": "repeatable-group",
+                  "label": "Event Notifications",
+                  "addButtonText": "Add another Event Notification",
+                  "minInstances": 0,
                   "conditionalOn": {
-                    "field": "meeting-required",
+                    "field": "has-event-notifications",
                     "value": "yes"
                   },
-                  "required": false
+                  "questions": [
+                    {
+                      "id": "event-notification-id",
+                      "type": "select",
+                      "label": "Select the Event Notification",
+                      "dynamicOptions": {
+                        "source": "eventNotifications"
+                      },
+                      "required": true
+                    },
+                    {
+                      "id": "event-notification-rationale",
+                      "type": "textarea",
+                      "label": "Rationale",
+                      "placeholder": "Explain how this event notification impacts compliance...",
+                      "rows": 3,
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "check-risk-log",
+              "name": "Check Risk Log",
+              "order": 2,
+              "questions": [
+                {
+                  "id": "has-risks",
+                  "type": "radio",
+                  "label": "Are there any Risks in the last 12 months (or current risks) that impact AO compliance?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
                 },
                 {
-                  "id": "meeting-attendees",
+                  "id": "risks-list",
+                  "type": "repeatable-group",
+                  "label": "Risks",
+                  "addButtonText": "Add another Risk",
+                  "minInstances": 0,
+                  "conditionalOn": {
+                    "field": "has-risks",
+                    "value": "yes"
+                  },
+                  "questions": [
+                    {
+                      "id": "risk-id",
+                      "type": "select",
+                      "label": "Select the Risk",
+                      "dynamicOptions": {
+                        "source": "risks"
+                      },
+                      "required": true
+                    },
+                    {
+                      "id": "risk-rationale",
+                      "type": "textarea",
+                      "label": "Rationale",
+                      "placeholder": "Explain how this risk impacts compliance...",
+                      "rows": 3,
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "check-ao-enquiry",
+              "name": "Check Contact the Regulator",
+              "order": 3,
+              "questions": [
+                {
+                  "id": "has-ao-enquiries",
+                  "type": "radio",
+                  "label": "Are there any AO Enquiries in the last 12 months that impact AO compliance?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "ao-enquiries-list",
+                  "type": "repeatable-group",
+                  "label": "AO Enquiries",
+                  "addButtonText": "Add another AO Enquiry",
+                  "minInstances": 0,
+                  "conditionalOn": {
+                    "field": "has-ao-enquiries",
+                    "value": "yes"
+                  },
+                  "questions": [
+                    {
+                      "id": "ao-enquiry-id",
+                      "type": "select",
+                      "label": "Select the AO Enquiry",
+                      "dynamicOptions": {
+                        "source": "aoEnquiries"
+                      },
+                      "required": true
+                    },
+                    {
+                      "id": "ao-enquiry-rationale",
+                      "type": "textarea",
+                      "label": "Rationale",
+                      "placeholder": "Explain how this enquiry impacts compliance...",
+                      "rows": 3,
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "check-cwm",
+              "name": "Check Complaints, Whistleblowing & Malpractice (CWM)",
+              "order": 4,
+              "questions": [
+                {
+                  "id": "has-cwm-cases",
+                  "type": "radio",
+                  "label": "Are there any CWM cases in the last 12 months that impact AO compliance?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "cwm-cases-list",
+                  "type": "repeatable-group",
+                  "label": "CWM Cases",
+                  "addButtonText": "Add another CWM Case",
+                  "minInstances": 0,
+                  "conditionalOn": {
+                    "field": "has-cwm-cases",
+                    "value": "yes"
+                  },
+                  "questions": [
+                    {
+                      "id": "cwm-case-id",
+                      "type": "select",
+                      "label": "Select the CWM Case",
+                      "dynamicOptions": {
+                        "source": "cwmCases"
+                      },
+                      "required": true
+                    },
+                    {
+                      "id": "cwm-case-rationale",
+                      "type": "textarea",
+                      "label": "Rationale",
+                      "placeholder": "Explain how this case impacts compliance...",
+                      "rows": 3,
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "check-meeting-notes",
+              "name": "Check Recent Meeting Notes (where applicable)",
+              "order": 5,
+              "questions": [
+                {
+                  "id": "has-meeting-notes",
+                  "type": "radio",
+                  "label": "Are there any Meeting Notes in the last 12 months that impact AO compliance?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "meeting-notes-list",
+                  "type": "repeatable-group",
+                  "label": "Meeting Notes",
+                  "addButtonText": "Add another Meeting Note",
+                  "minInstances": 0,
+                  "conditionalOn": {
+                    "field": "has-meeting-notes",
+                    "value": "yes"
+                  },
+                  "questions": [
+                    {
+                      "id": "meeting-note-id",
+                      "type": "select",
+                      "label": "Select the Meeting Notes",
+                      "dynamicOptions": {
+                        "source": "meetingNotes"
+                      },
+                      "required": true
+                    },
+                    {
+                      "id": "meeting-note-rationale",
+                      "type": "textarea",
+                      "label": "Rationale",
+                      "placeholder": "Explain how these meeting notes impact compliance...",
+                      "rows": 3,
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "check-ccgr-rating",
+              "name": "Check CCGR Rating (where applicable)",
+              "order": 6,
+              "questions": [
+                {
+                  "id": "ccgr-rating",
+                  "type": "radio",
+                  "label": "What is the average CCGR rating for this AO (if applicable)?",
+                  "options": [
+                    { "value": "no-assurance", "label": "No assurance" },
+                    { "value": "limited-assurance", "label": "Limited assurance" },
+                    { "value": "moderate-assurance", "label": "Moderate assurance" },
+                    { "value": "no-current-concerns", "label": "No current concerns" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "has-ccgr-intel",
+                  "type": "radio",
+                  "label": "Is there any intel stored within the CCGR ratings for this AO that impacts on AO compliance?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "ccgr-intel-outline",
                   "type": "textarea",
-                  "label": "Meeting attendees",
-                  "placeholder": "List attendees...",
+                  "label": "Outline this intel",
+                  "placeholder": "Describe the intelligence from CCGR ratings...",
+                  "rows": 4,
+                  "conditionalOn": {
+                    "field": "has-ccgr-intel",
+                    "value": "yes"
+                  },
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "agreement-with-declaration",
+              "name": "Agreement with AO's declaration",
+              "order": 7,
+              "questions": [
+                {
+                  "id": "agree-current-compliance",
+                  "type": "radio",
+                  "label": "Do we agree with the AO's declaration on current compliance?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "current-compliance-rationale",
+                  "type": "textarea",
+                  "label": "Rationale",
+                  "placeholder": "Explain your assessment...",
+                  "rows": 4,
+                  "required": true
+                },
+                {
+                  "id": "agree-future-compliance",
+                  "type": "radio",
+                  "label": "Do we agree with the AO's declaration on future compliance?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "future-compliance-rationale",
+                  "type": "textarea",
+                  "label": "Rationale",
+                  "placeholder": "Explain your assessment...",
+                  "rows": 4,
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "assign-rag-rating",
+              "name": "Assign a RAG rating on compliance",
+              "order": 8,
+              "questions": [
+                {
+                  "id": "rag-rating",
+                  "type": "select",
+                  "label": "RAG rating",
+                  "options": [
+                    { "value": "", "label": "Select RAG rating..." },
+                    { "value": "red", "label": "Red" },
+                    { "value": "red-amber", "label": "Red-Amber" },
+                    { "value": "amber", "label": "Amber" },
+                    { "value": "green-amber", "label": "Green-Amber" },
+                    { "value": "green", "label": "Green" }
+                  ],
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "declare-follow-up",
+              "name": "Declare follow-up",
+              "order": 9,
+              "questions": [
+                {
+                  "id": "follow-up-type",
+                  "type": "select",
+                  "label": "What follow-up is required?",
+                  "options": [
+                    { "value": "", "label": "Select follow-up action..." },
+                    { "value": "review-6-months", "label": "Consider review in 6 months" },
+                    { "value": "follow-up-internal", "label": "Follow-up internally" },
+                    { "value": "follow-up-questions", "label": "Follow-up questions to AO" },
+                    { "value": "meeting-ao", "label": "Meeting with AO" },
+                    { "value": "refer-legal", "label": "Refer to Legal" },
+                    { "value": "no-follow-up", "label": "No follow-up action" }
+                  ],
+                  "required": true
+                },
+                {
+                  "id": "review-date-6-months",
+                  "type": "date",
+                  "label": "Review Date",
+                  "conditionalOn": {
+                    "field": "follow-up-type",
+                    "value": "review-6-months"
+                  },
+                  "required": true
+                },
+                {
+                  "id": "follow-up-internal-method",
+                  "type": "textarea",
+                  "label": "Follow-up method",
+                  "placeholder": "Describe the internal follow-up method...",
                   "rows": 3,
                   "conditionalOn": {
-                    "field": "meeting-required",
-                    "value": "yes"
+                    "field": "follow-up-type",
+                    "value": "follow-up-internal"
                   },
-                  "required": false
+                  "required": true
                 },
                 {
-                  "id": "meeting-notes",
+                  "id": "follow-up-questions-resolved",
+                  "type": "radio",
+                  "label": "Have the questions been resolved with the AO?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "conditionalOn": {
+                    "field": "follow-up-type",
+                    "value": "follow-up-questions"
+                  },
+                  "required": true
+                },
+                {
+                  "id": "meeting-date",
+                  "type": "date",
+                  "label": "Meeting Date",
+                  "conditionalOn": {
+                    "field": "follow-up-type",
+                    "value": "meeting-ao"
+                  },
+                  "required": true
+                },
+                {
+                  "id": "meeting-time",
+                  "type": "time",
+                  "label": "Meeting Time",
+                  "conditionalOn": {
+                    "field": "follow-up-type",
+                    "value": "meeting-ao"
+                  },
+                  "required": true
+                },
+                {
+                  "id": "refer-legal-rationale",
                   "type": "textarea",
-                  "label": "Meeting notes or rationale",
-                  "placeholder": "Add meeting notes or explain why no meeting is required...",
+                  "label": "Rationale",
+                  "placeholder": "Explain why this case is being referred to legal...",
                   "rows": 4,
-                  "required": false
+                  "conditionalOn": {
+                    "field": "follow-up-type",
+                    "value": "refer-legal"
+                  },
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "review-meeting",
+              "name": "Review Meeting",
+              "order": 10,
+              "questions": [
+                {
+                  "id": "review-meeting-held",
+                  "type": "radio",
+                  "label": "Has the review meeting been held?",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "send-confirmation-message",
+              "name": "Send confirmation message",
+              "order": 11,
+              "questions": [
+                {
+                  "id": "message-subject",
+                  "type": "text",
+                  "label": "Message subject",
+                  "defaultValue": "Statement of Compliance Review Confirmation",
+                  "required": true
+                },
+                {
+                  "id": "message-body",
+                  "type": "textarea",
+                  "label": "Message body",
+                  "defaultValue": "Dear [Awarding Organisation],\n\nThank you for submitting your Statement of Compliance for the period November 2025 - November 2026.\n\nWe have completed our review and the outcome is as follows:\n\n[Please complete this section with your review findings]\n\nIf you have any questions regarding this review, please contact your assigned case lead.\n\nKind regards,\nOfqual Compliance Team",
+                  "rows": 10,
+                  "required": true
                 }
               ]
             }
@@ -1224,65 +1427,58 @@
           "order": 3,
           "tasks": [
             {
-              "id": "compliance-determination",
-              "name": "Compliance Determination",
+              "id": "add-closure-status-rationale",
+              "name": "Add closure status and rationale",
               "order": 1,
               "questions": [
                 {
-                  "id": "compliance-decision",
-                  "type": "select",
-                  "label": "Compliance determination",
+                  "id": "closure-status-strength",
+                  "type": "radio",
+                  "label": "Closure status",
                   "options": [
-                    { "value": "compliant", "label": "Compliant - No action required" },
-                    { "value": "compliant-monitoring", "label": "Compliant - Monitoring required" },
-                    { "value": "non-compliant-minor", "label": "Non-compliant - Minor issues" },
-                    { "value": "non-compliant-major", "label": "Non-compliant - Major issues" }
+                    { "value": "strong", "label": "Strong" },
+                    { "value": "medium", "label": "Medium" },
+                    { "value": "weak", "label": "Weak" }
                   ],
                   "required": true
                 },
                 {
-                  "id": "compliance-rationale",
-                  "type": "textarea",
-                  "label": "Rationale for compliance determination",
-                  "placeholder": "Explain the reasoning for this determination...",
-                  "rows": 6,
-                  "required": true
-                },
-                {
-                  "id": "non-compliance-details",
-                  "type": "textarea",
-                  "label": "Details of non-compliance",
-                  "placeholder": "Describe the specific non-compliance issues...",
-                  "rows": 4,
-                  "conditionalOn": {
-                    "field": "compliance-decision",
-                    "value": "non-compliant-minor"
-                  },
-                  "required": false
-                },
-                {
-                  "id": "non-compliance-details-major",
-                  "type": "textarea",
-                  "label": "Details of non-compliance",
-                  "placeholder": "Describe the specific non-compliance issues...",
-                  "rows": 4,
-                  "conditionalOn": {
-                    "field": "compliance-decision",
-                    "value": "non-compliant-major"
-                  },
+                  "id": "closure-status-action",
+                  "type": "radio",
+                  "label": "Closure outcome",
+                  "options": [
+                    { "value": "no-action", "label": "No action required" },
+                    { "value": "bau-managed", "label": "Compliance concerns managed through BAU" },
+                    { "value": "fully-addressed", "label": "Compliance concerns fully addressed" }
+                  ],
                   "required": true
                 }
               ]
             },
             {
-              "id": "set-monitoring-requirements",
-              "name": "Set Monitoring Requirements",
+              "id": "send-closure-message",
+              "name": "Send closure message",
               "order": 2,
               "questions": [
                 {
-                  "id": "monitoring-required",
+                  "id": "closure-message",
+                  "type": "textarea",
+                  "label": "Edit the message template as appropriate",
+                  "defaultValue": "Dear [Awarding Organisation],\n\nThank you for submitting your Statement of Compliance for the period November 2025 - November 2026.\n\nWe have completed our review and the case is now being closed.\n\nReview Outcome:\n[Please complete this section with your review findings and closure status]\n\nNext Steps:\n[Outline any follow-up actions or monitoring requirements]\n\nIf you have any questions regarding this closure, please contact your assigned case lead.\n\nKind regards,\nOfqual Compliance Team",
+                  "rows": 12,
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "close-soc",
+              "name": "Close SoC",
+              "order": 3,
+              "questions": [
+                {
+                  "id": "close-soc-confirmation",
                   "type": "radio",
-                  "label": "Is ongoing monitoring required?",
+                  "label": "Close the SoC?",
                   "options": [
                     { "value": "yes", "label": "Yes" },
                     { "value": "no", "label": "No" }
@@ -1290,89 +1486,16 @@
                   "required": true
                 },
                 {
-                  "id": "monitoring-frequency",
+                  "id": "closure-rationale",
                   "type": "select",
-                  "label": "Monitoring frequency",
+                  "label": "Rationale for closure",
                   "options": [
-                    { "value": "monthly", "label": "Monthly" },
-                    { "value": "quarterly", "label": "Quarterly" },
-                    { "value": "biannual", "label": "Bi-annual" },
-                    { "value": "annual", "label": "Annual" }
-                  ],
-                  "conditionalOn": {
-                    "field": "monitoring-required",
-                    "value": "yes"
-                  },
-                  "required": false
-                },
-                {
-                  "id": "monitoring-next-review",
-                  "type": "date",
-                  "label": "Next review date",
-                  "conditionalOn": {
-                    "field": "monitoring-required",
-                    "value": "yes"
-                  },
-                  "required": false
-                },
-                {
-                  "id": "monitoring-requirements",
-                  "type": "textarea",
-                  "label": "Specific monitoring requirements",
-                  "placeholder": "Describe what needs to be monitored and how...",
-                  "rows": 4,
-                  "conditionalOn": {
-                    "field": "monitoring-required",
-                    "value": "yes"
-                  },
-                  "required": false
-                }
-              ]
-            },
-            {
-              "id": "close-soc-case",
-              "name": "Close Statement of Compliance Case",
-              "order": 3,
-              "questions": [
-                {
-                  "id": "resubmission-required",
-                  "type": "radio",
-                  "label": "Is resubmission required?",
-                  "options": [
-                    { "value": "yes", "label": "Yes - Provider must resubmit" },
-                    { "value": "no", "label": "No - Case can be closed" }
+                    { "value": "", "label": "Select rationale..." },
+                    { "value": "tbc-1", "label": "TBC Option 1" },
+                    { "value": "tbc-2", "label": "TBC Option 2" },
+                    { "value": "tbc-3", "label": "TBC Option 3" }
                   ],
                   "required": true
-                },
-                {
-                  "id": "resubmission-deadline",
-                  "type": "date",
-                  "label": "Resubmission deadline",
-                  "conditionalOn": {
-                    "field": "resubmission-required",
-                    "value": "yes"
-                  },
-                  "required": false
-                },
-                {
-                  "id": "resubmission-requirements",
-                  "type": "textarea",
-                  "label": "What must be included in the resubmission?",
-                  "placeholder": "Describe what the provider needs to address...",
-                  "rows": 4,
-                  "conditionalOn": {
-                    "field": "resubmission-required",
-                    "value": "yes"
-                  },
-                  "required": false
-                },
-                {
-                  "id": "closure-notes",
-                  "type": "textarea",
-                  "label": "Case closure notes",
-                  "placeholder": "Add any final notes about this case...",
-                  "rows": 4,
-                  "required": false
                 }
               ]
             }
