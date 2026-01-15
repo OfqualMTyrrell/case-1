@@ -1,4 +1,5 @@
 import React from 'react';
+import DocumentsTable from '../components/DocumentsTable';
 
 /**
  * Get the value from data using the field configuration
@@ -102,31 +103,14 @@ const renderMultilineText = (text) => {
 };
 
 /**
- * Render files as clickable links
+ * Render files as AI-enhanced data table
  */
 const renderFiles = (files) => {
   if (!files || !Array.isArray(files) || files.length === 0) {
     return null;
   }
   
-  return (
-    <div>
-      {files.map((file, index) => (
-        <div key={index} style={{ marginBottom: '0.25rem' }}>
-          <a 
-            href="#" 
-            style={{ 
-              wordBreak: 'break-all', 
-              color: 'var(--cds-link-primary, #0f62fe)', 
-              textDecoration: 'underline' 
-            }}
-          >
-            {file.name || file}
-          </a>
-        </div>
-      ))}
-    </div>
-  );
+  return <DocumentsTable documents={files} />;
 };
 
 /**

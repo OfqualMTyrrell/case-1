@@ -1,0 +1,96 @@
+{
+  "Statement of compliance": {
+    "summary": "All required documentation appears to be present for review. The organisation has declared current non-compliance with multiple General Conditions (A4, A6, D2, D4) and Qualification Conditions (E2, E7) relating to assessment security, storage protocols, and candidate identity verification during remote assessments. Special Condition SC-2025-APU-01 requires enhanced verification procedures by 30 September 2025. The organisation also anticipates future non-compliance with AI-assisted assessment requirements expected in 2026, with a comprehensive remediation plan and external consultancy support documented.",
+    "metrics": {
+      "dataQuality": 92,
+      "aiConfidence": 88,
+      "riskLevel": "High"
+    },
+    "keyConcerns": [
+      "Non-compliance with assessment security protocols (Conditions A4, A6, D2, D4)",
+      "Remote assessment identity verification gaps",
+      "Special condition deadline: 30 September 2025",
+      "Future AI assessment compliance risks (2026)"
+    ],
+    "deadline": "30 September 2025"
+  },
+  "Recognition application": {
+    "summary": "All required documentation appears to be present for review. The organisation seeks recognition for EPAs in software development (levels 3-4), software testing and business analysis (level 4), plus vocational qualifications in software development and network infrastructure. The application provides substantial evidence across all criteria sections with comprehensive narrative responses and extensive supporting documentation appropriate for detailed assessment against recognition requirements.",
+    "metrics": {
+      "dataQuality": 95,
+      "aiConfidence": 91,
+      "riskLevel": "low"
+    },
+    "keyConcerns": [
+      "Comprehensive documentation review required",
+      "Governance arrangements need verification",
+      "Financial sustainability assessment pending",
+      "Quality assurance processes require validation"
+    ]
+  },
+  "Complaint": {
+    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "metrics": {
+      "dataQuality": 78,
+      "aiConfidence": 82,
+      "riskLevel": "Medium"
+    },
+    "keyConcerns": [
+      "Initial assessment pending",
+      "Documentation completeness under review",
+      "Stakeholder consultation required"
+    ]
+  },
+  "Information Request": {
+    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel augue vitae nisi tincidunt vehicula. Maecenas ut mauris id ligula tempor fermentum.",
+    "metrics": {
+      "dataQuality": 85,
+      "aiConfidence": 87,
+      "riskLevel": "Low"
+    },
+    "keyConcerns": [
+      "Information completeness check required",
+      "Response timeframe to be confirmed",
+      "Follow-up actions pending"
+    ]
+  },
+  "Information Notice (B4)": {
+    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+    "metrics": {
+      "dataQuality": 88,
+      "aiConfidence": 85,
+      "riskLevel": "Medium"
+    },
+    "keyConcerns": [
+      "Regulatory requirements under review",
+      "Compliance verification pending",
+      "Documentation assessment in progress"
+    ]
+  },
+  "AO Enquiry": {
+    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
+    "metrics": {
+      "dataQuality": 81,
+      "aiConfidence": 79,
+      "riskLevel": "Low"
+    },
+    "keyConcerns": [
+      "Initial enquiry assessment ongoing",
+      "Information gathering phase",
+      "Response preparation underway"
+    ]
+  },
+  "Event notification": {
+    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+    "metrics": {
+      "dataQuality": 90,
+      "aiConfidence": 86,
+      "riskLevel": "Low"
+    },
+    "keyConcerns": [
+      "Event details verification required",
+      "Impact assessment pending",
+      "Follow-up actions to be determined"
+    ]
+  }
+}
