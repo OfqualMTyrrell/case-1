@@ -1,0 +1,218 @@
+{
+  "caseCompletionTrend": [
+    { "group": "Open Cases", "date": "2026-01-01", "value": 45 },
+    { "group": "Open Cases", "date": "2026-01-02", "value": 43 },
+    { "group": "Open Cases", "date": "2026-01-03", "value": 41 },
+    { "group": "Open Cases", "date": "2026-01-04", "value": 38 },
+    { "group": "Open Cases", "date": "2026-01-05", "value": 36 },
+    { "group": "Open Cases", "date": "2026-01-06", "value": 35 },
+    { "group": "Open Cases", "date": "2026-01-07", "value": 33 },
+    { "group": "Open Cases", "date": "2026-01-08", "value": 31 },
+    { "group": "Open Cases", "date": "2026-01-09", "value": 29 },
+    { "group": "Open Cases", "date": "2026-01-10", "value": 27 },
+    { "group": "Open Cases", "date": "2026-01-11", "value": 25 },
+    { "group": "Open Cases", "date": "2026-01-12", "value": 24 },
+    { "group": "Open Cases", "date": "2026-01-13", "value": 22 },
+    { "group": "Open Cases", "date": "2026-01-14", "value": 20 }
+  ],
+  "caseTypeDistribution": [
+    { "group": "Statement of Compliance - 28 cases", "value": 28 },
+    { "group": "Event notification - 22 cases", "value": 22 },
+    { "group": "Information Request - 18 cases", "value": 18 },
+    { "group": "Information Notice (B4) - 14 cases", "value": 14 },
+    { "group": "AO Enquiry - 8 cases", "value": 8 }
+  ],
+  "casesByCaseLead": [
+    { "group": "Received", "key": "Sarah Johnson", "value": 8 },
+    { "group": "Triage", "key": "Sarah Johnson", "value": 6 },
+    { "group": "Review", "key": "Sarah Johnson", "value": 7 },
+    { "group": "Outcome", "key": "Sarah Johnson", "value": 4 },
+    { "group": "Closed", "key": "Sarah Johnson", "value": 2 },
+    { "group": "Received", "key": "Michael Chen", "value": 10 },
+    { "group": "Triage", "key": "Michael Chen", "value": 8 },
+    { "group": "Review", "key": "Michael Chen", "value": 9 },
+    { "group": "Outcome", "key": "Michael Chen", "value": 4 },
+    { "group": "Closed", "key": "Michael Chen", "value": 2 },
+    { "group": "Received", "key": "Emma Davis", "value": 6 },
+    { "group": "Triage", "key": "Emma Davis", "value": 5 },
+    { "group": "Review", "key": "Emma Davis", "value": 6 },
+    { "group": "Outcome", "key": "Emma Davis", "value": 3 },
+    { "group": "Closed", "key": "Emma Davis", "value": 1 },
+    { "group": "Received", "key": "James Wilson", "value": 4 },
+    { "group": "Triage", "key": "James Wilson", "value": 3 },
+    { "group": "Review", "key": "James Wilson", "value": 4 },
+    { "group": "Outcome", "key": "James Wilson", "value": 3 },
+    { "group": "Closed", "key": "James Wilson", "value": 1 }
+  ],
+  "teamCapacity": {
+    "totalCapacity": 120,
+    "casesStarted": 90
+  },
+  "teamActivity": [
+    {
+      "id": "team-act-001",
+      "userId": "sarah-johnson",
+      "userName": "Sarah Johnson",
+      "action": "completed",
+      "type": "task",
+      "description": "Completed task 'Review compliance documentation'",
+      "caseId": "OFQ-1045",
+      "caseTitle": "Application - Global Education Trust",
+      "timestamp": "2026-01-14T09:23:00Z"
+    },
+    {
+      "id": "team-act-002",
+      "userId": "michael-chen",
+      "userName": "Michael Chen",
+      "action": "sent",
+      "type": "message",
+      "description": "Sent message to applicant requesting additional information",
+      "caseId": "OFQ-1032",
+      "caseTitle": "Complaint - Education Services Ltd",
+      "timestamp": "2026-01-14T09:15:00Z"
+    },
+    {
+      "id": "team-act-003",
+      "userId": "emma-davis",
+      "userName": "Emma Davis",
+      "action": "opened",
+      "type": "case",
+      "description": "Opened case OFQ-1078",
+      "caseId": "OFQ-1078",
+      "caseTitle": "Application - International Training Center",
+      "timestamp": "2026-01-14T08:47:00Z"
+    },
+    {
+      "id": "team-act-004",
+      "userId": "james-wilson",
+      "userName": "James Wilson",
+      "action": "edited",
+      "type": "document",
+      "description": "Updated case notes with legal requirements",
+      "caseId": "OFQ-1091",
+      "caseTitle": "Compliance Review - Professional Standards Council",
+      "timestamp": "2026-01-14T08:32:00Z"
+    },
+    {
+      "id": "team-act-005",
+      "userId": "sarah-johnson",
+      "userName": "Sarah Johnson",
+      "action": "uploaded",
+      "type": "document",
+      "description": "Uploaded final decision letter",
+      "caseId": "OFQ-1045",
+      "caseTitle": "Application - Global Education Trust",
+      "timestamp": "2026-01-13T16:45:00Z"
+    },
+    {
+      "id": "team-act-006",
+      "userId": "michael-chen",
+      "userName": "Michael Chen",
+      "action": "completed",
+      "type": "task",
+      "description": "Completed task 'Stakeholder consultation'",
+      "caseId": "OFQ-1056",
+      "caseTitle": "Application - National Skills Academy",
+      "timestamp": "2026-01-13T15:30:00Z"
+    },
+    {
+      "id": "team-act-007",
+      "userId": "emma-davis",
+      "userName": "Emma Davis",
+      "action": "opened",
+      "type": "case",
+      "description": "Opened case OFQ-1067",
+      "caseId": "OFQ-1067",
+      "caseTitle": "Complaint - Regional Assessment Body",
+      "timestamp": "2026-01-13T14:12:00Z"
+    },
+    {
+      "id": "team-act-008",
+      "userId": "james-wilson",
+      "userName": "James Wilson",
+      "action": "uploaded",
+      "type": "document",
+      "description": "Uploaded signed consent forms from applicant",
+      "caseId": "OFQ-1091",
+      "caseTitle": "Compliance Review - Professional Standards Council",
+      "timestamp": "2026-01-13T13:55:00Z"
+    },
+    {
+      "id": "team-act-009",
+      "userId": "sarah-johnson",
+      "userName": "Sarah Johnson",
+      "action": "edited",
+      "type": "document",
+      "description": "Updated compliance audit review notes",
+      "caseId": "OFQ-1023",
+      "caseTitle": "Compliance Review - Education Standards Board",
+      "timestamp": "2026-01-13T11:20:00Z"
+    },
+    {
+      "id": "team-act-010",
+      "userId": "michael-chen",
+      "userName": "Michael Chen",
+      "action": "opened",
+      "type": "case",
+      "description": "Opened case OFQ-1032",
+      "caseId": "OFQ-1032",
+      "caseTitle": "Complaint - Education Services Ltd",
+      "timestamp": "2026-01-13T10:05:00Z"
+    },
+    {
+      "id": "team-act-011",
+      "userId": "emma-davis",
+      "userName": "Emma Davis",
+      "action": "uploaded",
+      "type": "document",
+      "description": "Submitted verification documents to external reviewer",
+      "caseId": "OFQ-1078",
+      "caseTitle": "Application - International Training Center",
+      "timestamp": "2026-01-12T16:18:00Z"
+    },
+    {
+      "id": "team-act-012",
+      "userId": "james-wilson",
+      "userName": "James Wilson",
+      "action": "completed",
+      "type": "task",
+      "description": "Completed task 'Preliminary assessment'",
+      "caseId": "OFQ-1104",
+      "caseTitle": "Application - Quality Training Institute",
+      "timestamp": "2026-01-12T15:42:00Z"
+    },
+    {
+      "id": "team-act-013",
+      "userId": "sarah-johnson",
+      "userName": "Sarah Johnson",
+      "action": "opened",
+      "type": "case",
+      "description": "Opened case OFQ-1045",
+      "caseId": "OFQ-1045",
+      "caseTitle": "Application - Global Education Trust",
+      "timestamp": "2026-01-12T14:30:00Z"
+    },
+    {
+      "id": "team-act-014",
+      "userId": "michael-chen",
+      "userName": "Michael Chen",
+      "action": "uploaded",
+      "type": "document",
+      "description": "Attached correspondence from regulatory authority",
+      "caseId": "OFQ-1056",
+      "caseTitle": "Application - National Skills Academy",
+      "timestamp": "2026-01-12T13:15:00Z"
+    },
+    {
+      "id": "team-act-015",
+      "userId": "emma-davis",
+      "userName": "Emma Davis",
+      "action": "sent",
+      "type": "message",
+      "description": "Sent message to applicant representative",
+      "caseId": "OFQ-1067",
+      "caseTitle": "Complaint - Regional Assessment Body",
+      "timestamp": "2026-01-12T11:50:00Z"
+    }
+  ]
+}
