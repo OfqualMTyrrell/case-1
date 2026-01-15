@@ -1,0 +1,58 @@
+[
+  {
+    "id": "jane-lee",
+    "name": "Jane Lee",
+    "email": "jane.lee@ofqual.gov.uk",
+    "role": "Senior Case Officer",
+    "team": "Compliance"
+  },
+  {
+    "id": "mike-brown",
+    "name": "Mike Brown",
+    "email": "mike.brown@ofqual.gov.uk",
+    "role": "Case Officer",
+    "team": "Compliance"
+  },
+  {
+    "id": "sarah-black",
+    "name": "Sarah Black",
+    "email": "sarah.black@ofqual.gov.uk",
+    "role": "Lead Case Officer",
+    "team": "Recognition"
+  },
+  {
+    "id": "alex-green",
+    "name": "Alex Green",
+    "email": "alex.green@ofqual.gov.uk",
+    "role": "Case Officer",
+    "team": "Recognition"
+  },
+  {
+    "id": "lisa-white",
+    "name": "Lisa White",
+    "email": "lisa.white@ofqual.gov.uk",
+    "role": "Case Officer",
+    "team": "Complaints"
+  },
+  {
+    "id": "tom-black",
+    "name": "Tom Black",
+    "email": "tom.black@ofqual.gov.uk",
+    "role": "Senior Case Officer",
+    "team": "Compliance"
+  },
+  {
+    "id": "rachel-brown",
+    "name": "Rachel Brown",
+    "email": "rachel.brown@ofqual.gov.uk",
+    "role": "Case Officer",
+    "team": "Complaints"
+  },
+  {
+    "id": "chris-green",
+    "name": "Chris Green",
+    "email": "chris.green@ofqual.gov.uk",
+    "role": "Case Officer",
+    "team": "Recognition"
+  }
+]

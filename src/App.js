@@ -15,6 +15,8 @@ import MessageCompose from './pages/MessageCompose';
 import AdminDataSeeding from './pages/AdminDataSeeding';
 import History from './pages/History';
 import AddCaseNote from './pages/AddCaseNote';
+import Dashboard from './pages/Dashboard';
+import TeamDashboard from './pages/TeamDashboard';
 import RegulatedOrganisations from './pages/RegulatedOrganisations';
 import ProspectiveOrganisations from './pages/ProspectiveOrganisations';
 import SubjectMatterSpecialists from './pages/SubjectMatterSpecialists';
@@ -40,6 +42,8 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/team" element={<TeamDashboard />} />
             <Route path="/cases" element={<CaseList />} />
             <Route path="/case/:id" element={<CaseInformation />} />
             <Route path="/case/:caseId/record-note" element={<RecordCaseNote />} />
@@ -58,7 +62,7 @@ function App() {
             <Route path="/profiles/prospective-organisations" element={<ProspectiveOrganisations />} />
             <Route path="/profiles/subject-matter-specialists" element={<SubjectMatterSpecialists />} />
             <Route path="/admin/seed-data" element={<AdminDataSeeding />} />
-            <Route path="/" element={<Navigate to="/cases-v2" replace />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Routes>
         </Router>
         <Footer />

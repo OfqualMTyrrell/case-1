@@ -25,6 +25,16 @@ p {
   letter-spacing: 0 !important;
 }
 
+/* Exclude Carbon Charts from global font overrides */
+.cds--cc--chart-wrapper *,
+.cds--cc--legend *,
+.cds--cc--tooltip *,
+.cds--cc--axes * {
+  font-size: revert !important;
+  line-height: revert !important;
+  letter-spacing: revert !important;
+}
+
 body {
   margin: 0;
   font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

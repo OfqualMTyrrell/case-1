@@ -1,0 +1,38 @@
+[
+  {
+    "id": "assign-caseworker",
+    "title": "Assign caseworker",
+    "caseId": "OFQ-1001",
+    "caseTitle": "APUK - Statement of Compliance 2025",
+    "stage": "Triage",
+    "stageId": "triage",
+    "startedDate": "2026-01-13T10:30:00.000Z"
+  },
+  {
+    "id": "record-meeting-date",
+    "title": "Record meeting date",
+    "caseId": "OFQ-1002",
+    "caseTitle": "TechCorp Ltd - Complaint Investigation",
+    "stage": "Review",
+    "stageId": "review",
+    "startedDate": "2026-01-12T14:20:00.000Z"
+  },
+  {
+    "id": "add-review-notes",
+    "title": "Add review notes",
+    "caseId": "OFQ-1006",
+    "caseTitle": "Global Finance - Information Request",
+    "stage": "Review",
+    "stageId": "review",
+    "startedDate": "2026-01-11T09:15:00.000Z"
+  },
+  {
+    "id": "assign-recognition-assessor",
+    "title": "Assign recognition assessor",
+    "caseId": "OFQ-1025",
+    "caseTitle": "Innovation Institute - Recognition Application",
+    "stage": "Triage",
+    "stageId": "triage",
+    "startedDate": "2026-01-10T16:45:00.000Z"
+  }
+]
