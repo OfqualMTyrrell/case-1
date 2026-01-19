@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    { "id": "1", "label": "Organisation A", "category": "organisation" },
+    { "id": "2", "label": "Event B", "category": "event" },
+    { "id": "3", "label": "Qualification Type C", "category": "qualification type" }
+  ],
+  "links": [
+    { "source": "1", "target": "2" },
+    { "source": "2", "target": "3" }
+  ]
+}

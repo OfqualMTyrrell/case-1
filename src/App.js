@@ -15,12 +15,8 @@ import MessageCompose from './pages/MessageCompose';
 import AdminDataSeeding from './pages/AdminDataSeeding';
 import History from './pages/History';
 import AddCaseNote from './pages/AddCaseNote';
-import Dashboard from './pages/Dashboard';
-import TeamDashboard from './pages/TeamDashboard';
-import RegulatedOrganisations from './pages/RegulatedOrganisations';
-import ProspectiveOrganisations from './pages/ProspectiveOrganisations';
-import SubjectMatterSpecialists from './pages/SubjectMatterSpecialists';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
+import GraphPage from './pages/GraphPage';
 import '@carbon/styles/css/styles.css';
 import './App.css';
 import Footer from './components/Footer';
@@ -42,8 +38,6 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/team" element={<TeamDashboard />} />
             <Route path="/cases" element={<CaseList />} />
             <Route path="/case/:id" element={<CaseInformation />} />
             <Route path="/case/:caseId/record-note" element={<RecordCaseNote />} />
@@ -58,11 +52,9 @@ function App() {
             <Route path="/case/:caseId/tasks/:stageId/:taskId" element={<TaskDetail />} />
             <Route path="/case/:caseId/tasks/:stageId/:taskId/edit" element={<TaskDetail />} />
             <Route path="/case/:caseId/tasks/:stageId/:taskId/check" element={<TaskCheckAnswers />} />
-            <Route path="/profiles/regulated-organisations" element={<RegulatedOrganisations />} />
-            <Route path="/profiles/prospective-organisations" element={<ProspectiveOrganisations />} />
-            <Route path="/profiles/subject-matter-specialists" element={<SubjectMatterSpecialists />} />
             <Route path="/admin/seed-data" element={<AdminDataSeeding />} />
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/graph" element={<GraphPage />} />
+            <Route path="/" element={<Navigate to="/cases-v2" replace />} />
           </Routes>
         </Router>
         <Footer />
