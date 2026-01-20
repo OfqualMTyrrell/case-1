@@ -1,121 +1,527 @@
 {
   "nodes": [
-    { "id": "1", "label": "Acorn Awards", "category": "organisation" },
-    { "id": "2", "label": "Brittas Leisure Training Ltd", "category": "organisation" },
-    { "id": "3", "label": "Grace Brothers", "category": "organisation" },
-    { "id": "4", "label": "Reynholm Industries Training", "category": "organisation" },
-    { "id": "5", "label": "Nabootique", "category": "organisation" },
-    { "id": "6", "label": "Pear Tree Qualifications", "category": "organisation" },
-    { "id": "7", "label": "Perfect Curve", "category": "organisation" },
-
-    { "id": "8", "label": "GCSE (9-1)", "category": "qualification type" },
-    { "id": "9", "label": "BTEC", "category": "qualification type" },
-    { "id": "10", "label": "A level", "category": "qualification type" },
-    { "id": "11", "label": "T Level", "category": "qualification type" },
-    { "id": "12", "label": "Apprenticeship", "category": "qualification type" },
-    { "id": "13", "label": "AS", "category": "qualification type" },
-
-    { "id": "14", "label": "Current scope", "category": "event" },
-    { "id": "15", "label": "Applied expansion", "category": "event" },
-    { "id": "16", "label": "Event notification", "category": "event" },
-    { "id": "17", "label": "Withdrawal", "category": "event" },
-    { "id": "18", "label": "Surrender", "category": "event" },
-    { "id": "19", "label": "Prospective application", "category": "event" },
-
-    { "id": "20", "label": "Acorn Awards Level 1/2 GCSE (9-1) in Mathematics", "category": "qualification" },
-    { "id": "21", "label": "Acorn Awards Level 1/2 GCSE (9-1) in English Language", "category": "qualification" },
-    { "id": "22", "label": "Acorn Awards Level 1/2 GCSE (9-1) in English Literature", "category": "qualification" },
-    { "id": "23", "label": "Acorn Awards Level 1/2 GCSE (9-1) in Biology", "category": "qualification" },
-    { "id": "24", "label": "Acorn Awards Level 1/2 GCSE (9-1) in Chemistry", "category": "qualification" },
-    { "id": "25", "label": "Acorn Awards Level 1/2 GCSE (9-1) in Physics", "category": "qualification" },
-    { "id": "26", "label": "Acorn Awards Level 1/2 GCSE (9-1) in Combined Science", "category": "qualification" },
-    { "id": "27", "label": "Acorn Awards Level 1/2 GCSE (9-1) in History", "category": "qualification" },
-    { "id": "28", "label": "Acorn Awards Level 1/2 GCSE (9-1) in Geography", "category": "qualification" },
-    { "id": "29", "label": "Acorn Awards Level 1/2 GCSE (9-1) in French", "category": "qualification" },
-    { "id": "30", "label": "Acorn Awards Level 1/2 GCSE (9-1) in Spanish", "category": "qualification" },
-    { "id": "31", "label": "Acorn Awards Level 1/2 GCSE (9-1) in Computer Science", "category": "qualification" },
-
-    { "id": "32", "label": "Brittas Leisure Training Ltd Level 3 A level in Biology", "category": "qualification" },
-    { "id": "33", "label": "Brittas Leisure Training Ltd Level 3 A level in Chemistry", "category": "qualification" },
-    { "id": "34", "label": "Brittas Leisure Training Ltd Level 3 A level in Physics", "category": "qualification" },
-    { "id": "35", "label": "Brittas Leisure Training Ltd Level 3 A level in Mathematics", "category": "qualification" },
-    { "id": "36", "label": "Brittas Leisure Training Ltd Level 3 A level in Further Mathematics", "category": "qualification" },
-    { "id": "37", "label": "Brittas Leisure Training Ltd Level 3 A level in English Literature", "category": "qualification" },
-    { "id": "38", "label": "Brittas Leisure Training Ltd Level 3 A level in English Language", "category": "qualification" },
-    { "id": "39", "label": "Brittas Leisure Training Ltd Level 3 A level in Psychology", "category": "qualification" },
-    { "id": "40", "label": "Brittas Leisure Training Ltd Level 3 A level in Sociology", "category": "qualification" },
-    { "id": "41", "label": "Brittas Leisure Training Ltd Level 3 A level in Geography", "category": "qualification" },
-    { "id": "42", "label": "Brittas Leisure Training Ltd Level 3 A level in History", "category": "qualification" },
-    { "id": "43", "label": "Brittas Leisure Training Ltd Level 3 A level in Economics", "category": "qualification" },
-
-    { "id": "44", "label": "Nabootique Level 3 AS in Mathematics A", "category": "qualification" },
-    { "id": "45", "label": "Nabootique Level 3 AS in Further Mathematics", "category": "qualification" },
-    { "id": "46", "label": "Nabootique Level 3 AS in Physics A", "category": "qualification" },
-    { "id": "47", "label": "Nabootique Level 3 AS in Chemistry A", "category": "qualification" },
-    { "id": "48", "label": "Nabootique Level 3 AS in Biology A", "category": "qualification" },
-    { "id": "49", "label": "Nabootique Level 3 AS in English Literature", "category": "qualification" },
-    { "id": "50", "label": "Nabootique Level 3 AS in Geography", "category": "qualification" },
-    { "id": "51", "label": "Nabootique Level 3 AS in History A", "category": "qualification" },
-    { "id": "52", "label": "Nabootique Level 3 AS in Law", "category": "qualification" },
-    { "id": "53", "label": "Nabootique Level 3 AS in Psychology", "category": "qualification" },
-    { "id": "54", "label": "Nabootique Level 3 AS in Computer Science", "category": "qualification" },
-    { "id": "55", "label": "Nabootique Level 3 AS in Economics", "category": "qualification" },
-
-    { "id": "56", "label": "Acorn Awards Level 3 BTEC National in Applied Science", "category": "qualification" },
-    { "id": "57", "label": "Acorn Awards Level 3 BTEC National in Business", "category": "qualification" },
-    { "id": "58", "label": "Acorn Awards Level 3 BTEC National in Engineering", "category": "qualification" },
-    { "id": "59", "label": "Acorn Awards Level 3 BTEC National in Health and Social Care", "category": "qualification" },
-    { "id": "60", "label": "Acorn Awards Level 3 BTEC National in Information Technology", "category": "qualification" },
-    { "id": "61", "label": "Acorn Awards Level 3 BTEC National in Creative Media Production", "category": "qualification" },
-    { "id": "62", "label": "Acorn Awards Level 3 BTEC National in Sport", "category": "qualification" },
-    { "id": "63", "label": "Acorn Awards Level 3 BTEC National in Performing Arts", "category": "qualification" },
-    { "id": "64", "label": "Acorn Awards Level 3 BTEC National in Travel and Tourism", "category": "qualification" },
-    { "id": "65", "label": "Acorn Awards Level 3 BTEC National in Uniformed Protective Services", "category": "qualification" },
-    { "id": "66", "label": "Acorn Awards Level 3 BTEC National in Construction", "category": "qualification" },
-    { "id": "67", "label": "Acorn Awards Level 3 BTEC National in Esports", "category": "qualification" },
-
-    { "id": "68", "label": "Pear Tree Qualifications Level 3 Apprenticeship – Business Administrator", "category": "qualification" },
-    { "id": "69", "label": "Pear Tree Qualifications Level 3 Apprenticeship – Team Leader/Supervisor", "category": "qualification" },
-    { "id": "70", "label": "Pear Tree Qualifications Level 4 Apprenticeship – Data Analyst", "category": "qualification" },
-    { "id": "71", "label": "Pear Tree Qualifications Level 4 Apprenticeship – Software Developer", "category": "qualification" },
-    { "id": "72", "label": "Pear Tree Qualifications Level 4 Apprenticeship – Cyber Security Technologist", "category": "qualification" },
-    { "id": "73", "label": "Pear Tree Qualifications Level 3 Apprenticeship – Installation and Maintenance Electrician", "category": "qualification" },
-    { "id": "74", "label": "Pear Tree Qualifications Level 3 Apprenticeship – Plumbing and Domestic Heating Technician", "category": "qualification" },
-    { "id": "75", "label": "Pear Tree Qualifications Level 3 Apprenticeship – Engineering Technician", "category": "qualification" },
-    { "id": "76", "label": "Pear Tree Qualifications Level 3 Apprenticeship – Early Years Educator", "category": "qualification" },
-    { "id": "77", "label": "Pear Tree Qualifications Level 3 Apprenticeship – HR Support", "category": "qualification" },
-    { "id": "78", "label": "Pear Tree Qualifications Level 3 Apprenticeship – Assistant Accountant", "category": "qualification" },
-    { "id": "79", "label": "Pear Tree Qualifications Level 6 Apprenticeship – Chartered Manager", "category": "qualification" }
-   
+    {
+      "id": "1",
+      "label": "Acorn Awards",
+      "category": "organisation"
+    },
+    {
+      "id": "2",
+      "label": "Brittas Leisure Training Ltd",
+      "category": "organisation"
+    },
+    {
+      "id": "3",
+      "label": "Grace Brothers",
+      "category": "organisation"
+    },
+    {
+      "id": "4",
+      "label": "Reynholm Industries Training",
+      "category": "organisation"
+    },
+    {
+      "id": "5",
+      "label": "Nabootique",
+      "category": "organisation"
+    },
+    {
+      "id": "6",
+      "label": "Pear Tree Qualifications",
+      "category": "organisation"
+    },
+    {
+      "id": "7",
+      "label": "Perfect Curve",
+      "category": "organisation"
+    },
+    {
+      "id": "8",
+      "label": "GCSE (9-1)",
+      "category": "qualification type"
+    },
+    {
+      "id": "9",
+      "label": "BTEC",
+      "category": "qualification type"
+    },
+    {
+      "id": "10",
+      "label": "A level",
+      "category": "qualification type"
+    },
+    {
+      "id": "11",
+      "label": "T Level",
+      "category": "qualification type"
+    },
+    {
+      "id": "12",
+      "label": "Apprenticeship",
+      "category": "qualification type"
+    },
+    {
+      "id": "13",
+      "label": "AS",
+      "category": "qualification type"
+    },
+    {
+      "id": "20",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in Mathematics",
+      "category": "qualification"
+    },
+    {
+      "id": "21",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in English Language",
+      "category": "qualification"
+    },
+    {
+      "id": "22",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in English Literature",
+      "category": "qualification"
+    },
+    {
+      "id": "23",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in Biology",
+      "category": "qualification"
+    },
+    {
+      "id": "24",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in Chemistry",
+      "category": "qualification"
+    },
+    {
+      "id": "25",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in Physics",
+      "category": "qualification"
+    },
+    {
+      "id": "26",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in Combined Science",
+      "category": "qualification"
+    },
+    {
+      "id": "27",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in History",
+      "category": "qualification"
+    },
+    {
+      "id": "28",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in Geography",
+      "category": "qualification"
+    },
+    {
+      "id": "29",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in French",
+      "category": "qualification"
+    },
+    {
+      "id": "30",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in Spanish",
+      "category": "qualification"
+    },
+    {
+      "id": "31",
+      "label": "Acorn Awards Level 1/2 GCSE (9-1) in Computer Science",
+      "category": "qualification"
+    },
+    {
+      "id": "32",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Biology",
+      "category": "qualification"
+    },
+    {
+      "id": "33",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Chemistry",
+      "category": "qualification"
+    },
+    {
+      "id": "34",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Physics",
+      "category": "qualification"
+    },
+    {
+      "id": "35",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Mathematics",
+      "category": "qualification"
+    },
+    {
+      "id": "36",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Further Mathematics",
+      "category": "qualification"
+    },
+    {
+      "id": "37",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in English Literature",
+      "category": "qualification"
+    },
+    {
+      "id": "38",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in English Language",
+      "category": "qualification"
+    },
+    {
+      "id": "39",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Psychology",
+      "category": "qualification"
+    },
+    {
+      "id": "40",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Sociology",
+      "category": "qualification"
+    },
+    {
+      "id": "41",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Geography",
+      "category": "qualification"
+    },
+    {
+      "id": "42",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in History",
+      "category": "qualification"
+    },
+    {
+      "id": "43",
+      "label": "Brittas Leisure Training Ltd Level 3 A level in Economics",
+      "category": "qualification"
+    },
+    {
+      "id": "44",
+      "label": "Nabootique Level 3 AS in Mathematics A",
+      "category": "qualification"
+    },
+    {
+      "id": "45",
+      "label": "Nabootique Level 3 AS in Further Mathematics",
+      "category": "qualification"
+    },
+    {
+      "id": "46",
+      "label": "Nabootique Level 3 AS in Physics A",
+      "category": "qualification"
+    },
+    {
+      "id": "47",
+      "label": "Nabootique Level 3 AS in Chemistry A",
+      "category": "qualification"
+    },
+    {
+      "id": "48",
+      "label": "Nabootique Level 3 AS in Biology A",
+      "category": "qualification"
+    },
+    {
+      "id": "49",
+      "label": "Nabootique Level 3 AS in English Literature",
+      "category": "qualification"
+    },
+    {
+      "id": "50",
+      "label": "Nabootique Level 3 AS in Geography",
+      "category": "qualification"
+    },
+    {
+      "id": "51",
+      "label": "Nabootique Level 3 AS in History A",
+      "category": "qualification"
+    },
+    {
+      "id": "52",
+      "label": "Nabootique Level 3 AS in Law",
+      "category": "qualification"
+    },
+    {
+      "id": "53",
+      "label": "Nabootique Level 3 AS in Psychology",
+      "category": "qualification"
+    },
+    {
+      "id": "54",
+      "label": "Nabootique Level 3 AS in Computer Science",
+      "category": "qualification"
+    },
+    {
+      "id": "55",
+      "label": "Nabootique Level 3 AS in Economics",
+      "category": "qualification"
+    },
+    {
+      "id": "56",
+      "label": "Acorn Awards Level 3 BTEC National in Applied Science",
+      "category": "qualification"
+    },
+    {
+      "id": "57",
+      "label": "Acorn Awards Level 3 BTEC National in Business",
+      "category": "qualification"
+    },
+    {
+      "id": "58",
+      "label": "Acorn Awards Level 3 BTEC National in Engineering",
+      "category": "qualification"
+    },
+    {
+      "id": "59",
+      "label": "Acorn Awards Level 3 BTEC National in Health and Social Care",
+      "category": "qualification"
+    },
+    {
+      "id": "60",
+      "label": "Acorn Awards Level 3 BTEC National in Information Technology",
+      "category": "qualification"
+    },
+    {
+      "id": "61",
+      "label": "Acorn Awards Level 3 BTEC National in Creative Media Production",
+      "category": "qualification"
+    },
+    {
+      "id": "62",
+      "label": "Acorn Awards Level 3 BTEC National in Sport",
+      "category": "qualification"
+    },
+    {
+      "id": "63",
+      "label": "Acorn Awards Level 3 BTEC National in Performing Arts",
+      "category": "qualification"
+    },
+    {
+      "id": "64",
+      "label": "Acorn Awards Level 3 BTEC National in Travel and Tourism",
+      "category": "qualification"
+    },
+    {
+      "id": "65",
+      "label": "Acorn Awards Level 3 BTEC National in Uniformed Protective Services",
+      "category": "qualification"
+    },
+    {
+      "id": "66",
+      "label": "Acorn Awards Level 3 BTEC National in Construction",
+      "category": "qualification"
+    },
+    {
+      "id": "67",
+      "label": "Acorn Awards Level 3 BTEC National in Esports",
+      "category": "qualification"
+    },
+    {
+      "id": "68",
+      "label": "Pear Tree Qualifications Level 3 Apprenticeship – Business Administrator",
+      "category": "qualification"
+    },
+    {
+      "id": "69",
+      "label": "Pear Tree Qualifications Level 3 Apprenticeship – Team Leader/Supervisor",
+      "category": "qualification"
+    },
+    {
+      "id": "70",
+      "label": "Pear Tree Qualifications Level 4 Apprenticeship – Data Analyst",
+      "category": "qualification"
+    },
+    {
+      "id": "71",
+      "label": "Pear Tree Qualifications Level 4 Apprenticeship – Software Developer",
+      "category": "qualification"
+    },
+    {
+      "id": "72",
+      "label": "Pear Tree Qualifications Level 4 Apprenticeship – Cyber Security Technologist",
+      "category": "qualification"
+    },
+    {
+      "id": "73",
+      "label": "Pear Tree Qualifications Level 3 Apprenticeship – Installation and Maintenance Electrician",
+      "category": "qualification"
+    },
+    {
+      "id": "74",
+      "label": "Pear Tree Qualifications Level 3 Apprenticeship – Plumbing and Domestic Heating Technician",
+      "category": "qualification"
+    },
+    {
+      "id": "75",
+      "label": "Pear Tree Qualifications Level 3 Apprenticeship – Engineering Technician",
+      "category": "qualification"
+    },
+    {
+      "id": "76",
+      "label": "Pear Tree Qualifications Level 3 Apprenticeship – Early Years Educator",
+      "category": "qualification"
+    },
+    {
+      "id": "77",
+      "label": "Pear Tree Qualifications Level 3 Apprenticeship – HR Support",
+      "category": "qualification"
+    },
+    {
+      "id": "78",
+      "label": "Pear Tree Qualifications Level 3 Apprenticeship – Assistant Accountant",
+      "category": "qualification"
+    },
+    {
+      "id": "79",
+      "label": "Pear Tree Qualifications Level 6 Apprenticeship – Chartered Manager",
+      "category": "qualification"
+    },
+    {
+      "id": "s-1-8",
+      "label": "Current scope (Acorn Awards × GCSE (9-1))",
+      "category": "scope",
+      "event": "Current scope",
+      "orgId": "1",
+      "typeId": "8"
+    },
+    {
+      "id": "s-1-9",
+      "label": "Applied expansion (Acorn Awards × BTEC)",
+      "category": "scope",
+      "event": "Applied expansion",
+      "orgId": "1",
+      "typeId": "9"
+    }
   ],
   "links": [
-    { "source": "1", "target": "14" },
-    { "source": "14", "target": "8" },
-    { "source": "1", "target": "15" },
-    { "source": "15", "target": "9" },
-    { "source": "8", "target": "20" },
-    { "source": "8", "target": "21" },
-    { "source": "8", "target": "22" },
-    { "source": "8", "target": "23" },
-    { "source": "8", "target": "24" },
-    { "source": "8", "target": "25" },
-    { "source": "8", "target": "26" },
-    { "source": "8", "target": "27" },
-    { "source": "8", "target": "28" },
-    { "source": "8", "target": "29" },
-    { "source": "8", "target": "30" },
-    { "source": "8", "target": "31" },
-    { "source": "9", "target": "56" },
-    { "source": "9", "target": "57" },
-    { "source": "9", "target": "58" },
-    { "source": "9", "target": "59" },
-    { "source": "9", "target": "60" },
-    { "source": "9", "target": "61" },
-    { "source": "9", "target": "62" },
-    { "source": "9", "target": "63" },
-    { "source": "9", "target": "64" },
-    { "source": "9", "target": "65" },
-    { "source": "9", "target": "66" },
-    { "source": "9", "target": "67" }
+    {
+      "source": "1",
+      "target": "s-1-8",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "s-1-8",
+      "target": "8",
+      "type": "FOR_TYPE"
+    },
+    {
+      "source": "1",
+      "target": "s-1-9",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "s-1-9",
+      "target": "9",
+      "type": "FOR_TYPE"
+    },
+    {
+      "source": "s-1-9",
+      "target": "56",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "57",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "58",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "59",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "60",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "61",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "62",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "63",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "64",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "65",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "66",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-9",
+      "target": "67",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "20",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "21",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "22",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "23",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "24",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "25",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "26",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "27",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "28",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "29",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "30",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-8",
+      "target": "31",
+      "type": "INCLUDES"
+    }
   ]
 }
