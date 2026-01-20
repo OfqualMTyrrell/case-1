@@ -6,7 +6,8 @@
     "riskLevel": "High",
     "dateIdentified": "2025-11-15",
     "status": "Active",
-    "mitigation": "Security audit scheduled for January 2026, immediate patching of critical vulnerabilities underway"
+    "mitigation": "Security audit scheduled for January 2026, immediate patching of critical vulnerabilities underway",
+    "rnNumber": "RN5123"
   },
   {
     "id": "RISK-002",
@@ -15,7 +16,8 @@
     "riskLevel": "Medium",
     "dateIdentified": "2025-11-28",
     "status": "Active",
-    "mitigation": "Infrastructure modernization project initiated, temporary capacity expansion in place"
+    "mitigation": "Infrastructure modernization project initiated, temporary capacity expansion in place",
+    "rnNumber": "RN5123"
   },
   {
     "id": "RISK-003",
@@ -24,7 +26,8 @@
     "riskLevel": "Medium-High",
     "dateIdentified": "2025-12-08",
     "status": "Mitigated",
-    "mitigation": "Additional 45 markers recruited and training completed. Contingency plan established with partner organizations."
+    "mitigation": "Additional 45 markers recruited and training completed. Contingency plan established with partner organizations.",
+    "rnNumber": "RN5123"
   },
   {
     "id": "RISK-004",
@@ -33,7 +36,8 @@
     "riskLevel": "High",
     "dateIdentified": "2025-12-01",
     "status": "Active",
-    "mitigation": "New QA framework implementation underway. Enhanced centre monitoring and support programme launched."
+    "mitigation": "New QA framework implementation underway. Enhanced centre monitoring and support programme launched.",
+    "rnNumber": "RN5123"
   },
   {
     "id": "RISK-005",
@@ -42,7 +46,8 @@
     "riskLevel": "Medium",
     "dateIdentified": "2025-12-18",
     "status": "Active",
-    "mitigation": "Enhanced remote monitoring procedures being rolled out. Investment in monitoring technology approved."
+    "mitigation": "Enhanced remote monitoring procedures being rolled out. Investment in monitoring technology approved.",
+    "rnNumber": "RN5142"
   },
   {
     "id": "RISK-006",
@@ -51,7 +56,8 @@
     "riskLevel": "Low",
     "dateIdentified": "2025-11-25",
     "status": "Closed",
-    "mitigation": "System patch applied successfully. No evidence of exploitation. Enhanced monitoring in place."
+    "mitigation": "System patch applied successfully. No evidence of exploitation. Enhanced monitoring in place.",
+    "rnNumber": "RN5142"
   },
   {
     "id": "RISK-007",
@@ -60,6 +66,7 @@
     "riskLevel": "Medium-High",
     "dateIdentified": "2025-12-10",
     "status": "Active",
-    "mitigation": "AI-enhanced detection tools under evaluation. Partnership with technology providers to develop countermeasures."
+    "mitigation": "AI-enhanced detection tools under evaluation. Partnership with technology providers to develop countermeasures.",
+    "rnNumber": "RN5142"
   }
 ]

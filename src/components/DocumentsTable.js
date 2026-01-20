@@ -131,9 +131,9 @@ const DocumentsTable = ({ documents }) => {
 
   const headers = [
     { key: 'name', header: 'Document name' },
+    { key: 'aiSummary', header: 'AI Summary' },
     { key: 'type', header: 'Type' },
-    { key: 'date', header: 'Date' },
-    { key: 'aiSummary', header: 'AI Summary' }
+    { key: 'date', header: 'Date' }
   ];
 
   return (
