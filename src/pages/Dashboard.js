@@ -30,7 +30,6 @@ import DashboardHeader from '../components/DashboardHeader';
 import casesData from '../cases.json';
 import activityData from '../data/dashboard-activity.json';
 import messagesData from '../data/messages-data.json';
-import taskConfig from '../data/task-config.json';
 import seededTaskData from '../data/seeded-task-data.json';
 import inProgressTasksData from '../data/dashboard-tasks-data.json';
 import {
@@ -38,7 +37,6 @@ import {
   getActiveCasesCount,
   getSLAMetrics,
   getUserCases,
-  getCaseCompletionPercentage,
   getRelativeTime
 } from '../utils/dashboardUtils';
 
@@ -47,7 +45,6 @@ const Dashboard = () => {
   const [messageFilter, setMessageFilter] = useState(0); // 0=All, 1=Unread, 2=Sent
   const [activityDisplayCount, setActivityDisplayCount] = useState(5);
   const [casesDisplayCount, setCasesDisplayCount] = useState(5);
-  const [dataLoaded, setDataLoaded] = useState(false);
 
   // Load seeded task data on mount for demo purposes
   useEffect(() => {
@@ -78,8 +75,6 @@ const Dashboard = () => {
       sessionStorage.setItem('dashboard_seeded_data_loaded', 'true');
       console.log('Seeded task data loaded successfully');
     }
-    
-    setDataLoaded(true);
   }, []);
 
   // Calculate metrics using useMemo

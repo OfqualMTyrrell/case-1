@@ -6,7 +6,6 @@ import {
   Column,
   Tile,
   Layer,
-  Stack,
   Button,
   ClickableTile,
   ExpandableTile,
@@ -22,12 +21,11 @@ import {
   View,
   Email
 } from '@carbon/icons-react';
-import { LineChart, DonutChart, StackedBarChart, GaugeChart } from '@carbon/charts-react';
+import { DonutChart, StackedBarChart } from '@carbon/charts-react';
 import '@carbon/charts-react/styles.css';
 import AppHeader from '../components/AppHeader';
 import DashboardHeader from '../components/DashboardHeader';
 import casesData from '../cases.json';
-import activityData from '../data/application-data.json';
 import chartData from '../data/team-dashboard-charts.json';
 import {
   getActiveCasesCount,
@@ -59,7 +57,6 @@ const TeamDashboard = () => {
 
   // Team-wide metrics
   const activeCasesCount = useMemo(() => getActiveCasesCount(casesData), []);
-  const closedCasesCount = useMemo(() => casesData.filter(c => c.Status === 'Closed').length, []);
   const slaMetrics = useMemo(() => getSLAMetrics(casesData), []);
 
   // Calculate SLA compliance percentage
@@ -105,35 +102,6 @@ const TeamDashboard = () => {
   }, []);
 
   // Chart options with Carbon colors
-  const lineChartOptions = {
-    title: '',
-    axes: {
-      bottom: {
-        title: 'Date',
-        mapsTo: 'date',
-        scaleType: 'time'
-      },
-      left: {
-        mapsTo: 'value',
-        title: 'Open Cases',
-        scaleType: 'linear'
-      }
-    },
-    curve: 'curveMonotoneX',
-    height: '400px',
-    color: {
-      scale: {
-        'Open Cases': '#0f62fe'
-      }
-    },
-    toolbar: {
-      enabled: false
-    },
-    legend: {
-      enabled: false
-    }
-  };
-
   const donutChartOptions = {
     title: '',
     resizable: true,
@@ -188,26 +156,6 @@ const TeamDashboard = () => {
   // Calculate gauge status and percentage
   const capacityPercent = Math.round((chartData.teamCapacity.casesStarted / chartData.teamCapacity.totalCapacity) * 100);
   const gaugeStatus = capacityPercent < 80 ? 'success' : capacityPercent < 95 ? 'warning' : 'danger';
-
-  const gaugeChartOptions = {
-    title: '',
-    resizable: true,
-    gauge: {
-      type: 'semi',
-      status: gaugeStatus
-    },
-    height: '250px',
-    toolbar: {
-      enabled: false
-    }
-  };
-
-  const gaugeChartData = [
-    {
-      group: 'value',
-      value: capacityPercent
-    }
-  ];
 
   return (
     <>

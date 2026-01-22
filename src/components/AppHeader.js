@@ -6,7 +6,6 @@ import {
   HeaderName,
   HeaderNavigation,
   HeaderMenuItem,
-  HeaderMenu,
   HeaderGlobalBar,
   HeaderGlobalAction,
   HeaderPanel,
