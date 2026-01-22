@@ -7,6 +7,11 @@ import DocumentsTable from '../components/DocumentsTable';
 export const getFieldValue = (data, field) => {
   if (!data) return null;
   
+  // If field has a custom render function, use it
+  if (field.type === 'custom' && field.render) {
+    return field.render(data);
+  }
+  
   switch (field.type) {
     case 'nested':
       return getNestedValue(data, field.path);
@@ -63,6 +68,8 @@ export const renderFieldValue = (value, field) => {
   }
 
   switch (field.type) {
+    case 'custom':
+      return renderText(value);
     case 'multiline':
       return renderMultilineText(value);
     case 'files':

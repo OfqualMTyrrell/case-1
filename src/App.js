@@ -20,6 +20,15 @@ import TeamDashboard from './pages/TeamDashboard';
 import RegulatedOrganisations from './pages/RegulatedOrganisations';
 import ProspectiveOrganisations from './pages/ProspectiveOrganisations';
 import SubjectMatterSpecialists from './pages/SubjectMatterSpecialists';
+import OrganisationInformation from './pages/OrganisationInformation';
+import OrganisationCases from './pages/OrganisationCases';
+import OrganisationScope from './pages/OrganisationScope';
+import OrganisationQualifications from './pages/OrganisationQualifications';
+import OrganisationQualificationDetail from './pages/OrganisationQualificationDetail';
+import OrganisationRisks from './pages/OrganisationRisks';
+import OrganisationRiskDetail from './pages/OrganisationRiskDetail';
+import OrganisationUnits from './pages/OrganisationUnits';
+import OrganisationUsers from './pages/OrganisationUsers';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
 import '@carbon/styles/css/styles.css';
 import './App.css';
@@ -61,6 +70,15 @@ function App() {
             <Route path="/profiles/regulated-organisations" element={<RegulatedOrganisations />} />
             <Route path="/profiles/prospective-organisations" element={<ProspectiveOrganisations />} />
             <Route path="/profiles/subject-matter-specialists" element={<SubjectMatterSpecialists />} />
+            <Route path="/organisations/:rnNumber" element={<OrganisationInformation />} />
+            <Route path="/organisations/:rnNumber/cases" element={<OrganisationCases />} />
+            <Route path="/organisations/:rnNumber/scope" element={<OrganisationScope />} />
+            <Route path="/organisations/:rnNumber/qualifications" element={<OrganisationQualifications />} />
+            <Route path="/organisations/:rnNumber/qualifications/:accreditationNumber" element={<OrganisationQualificationDetail />} />
+            <Route path="/organisations/:rnNumber/risks" element={<OrganisationRisks />} />
+            <Route path="/organisations/:rnNumber/risks/:riskId" element={<OrganisationRiskDetail />} />
+            <Route path="/organisations/:rnNumber/units" element={<OrganisationUnits />} />
+            <Route path="/organisations/:rnNumber/users" element={<OrganisationUsers />} />
             <Route path="/admin/seed-data" element={<AdminDataSeeding />} />
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Routes>

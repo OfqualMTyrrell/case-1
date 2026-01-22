@@ -5,7 +5,269 @@
     "LegalName": "Assessment Partners United Kingdom Limited",
     "Acronym": "APUK",
     "RecognisedOn": "2018-03-15",
-    "PortfolioLead": "Sarah Black"
+    "PortfolioLead": "Sarah Black",
+    "CompanyNumber": "09876543",
+    "CompanyStatus": "Active",
+    "CompanyType": "Private limited company",
+    "RegisteredOfficeAddress": "45 Assessment House, Coventry Road, Birmingham, B10 0UB",
+    "IncorporatedOn": "2015-11-20",
+    "NextAccountsMadeUpTo": "2026-11-30",
+    "NextAccountsDueBy": "2027-08-31",
+    "LastAccountsMadeUpTo": "2025-11-30",
+    "Website": "https://www.apuk.org.uk",
+    "Email": "info@apuk.org.uk",
+    "OfqualRecognitionStatus": "Recognised",
+    "OfqualRecognisedFrom": "2018-03-15",
+    "OfqualRecognitionNumber": "RN5123",
+    "CCEARecognitionStatus": "Not recognised",
+    "CCEARecognisedFrom": null,
+    "CCEARecognitionNumber": null,
+    "officers": [
+      {
+        "name": "Sarah Mitchell",
+        "role": "Director",
+        "appointedOn": "2015-11-20",
+        "status": "Active"
+      },
+      {
+        "name": "James Peterson",
+        "role": "Director",
+        "appointedOn": "2015-11-20",
+        "status": "Active"
+      },
+      {
+        "name": "Emma Thompson",
+        "role": "Company Secretary",
+        "appointedOn": "2016-03-15",
+        "status": "Active"
+      }
+    ],
+    "personsWithSignificantControl": [
+      {
+        "name": "James Peterson",
+        "natureOfControl": "Ownership of shares - More than 25% but not more than 50%",
+        "notifiedOn": "2016-04-06"
+      },
+      {
+        "name": "Sarah Mitchell",
+        "natureOfControl": "Ownership of shares - More than 25% but not more than 50%",
+        "notifiedOn": "2016-04-06"
+      }
+    ],
+    "scope": [
+      {
+        "ssaCode": "6.1",
+        "ssaTier1": "Digital Technology",
+        "ssaTier2": "Digital technology (practitioners)",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "6.1",
+        "ssaTier1": "Digital Technology",
+        "ssaTier2": "Digital technology (practitioners)",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "4",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "6.1",
+        "ssaTier1": "Digital Technology",
+        "ssaTier2": "Digital technology (practitioners)",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "5",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "6.2",
+        "ssaTier1": "Digital Technology",
+        "ssaTier2": "Digital technology (users)",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 1",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "6.2",
+        "ssaTier1": "Digital Technology",
+        "ssaTier2": "Digital technology (users)",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "6.2",
+        "ssaTier1": "Digital Technology",
+        "ssaTier2": "Digital technology (users)",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "6.2",
+        "ssaTier1": "Digital Technology",
+        "ssaTier2": "Digital technology (users)",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "1",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "6.2",
+        "ssaTier1": "Digital Technology",
+        "ssaTier2": "Digital technology (users)",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.1",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Accounting and finance",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.1",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Accounting and finance",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.1",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Accounting and finance",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "4",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.2",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Administration",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.2",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Administration",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.3",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Business management",
+        "permissionType": "Regulatory Qualification Type - Apprenticeship Assessment Qualification",
+        "qualificationType": "Apprenticeship Assessment Qualification",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.3",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Business management",
+        "permissionType": "Regulatory Qualification Type - Apprenticeship Assessment Qualification",
+        "qualificationType": "Apprenticeship Assessment Qualification",
+        "level": "4",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.3",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Business management",
+        "permissionType": "Regulatory Qualification Type - Apprenticeship Assessment Qualification",
+        "qualificationType": "Apprenticeship Assessment Qualification",
+        "level": "5",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "15.3",
+        "ssaTier1": "Business, Administration and Law",
+        "ssaTier2": "Business management",
+        "permissionType": "Regulatory Qualification Type - Apprenticeship Assessment Qualification",
+        "qualificationType": "Apprenticeship Assessment Qualification",
+        "level": "6",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.1",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Science",
+        "permissionType": "Regulatory Qualification Type - GCSE (9 to 1)",
+        "qualificationType": "GCSE (9 to 1)",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.2",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Mathematics and statistics",
+        "permissionType": "Regulatory Qualification Type - GCE A Level",
+        "qualificationType": "GCE A Level",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "4.1",
+        "ssaTier1": "Engineering and Manufacturing Technologies",
+        "ssaTier2": "Engineering",
+        "permissionType": "Regulatory Qualification Type - Technical Qualification",
+        "qualificationType": "Technical Qualification",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "4.1",
+        "ssaTier1": "Engineering and Manufacturing Technologies",
+        "ssaTier2": "Engineering",
+        "permissionType": "Regulatory Qualification Type - Technical Qualification",
+        "qualificationType": "Technical Qualification",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "4.1",
+        "ssaTier1": "Engineering and Manufacturing Technologies",
+        "ssaTier2": "Engineering",
+        "permissionType": "Regulatory Qualification Type - Technical Qualification",
+        "qualificationType": "Technical Qualification",
+        "level": "4",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      }
+    ]
   },
   {
     "RNNumber": "RN5089",
@@ -94,5 +356,332 @@
     "Acronym": "STEMUK",
     "RecognisedOn": "2018-08-19",
     "PortfolioLead": "Alex Green"
+  },
+  {
+    "RNNumber": "RN5142",
+    "Name": "EduQual Solutions Ltd",
+    "LegalName": "EduQual Solutions Limited",
+    "Acronym": "EQS",
+    "RecognisedOn": "2018-06-14",
+    "PortfolioLead": "Sarah Black",
+    "CompanyNumber": "10234567",
+    "CompanyStatus": "Active",
+    "CompanyType": "Private limited company",
+    "RegisteredOfficeAddress": "12 Education Plaza, Oxford Street, Manchester, M1 4BT",
+    "IncorporatedOn": "2016-08-10",
+    "NextAccountsMadeUpTo": "2026-08-31",
+    "NextAccountsDueBy": "2027-05-31",
+    "LastAccountsMadeUpTo": "2025-08-31",
+    "Website": "https://www.eduqual.co.uk",
+    "Email": "contact@eduqual.co.uk",
+    "OfqualRecognitionStatus": "Recognised",
+    "OfqualRecognisedFrom": "2018-06-14",
+    "OfqualRecognitionNumber": "RN5142",
+    "CCEARecognitionStatus": "Recognised",
+    "CCEARecognisedFrom": "2019-09-01",
+    "CCEARecognitionNumber": "CCEA5142",
+    "officers": [
+      {
+        "name": "Jennifer Walsh",
+        "role": "Director",
+        "appointedOn": "2016-08-10",
+        "status": "Active"
+      },
+      {
+        "name": "Christopher Davies",
+        "role": "Director",
+        "appointedOn": "2016-08-10",
+        "status": "Active"
+      },
+      {
+        "name": "Patricia Evans",
+        "role": "Company Secretary",
+        "appointedOn": "2017-01-15",
+        "status": "Active"
+      },
+      {
+        "name": "Andrew Scott",
+        "role": "Director",
+        "appointedOn": "2020-03-22",
+        "status": "Active"
+      }
+    ],
+    "personsWithSignificantControl": [
+      {
+        "name": "Jennifer Walsh",
+        "natureOfControl": "Ownership of shares - More than 25% but not more than 50%",
+        "notifiedOn": "2016-10-15"
+      },
+      {
+        "name": "Christopher Davies",
+        "natureOfControl": "Ownership of shares - More than 25% but not more than 50%",
+        "notifiedOn": "2016-10-15"
+      }
+    ],
+    "scope": [
+      {
+        "ssaCode": "2.1",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Science",
+        "permissionType": "Regulatory Qualification Type - GCSE (9 to 1)",
+        "qualificationType": "GCSE (9 to 1)",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.1",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Science",
+        "permissionType": "Regulatory Qualification Type - GCE A Level",
+        "qualificationType": "GCE A Level",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.2",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Mathematics and statistics",
+        "permissionType": "Regulatory Qualification Type - GCSE (9 to 1)",
+        "qualificationType": "GCSE (9 to 1)",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.2",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Mathematics and statistics",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 1",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.2",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Mathematics and statistics",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.2",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Mathematics and statistics",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.2",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Mathematics and statistics",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "1",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "2.2",
+        "ssaTier1": "Science and Mathematics",
+        "ssaTier2": "Mathematics and statistics",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "7.1",
+        "ssaTier1": "Retail and Commercial Enterprise",
+        "ssaTier2": "Retailing and wholesaling",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "7.1",
+        "ssaTier1": "Retail and Commercial Enterprise",
+        "ssaTier2": "Retailing and wholesaling",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "1.3",
+        "ssaTier1": "Health, Public Services and Care",
+        "ssaTier2": "Health and social care",
+        "permissionType": "Regulatory Qualification Type - Apprenticeship Assessment Qualification",
+        "qualificationType": "Apprenticeship Assessment Qualification",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "1.3",
+        "ssaTier1": "Health, Public Services and Care",
+        "ssaTier2": "Health and social care",
+        "permissionType": "Regulatory Qualification Type - Apprenticeship Assessment Qualification",
+        "qualificationType": "Apprenticeship Assessment Qualification",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "1.3",
+        "ssaTier1": "Health, Public Services and Care",
+        "ssaTier2": "Health and social care",
+        "permissionType": "Regulatory Qualification Type - Apprenticeship Assessment Qualification",
+        "qualificationType": "Apprenticeship Assessment Qualification",
+        "level": "4",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "1.3",
+        "ssaTier1": "Health, Public Services and Care",
+        "ssaTier2": "Health and social care",
+        "permissionType": "Regulatory Qualification Type - Apprenticeship Assessment Qualification",
+        "qualificationType": "Apprenticeship Assessment Qualification",
+        "level": "5",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "4.2",
+        "ssaTier1": "Engineering and Manufacturing Technologies",
+        "ssaTier2": "Manufacturing technologies",
+        "permissionType": "Regulatory Qualification Type - Technical Qualification",
+        "qualificationType": "Technical Qualification",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "4.2",
+        "ssaTier1": "Engineering and Manufacturing Technologies",
+        "ssaTier2": "Manufacturing technologies",
+        "permissionType": "Regulatory Qualification Type - Technical Qualification",
+        "qualificationType": "Technical Qualification",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "8.1",
+        "ssaTier1": "Leisure, Travel and Tourism",
+        "ssaTier2": "Sport, leisure and recreation",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "8.1",
+        "ssaTier1": "Leisure, Travel and Tourism",
+        "ssaTier2": "Sport, leisure and recreation",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "8.1",
+        "ssaTier1": "Leisure, Travel and Tourism",
+        "ssaTier2": "Sport, leisure and recreation",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "4",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "9.3",
+        "ssaTier1": "Arts, Media and Publishing",
+        "ssaTier2": "Media and communication",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "9.3",
+        "ssaTier1": "Arts, Media and Publishing",
+        "ssaTier2": "Media and communication",
+        "permissionType": "Qualifications subject only to the General Conditions of Recognition",
+        "level": "3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "14.1",
+        "ssaTier1": "Preparation for Life and Work",
+        "ssaTier2": "Foundations for learning and life",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 1",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "14.1",
+        "ssaTier1": "Preparation for Life and Work",
+        "ssaTier2": "Foundations for learning and life",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "14.1",
+        "ssaTier1": "Preparation for Life and Work",
+        "ssaTier2": "Foundations for learning and life",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "Entry 3",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "14.1",
+        "ssaTier1": "Preparation for Life and Work",
+        "ssaTier2": "Foundations for learning and life",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "1",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "14.1",
+        "ssaTier1": "Preparation for Life and Work",
+        "ssaTier2": "Foundations for learning and life",
+        "permissionType": "Regulatory Qualification Type - Functional Skills",
+        "qualificationType": "Functional Skills",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      },
+      {
+        "ssaCode": "12.2",
+        "ssaTier1": "Languages, Literature and Culture",
+        "ssaTier2": "Other languages, literature and culture",
+        "permissionType": "Regulatory Qualification Type - GCSE (9 to 1)",
+        "qualificationType": "GCSE (9 to 1)",
+        "level": "2",
+        "status": "Active",
+        "scopeInclusion": "Included"
+      }
+    ]
   }
 ]

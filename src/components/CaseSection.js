@@ -3,8 +3,10 @@ import {
   StructuredListWrapper,
   StructuredListBody,
   StructuredListRow,
-  StructuredListCell
+  StructuredListCell,
+  Link
 } from '@carbon/react';
+import { ArrowRight } from '@carbon/icons-react';
 import { getFieldValue, renderFieldValue } from '../utils/fieldRenderer';
 
 const CaseSection = ({ section, data, style = {}, sectionId }) => {
@@ -37,9 +39,33 @@ const CaseSection = ({ section, data, style = {}, sectionId }) => {
         fontSize: '1.25rem', 
         marginBottom: '1rem', 
         marginTop: '0.5rem',
-        fontWeight: 400 
+        fontWeight: 400,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'baseline'
       }}>
-        {section.title}
+        <span>{section.title}</span>
+        {section.dataSource && (
+          <span style={{
+            fontSize: '0.75rem',
+            fontWeight: 400
+          }}>
+            {typeof section.dataSource === 'object' ? (
+              <Link 
+                href={section.dataSource.href} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                renderIcon={ArrowRight}
+              >
+                {section.dataSource.text}
+              </Link>
+            ) : (
+              <span style={{ color: '#6f6f6f', fontStyle: 'italic' }}>
+                {section.dataSource}
+              </span>
+            )}
+          </span>
+        )}
       </h2>
       
       {/* Render regular fields in structured list */}
