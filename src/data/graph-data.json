@@ -366,10 +366,31 @@
       "category": "qualification"
     },
     {
+      "id": "80",
+      "label": "General Condition B8",
+      "category": "organisation"
+    },
+    {
       "id": "s-1-8",
       "label": "Current scope (Acorn Awards × GCSE (9-1))",
       "category": "scope",
       "event": "Current scope",
+      "orgId": "1",
+      "typeId": "8"
+    },
+    {
+      "id": "s-1-en",
+      "label": "Event notifications (Acorn Awards)",
+      "category": "scope",
+      "event": "Event notifications",
+      "orgId": "1",
+      "typeId": "8"
+    },
+    {
+      "id": "s-1-en-1195",
+      "label": "Event notification (ID: OFQ-1195)",
+      "category": "scope",
+      "event": "Event OFQ-1195",
       "orgId": "1",
       "typeId": "8"
     },
@@ -380,6 +401,46 @@
       "event": "Applied expansion",
       "orgId": "1",
       "typeId": "9"
+    },
+    {
+      "id": "s-2-10",
+      "label": "Withdrawal (Brittas Leisure Training Ltd × A level)",
+      "category": "scope",
+      "event": "Withdrawal",
+      "orgId": "2",
+      "typeId": "10"
+    },
+    {
+      "id": "s-5-13",
+      "label": "Prospective application (Nabootique × AS)",
+      "category": "scope",
+      "event": "Prospective application",
+      "orgId": "5",
+      "typeId": "13"
+    },
+    {
+      "id": "s-6-12",
+      "label": "Current scope (Pear Tree Qualifications × Apprenticeship)",
+      "category": "scope",
+      "event": "Current scope",
+      "orgId": "6",
+      "typeId": "12"
+    },
+    {
+      "id": "s-oa",
+      "label": "Ofqual Audit",
+      "category": "scope",
+      "event": "Ofqual Audit",
+      "orgId": null,
+      "typeId": null
+    },
+    {
+      "id": "s-oa-1217",
+      "label": "Ofqual Audit (ID: OFQ-1217)",
+      "category": "scope",
+      "event": "Ofqual Audit OFQ-1217",
+      "orgId": "6",
+      "typeId": null
     }
   ],
   "links": [
@@ -395,6 +456,16 @@
     },
     {
       "source": "1",
+      "target": "s-1-en",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "s-1-en",
+      "target": "s-1-en-1195",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "1",
       "target": "s-1-9",
       "type": "HAS_SCOPE"
     },
@@ -402,6 +473,221 @@
       "source": "s-1-9",
       "target": "9",
       "type": "FOR_TYPE"
+    },
+    {
+      "source": "2",
+      "target": "s-2-10",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "s-2-10",
+      "target": "10",
+      "type": "FOR_TYPE"
+    },
+    {
+      "source": "5",
+      "target": "s-5-13",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "s-5-13",
+      "target": "13",
+      "type": "FOR_TYPE"
+    },
+    {
+      "source": "6",
+      "target": "s-6-12",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "s-6-12",
+      "target": "12",
+      "type": "FOR_TYPE"
+    },
+    {
+      "source": "s-oa",
+      "target": "s-oa-1217",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "80",
+      "target": "s-oa-1217",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "80",
+      "target": "s-1-en-1195",
+      "type": "HAS_SCOPE"
+    },
+    {
+      "source": "s-oa-1217",
+      "target": "71",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-oa-1217",
+      "target": "72",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-oa-1217",
+      "target": "75",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-en-1195",
+      "target": "20",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-en-1195",
+      "target": "21",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-en-1195",
+      "target": "22",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-en-1195",
+      "target": "23",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-en-1195",
+      "target": "24",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-en-1195",
+      "target": "25",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-1-en-1195",
+      "target": "26",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "32",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "33",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "34",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "35",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "36",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "37",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "38",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "39",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "40",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "41",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "42",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-2-10",
+      "target": "43",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "44",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "45",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "46",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "47",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "48",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "49",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "50",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "51",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "52",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "53",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "54",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-5-13",
+      "target": "55",
+      "type": "INCLUDES"
     },
     {
       "source": "s-1-9",
@@ -521,6 +807,66 @@
     {
       "source": "s-1-8",
       "target": "31",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "68",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "69",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "70",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "71",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "72",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "73",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "74",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "75",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "76",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "77",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "78",
+      "type": "INCLUDES"
+    },
+    {
+      "source": "s-6-12",
+      "target": "79",
       "type": "INCLUDES"
     }
   ]
