@@ -1,0 +1,18 @@
+[
+  {
+    "id": "act-1",
+    "rnNumber": "RN5123",
+    "description": "User Jane Doe uploaded assessment evidence",
+    "userName": "Jane Doe",
+    "timestamp": "2026-01-15T10:24:00Z",
+    "caseId": "OFQ-1020"
+  },
+  {
+    "id": "act-2",
+    "rnNumber": "RN5142",
+    "description": "Triage completed for Information Request",
+    "userName": "Sam Patel",
+    "timestamp": "2026-01-12T14:02:00Z",
+    "caseId": "EQ-2001"
+  }
+]

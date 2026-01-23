@@ -22,6 +22,10 @@ import ProspectiveOrganisations from './pages/ProspectiveOrganisations';
 import SubjectMatterSpecialists from './pages/SubjectMatterSpecialists';
 import OrganisationInformation from './pages/OrganisationInformation';
 import OrganisationCases from './pages/OrganisationCases';
+import OrganisationMessages from './pages/OrganisationMessages';
+import OrganisationMessageReplyRedirect from './pages/OrganisationMessageReplyRedirect';
+import OrganisationConditions from './pages/OrganisationConditions';
+import OrganisationActivity from './pages/OrganisationActivity';
 import OrganisationScope from './pages/OrganisationScope';
 import OrganisationQualifications from './pages/OrganisationQualifications';
 import OrganisationQualificationDetail from './pages/OrganisationQualificationDetail';
@@ -72,6 +76,10 @@ function App() {
             <Route path="/profiles/subject-matter-specialists" element={<SubjectMatterSpecialists />} />
             <Route path="/organisations/:rnNumber" element={<OrganisationInformation />} />
             <Route path="/organisations/:rnNumber/cases" element={<OrganisationCases />} />
+            <Route path="/organisations/:rnNumber/messages" element={<OrganisationMessages />} />
+            <Route path="/organisations/:rnNumber/messages/reply/:messageId" element={<OrganisationMessageReplyRedirect />} />
+            <Route path="/organisations/:rnNumber/activity" element={<OrganisationActivity />} />
+            <Route path="/organisations/:rnNumber/conditions" element={<OrganisationConditions />} />
             <Route path="/organisations/:rnNumber/scope" element={<OrganisationScope />} />
             <Route path="/organisations/:rnNumber/qualifications" element={<OrganisationQualifications />} />
             <Route path="/organisations/:rnNumber/qualifications/:accreditationNumber" element={<OrganisationQualificationDetail />} />
