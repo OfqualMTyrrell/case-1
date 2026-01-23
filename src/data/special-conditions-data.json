@@ -1,0 +1,16 @@
+[
+  {
+    "id": "sc-1",
+    "rnNumber": "RN5123",
+    "title": "Temporary Certification Suspension",
+    "status": "Active",
+    "endDate": "2026-06-30"
+  },
+  {
+    "id": "sc-2",
+    "rnNumber": "RN5142",
+    "title": "Enhanced Quality Assurance",
+    "status": "Monitoring",
+    "endDate": "2026-03-31"
+  }
+]

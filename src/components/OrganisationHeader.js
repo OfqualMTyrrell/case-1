@@ -8,11 +8,14 @@ function OrganisationHeader({ organisationData, activePage }) {
   const rnNumber = organisationData?.RNNumber;
 
   const tabs = [
-    { id: 'information', label: 'Information', path: `/organisations/${rnNumber}` },
+    { id: 'information', label: 'Details', path: `/organisations/${rnNumber}` },
     { id: 'cases', label: 'Cases', path: `/organisations/${rnNumber}/cases` },
+    { id: 'messages', label: 'Messages', path: `/organisations/${rnNumber}/messages` },
+    { id: 'activity', label: 'Activity', path: `/organisations/${rnNumber}/activity` },
+    { id: 'risks', label: 'Risks', path: `/organisations/${rnNumber}/risks` },
+    { id: 'conditions', label: 'Conditions', path: `/organisations/${rnNumber}/conditions` },
     { id: 'scope', label: 'Scope', path: `/organisations/${rnNumber}/scope` },
     { id: 'qualifications', label: 'Qualifications', path: `/organisations/${rnNumber}/qualifications` },
-    { id: 'risks', label: 'Risks', path: `/organisations/${rnNumber}/risks` },
     { id: 'units', label: 'Units', path: `/organisations/${rnNumber}/units` },
     { id: 'users', label: 'Users', path: `/organisations/${rnNumber}/users` }
   ];
