@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Content, Grid, Column, DataTable, Table, TableHead, TableRow, TableHeader, TableBody, TableCell, TableContainer, TableToolbar, TableToolbarContent, TableToolbarSearch, Checkbox, Tag, FilterableMultiSelect, Pagination, Button, DatePicker, DatePickerInput, Layer, Accordion, AccordionItem } from '@carbon/react';
 import regulatedOrgsData from '../data/regulated-organisations.json';
 import AppHeader from '../components/AppHeader';
@@ -39,6 +40,7 @@ const formatDate = (dateString) => {
 };
 
 function RegulatedOrganisations() {
+  const navigate = useNavigate();
   const [rows, setRows] = useState([]);
   const [filteredRows, setFilteredRows] = useState([]);
   
@@ -412,25 +414,30 @@ function RegulatedOrganisations() {
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
-                                            {rows.map(row => (
-                                                <TableRow 
-                                                    key={row.id} 
-                                                    {...getRowProps({ row })}
-                                                    className="clickable-row"
-                                                    onClick={() => {
-                                                        console.log('Regulated organisation clicked:', row.id);
-                                                    }}
-                                                    tabIndex={0}
-                                                    style={{ cursor: 'pointer' }}
-                                                    aria-label={`View details for ${row.cells.find(c => c.info?.header === 'Name')?.value}`}
-                                                >
-                                                    {row.cells.map(cell => (
-                                                        <TableCell key={cell.id}>
-                                                            {cell.value}
-                                                        </TableCell>
-                                                    ))}
-                                                </TableRow>
-                                            ))}
+                                            {rows.map(row => {
+                                                const originalRow = pagedRows.find(r => r.id === row.id);
+                                                return (
+                                                    <TableRow 
+                                                        key={row.id} 
+                                                        {...getRowProps({ row })}
+                                                        className="clickable-row"
+                                                        onClick={() => {
+                                                            if (originalRow?.RNNumber) {
+                                                                navigate(`/organisations/${originalRow.RNNumber}`);
+                                                            }
+                                                        }}
+                                                        tabIndex={0}
+                                                        style={{ cursor: 'pointer' }}
+                                                        aria-label={`View details for ${originalRow?.Name}`}
+                                                    >
+                                                        {row.cells.map(cell => (
+                                                            <TableCell key={cell.id}>
+                                                                {cell.value}
+                                                            </TableCell>
+                                                        ))}
+                                                    </TableRow>
+                                                );
+                                            })}
                                         </TableBody>
                                     </Table>
                                 </TableContainer>

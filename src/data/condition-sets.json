@@ -1,0 +1,104 @@
+{
+  "general": {
+    "id": "general",
+    "title": "General Conditions of Recognition",
+    "type": "General",
+    "summary": "Conditions that apply to all recognised awarding organisations, covering governance, quality assurance and reporting.",
+    "url": "https://www.gov.uk/guidance/awarding-organisations-understanding-our-regulatory-requirements"
+  },
+  "qualificationLevelConditions": [
+    {
+      "id": "qlc-gcse",
+      "title": "GCSE (9–1) Qualification‑level Conditions and Requirements",
+      "summary": "Qualification‑level conditions that apply to GCSE qualifications (9–1).",
+      "matchKeywords": ["gcse", "gcse (9 to 1)", "gcse (9–1)"],
+      "url": "https://www.gov.uk/guidance/gcse-9-to-1-conditions-and-requirements"
+    },
+    {
+      "id": "qlc-gce",
+      "title": "GCE (AS & A level) Qualification‑level Conditions and Requirements",
+      "summary": "Qualification‑level conditions that apply to GCE AS/A level qualifications.",
+      "matchKeywords": ["gce", "a level", "gce a level", "gce a level"],
+      "url": "https://www.gov.uk/guidance/gce-a-level-conditions-and-requirements"
+    },
+    {
+      "id": "qlc-project",
+      "title": "Project Qualification‑level Conditions (including EPQ)",
+      "summary": "Qualification‑level conditions applying to project qualifications (e.g., EPQ).",
+      "matchKeywords": ["project", "epq"],
+      "url": "https://www.gov.uk/guidance/project-qualification-conditions"
+    },
+    {
+      "id": "qlc-functional-skills",
+      "title": "Functional Skills — Qualification‑level Conditions",
+      "summary": "Qualification‑level conditions applying to Functional Skills qualifications (English, Mathematics, Digital).",
+      "matchKeywords": ["functional skills"],
+      "url": "https://www.gov.uk/guidance/functional-skills-conditions-and-requirements"
+    },
+    {
+      "id": "qlc-technical-tlevels",
+      "title": "Technical Qualifications within T Levels — Qualification‑level Conditions",
+      "summary": "Qualification‑level conditions applying to Technical Qualifications, including those within T Levels.",
+      "matchKeywords": ["technical qualification", "t level", "t-level"],
+      "url": "https://www.gov.uk/guidance/technical-qualification-conditions-and-requirements"
+    },
+    {
+      "id": "qlc-performance-table",
+      "title": "Performance Table Qualification Conditions (Technical Awards)",
+      "summary": "Qualification‑level conditions for qualifications eligible for performance tables.",
+      "matchKeywords": ["performance table", "technical awards"],
+      "url": "https://www.gov.uk/guidance/performance-table-qualification-conditions"
+    },
+    {
+      "id": "qlc-progression",
+      "title": "Progression Qualifications — Qualification‑level Conditions",
+      "summary": "Qualification‑level conditions for progression qualifications.",
+      "matchKeywords": ["progression"],
+      "url": "https://www.gov.uk/guidance/progression-qualifications-conditions"
+    },
+    {
+      "id": "qlc-aea",
+      "title": "Advanced Extension Awards (AEA) — Qualification‑level Conditions",
+      "summary": "Qualification‑level conditions and requirements applying to AEAs.",
+      "matchKeywords": ["advanced extension awards", "aea", "advanced extension award"],
+      "url": "https://dera.ioe.ac.uk/"
+    }
+  ],
+  "subjectLevelConditions": [
+    {
+      "id": "slc-gcse-subject",
+      "qualification": "GCSE (9–1)",
+      "titleTemplate": "GCSE (9–1) — {subject}",
+      "summary": "Subject‑level conditions that apply to GCSE subjects such as Mathematics, English, Sciences and others.",
+      "urlTemplate": "https://www.gov.uk/search?q=GCSE+{subject}+conditions"
+    },
+    {
+      "id": "slc-gce-subject",
+      "qualification": "GCE (AS & A level)",
+      "titleTemplate": "GCE (AS & A level) — {subject}",
+      "summary": "Subject‑level conditions that apply to GCE subjects (A level and AS).",
+      "urlTemplate": "https://www.gov.uk/search?q=GCE+{subject}+conditions"
+    },
+    {
+      "id": "slc-functional-skills-english",
+      "qualification": "Functional Skills",
+      "titleTemplate": "Functional Skills — English",
+      "summary": "Conditions and requirements for Functional Skills English.",
+      "url": "https://www.gov.uk/guidance/functional-skills-english-conditions"
+    },
+    {
+      "id": "slc-functional-skills-maths",
+      "qualification": "Functional Skills",
+      "titleTemplate": "Functional Skills — Mathematics",
+      "summary": "Conditions and requirements for Functional Skills Mathematics.",
+      "url": "https://www.gov.uk/guidance/functional-skills-mathematics-conditions"
+    },
+    {
+      "id": "slc-digital-functional-skills",
+      "qualification": "Digital Functional Skills",
+      "titleTemplate": "Digital Functional Skills",
+      "summary": "Conditions and requirements for Digital Functional Skills (Entry 3 & Level 1).",
+      "url": "https://www.gov.uk/guidance/digital-functional-skills-conditions"
+    }
+  ]
+}

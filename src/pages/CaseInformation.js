@@ -1,9 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Content, Grid, Column, Theme, Button, Tile, AILabel, AILabelContent, AILabelActions } from '@carbon/react';
-import { ArrowUp, View } from '@carbon/icons-react';
+import { useParams } from 'react-router-dom';
+import { 
+  Content, 
+  Grid, 
+  Column, 
+  Theme, 
+  Button, 
+  Tile, 
+  AILabel, 
+  AILabelContent, 
+  Tag, 
+  SkeletonText, 
+  SkeletonPlaceholder 
+} from '@carbon/react';
+import { ArrowUp } from '@carbon/icons-react';
 import './CaseInformation.css';
 import casesData from '../cases.json';
+import aiSummaries from '../data/ai-case-summaries.json';
 import AppHeader from '../components/AppHeader';
 import CaseHeader from '../components/CaseHeader';
 import CaseDetails from '../components/CaseDetails';
@@ -12,10 +25,11 @@ import { getDisplayStatus } from '../utils/caseStatusUtils';
 
 function CaseInformation() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const caseData = casesData.find(c => c.CaseID === id);
   const [currentCaseStatus, setCurrentCaseStatus] = useState('');
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [aiSummary, setAiSummary] = useState(null);
+  const [loadingAI, setLoadingAI] = useState(true);
   const pageTopRef = useRef(null);
 
   // Show/hide back to top button based on scroll position
@@ -43,6 +57,20 @@ function CaseInformation() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [id]);
+
+  // Load AI summary with simulated delay
+  useEffect(() => {
+    setLoadingAI(true);
+    const timer = setTimeout(() => {
+      if (caseData && caseData.CaseType) {
+        const summary = aiSummaries[caseData.CaseType];
+        setAiSummary(summary || null);
+      }
+      setLoadingAI(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [id, caseData]);
 
   useEffect(() => {
     // Set initial case status
@@ -116,9 +144,9 @@ function CaseInformation() {
               />
             </div>
           </Column>
-          <Column sm={4} md={8} lg={8} className="cds--lg:col-start-4">
-            {/* AI Case Summary Tile - just playing with ideas, commented out  */}
-            {/* <Tile
+          <Column sm={4} md={8} lg={9} className="cds--lg:col-start-4">
+            {/* AI Case Summary Tile */}
+            <Tile
               slug={
                 <AILabel>
                   <AILabelContent>
@@ -132,70 +160,109 @@ function CaseInformation() {
                   </AILabelContent>
                 </AILabel>
               }
-              style={{ marginBottom: '1rem' }}
             >
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 400, lineHeight: 1.4, margin: 0, marginBottom: '1rem' }}>
-                Case summary
-              </h3>
-              
-              <p style={{ 
-                fontSize: '0.875rem', 
-                lineHeight: 1.43, 
-                marginBottom: '1.5rem',
-                color: 'var(--cds-text-secondary)'
-              }}>
-                This case involves a {caseData.CaseType.toLowerCase()} submitted by {caseData.SubmittedBy}. 
-                The case was received on {caseData.ReceivedDate} and is currently in {currentCaseStatus} status. 
-                Initial assessment indicates standard processing requirements with no immediate compliance concerns identified.
-              </p>
+              {loadingAI ? (
+                  <>
+                    <SkeletonText heading style={{ marginBottom: '1rem', width: '40%' }} />
+                    <SkeletonText paragraph lineCount={3} style={{ marginBottom: '1.5rem' }} />
+                    <div style={{ 
+                      display: 'flex', 
+                      gap: '1.5rem',
+                      borderTop: '1px solid var(--cds-border-subtle)',
+                      paddingTop: '1rem'
+                    }}>
+                      <div style={{ flex: 1 }}>
+                        <SkeletonText style={{ width: '60%', marginBottom: '0.5rem' }} />
+                        <SkeletonPlaceholder style={{ width: '60px', height: '32px' }} />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <SkeletonText style={{ width: '60%', marginBottom: '0.5rem' }} />
+                        <SkeletonPlaceholder style={{ width: '60px', height: '32px' }} />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <SkeletonText style={{ width: '40%', marginBottom: '0.5rem' }} />
+                        <SkeletonPlaceholder style={{ width: '50px', height: '24px' }} />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 400, lineHeight: 1.4, margin: 0, marginBottom: '1rem' }}>
+                      Case summary
+                    </h3>
+                    
+                    <p style={{ 
+                      fontSize: '0.875rem', 
+                      lineHeight: 1.43, 
+                      marginBottom: '1.5rem',
+                      color: 'var(--cds-text-secondary)'
+                    }}>
+                      {aiSummary?.summary}
+                    </p>
 
-              <div style={{ 
-                display: 'flex', 
-                gap: '2rem',
-                borderTop: '1px solid var(--cds-border-subtle)',
-                paddingTop: '1rem'
-              }}>
-                <div>
-                  <div style={{ 
-                    fontSize: '0.75rem', 
-                    fontWeight: 400,
-                    marginBottom: '0.25rem',
-                    color: 'var(--cds-text-secondary)'
-                  }}>
-                    Data quality
-                  </div>
-                  <div style={{ 
-                    fontSize: '2rem', 
-                    fontWeight: 300,
-                    lineHeight: 1.19,
-                    color: 'var(--cds-text-primary)'
-                  }}>
-                    85%
-                  </div>
-                </div>
-                <div>
-                  <div style={{ 
-                    fontSize: '0.75rem', 
-                    fontWeight: 400,
-                    marginBottom: '0.25rem',
-                    color: 'var(--cds-text-secondary)'
-                  }}>
-                    AI confidence
-                  </div>
-                  <div style={{ 
-                    fontSize: '2rem', 
-                    fontWeight: 300,
-                    lineHeight: 1.19,
-                    color: 'var(--cds-text-primary)'
-                  }}>
-                    92%
-                  </div>
-                </div>
-              </div>
-            </Tile> */}
-
+                    <div style={{ 
+                      display: 'flex', 
+                      gap: '1.5rem',
+                      borderTop: '1px solid var(--cds-border-subtle)',
+                      paddingTop: '1rem'
+                    }}>
+                      <div>
+                        <div style={{ 
+                          fontSize: '0.75rem', 
+                          fontWeight: 400,
+                          marginBottom: '0.25rem',
+                          color: 'var(--cds-text-secondary)'
+                        }}>
+                          Information completedness
+                        </div>
+                        <div style={{ 
+                          fontSize: '1.5rem', 
+                          fontWeight: 300,
+                          lineHeight: 1.19,
+                          color: 'var(--cds-text-primary)'
+                        }}>
+                          {aiSummary?.metrics.dataQuality}%
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ 
+                          fontSize: '0.75rem', 
+                          fontWeight: 400,
+                          marginBottom: '0.25rem',
+                          color: 'var(--cds-text-secondary)'
+                        }}>
+                          AI confidence
+                        </div>
+                        <div style={{ 
+                          fontSize: '1.5rem', 
+                          fontWeight: 300,
+                          lineHeight: 1.19,
+                          color: 'var(--cds-text-primary)'
+                        }}>
+                          {aiSummary?.metrics.aiConfidence}%
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ 
+                          fontSize: '0.75rem', 
+                          fontWeight: 400,
+                          marginBottom: '0.25rem',
+                          color: 'var(--cds-text-secondary)'
+                        }}>
+                          Risk level
+                        </div>
+                        <Tag 
+                          type={aiSummary?.metrics.riskLevel === 'High' ? 'red' : aiSummary?.metrics.riskLevel === 'Medium' ? 'orange' : 'green'}
+                          size="md"
+                        >
+                          {aiSummary?.metrics.riskLevel}
+                        </Tag>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </Tile>
             <CaseDetails caseData={caseData} />
-
           </Column>
         </Grid>
 

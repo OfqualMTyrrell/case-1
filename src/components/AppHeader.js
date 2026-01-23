@@ -6,7 +6,6 @@ import {
   HeaderName,
   HeaderNavigation,
   HeaderMenuItem,
-  HeaderMenu,
   HeaderGlobalBar,
   HeaderGlobalAction,
   HeaderPanel,
@@ -94,7 +93,7 @@ function AppHeader() {
         </HeaderName>
         <HeaderNavigation aria-label="Ofqual Cases Navigation" style={{ backgroundColor: '#004a4a' }}>
           <HeaderMenuItem href="/cases-v2" isActive={location.pathname === '/cases-v2' || location.pathname.startsWith('/case/')}>Case management</HeaderMenuItem>
-          <HeaderMenuItem href="/profiles/regulated-organisations" isActive={location.pathname === '/profiles/regulated-organisations'}>Regulated organisations</HeaderMenuItem>
+          <HeaderMenuItem href="/profiles/regulated-organisations" isActive={location.pathname === '/profiles/regulated-organisations' || location.pathname.startsWith('/organisations/')}>Regulated organisations</HeaderMenuItem>
           <HeaderMenuItem href="/profiles/prospective-organisations" isActive={location.pathname === '/profiles/prospective-organisations'}>Prospective organisations</HeaderMenuItem>
           <HeaderMenuItem href="/profiles/subject-matter-specialists" isActive={location.pathname === '/profiles/subject-matter-specialists'}>Subject matter specialists</HeaderMenuItem>
           <HeaderMenuItem href="/graph" isActive={location.pathname === '/graph'}>Relationships map</HeaderMenuItem>

@@ -1,0 +1,242 @@
+[
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "H/650/2301",
+    "title": "Programming Fundamentals",
+    "level": "3",
+    "glh": 60,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "K/650/2302",
+    "title": "Database Design and Development",
+    "level": "3",
+    "glh": 50,
+    "creditValue": 5
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "M/650/2303",
+    "title": "Web Development Technologies",
+    "level": "3",
+    "glh": 70,
+    "creditValue": 7
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "T/650/2304",
+    "title": "Software Testing Principles",
+    "level": "4",
+    "glh": 40,
+    "creditValue": 4
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "A/650/2305",
+    "title": "Object-Oriented Programming",
+    "level": "4",
+    "glh": 80,
+    "creditValue": 8
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "F/650/2306",
+    "title": "Network Infrastructure",
+    "level": "5",
+    "glh": 90,
+    "creditValue": 9
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "J/650/2307",
+    "title": "Cyber Security Fundamentals",
+    "level": "5",
+    "glh": 60,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "L/650/2308",
+    "title": "Business Communication Skills",
+    "level": "2",
+    "glh": 30,
+    "creditValue": 3
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "R/650/2309",
+    "title": "Financial Accounting Principles",
+    "level": "4",
+    "glh": 70,
+    "creditValue": 7
+  },
+  {
+    "rnNumber": "RN5123",
+    "unitCode": "Y/650/2310",
+    "title": "Management Accounting",
+    "level": "4",
+    "glh": 60,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "D/651/3401",
+    "title": "Cell Biology",
+    "level": "2",
+    "glh": 50,
+    "creditValue": 5
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "H/651/3402",
+    "title": "Human Physiology",
+    "level": "3",
+    "glh": 70,
+    "creditValue": 7
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "K/651/3403",
+    "title": "Organic Chemistry",
+    "level": "2",
+    "glh": 60,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "M/651/3404",
+    "title": "Inorganic Chemistry",
+    "level": "3",
+    "glh": 55,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "T/651/3405",
+    "title": "Mechanics and Materials",
+    "level": "2",
+    "glh": 65,
+    "creditValue": 7
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "A/651/3406",
+    "title": "Electricity and Magnetism",
+    "level": "3",
+    "glh": 60,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "F/651/3407",
+    "title": "Applied Mathematics",
+    "level": "2",
+    "glh": 80,
+    "creditValue": 8
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "J/651/3408",
+    "title": "Statistics for Science",
+    "level": "4",
+    "glh": 50,
+    "creditValue": 5
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "L/651/3409",
+    "title": "Customer Service in Retail",
+    "level": "2",
+    "glh": 40,
+    "creditValue": 4
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "R/651/3410",
+    "title": "Visual Merchandising",
+    "level": "3",
+    "glh": 45,
+    "creditValue": 5
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "Y/651/3411",
+    "title": "Principles of Care",
+    "level": "3",
+    "glh": 70,
+    "creditValue": 7
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "D/651/3412",
+    "title": "Health and Safety in Care Settings",
+    "level": "3",
+    "glh": 30,
+    "creditValue": 3
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "H/651/3413",
+    "title": "Manufacturing Processes",
+    "level": "2",
+    "glh": 60,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "K/651/3414",
+    "title": "Quality Control Methods",
+    "level": "3",
+    "glh": 40,
+    "creditValue": 4
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "M/651/3415",
+    "title": "Coaching Theory and Practice",
+    "level": "3",
+    "glh": 50,
+    "creditValue": 5
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "T/651/3416",
+    "title": "Sports Injury Prevention",
+    "level": "4",
+    "glh": 45,
+    "creditValue": 5
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "A/651/3417",
+    "title": "Digital Media Production",
+    "level": "2",
+    "glh": 60,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "F/651/3418",
+    "title": "Video Editing Techniques",
+    "level": "3",
+    "glh": 50,
+    "creditValue": 5
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "J/651/3419",
+    "title": "English Language Skills",
+    "level": "1",
+    "glh": 55,
+    "creditValue": 6
+  },
+  {
+    "rnNumber": "RN5142",
+    "unitCode": "L/651/3420",
+    "title": "Written Communication",
+    "level": "2",
+    "glh": 45,
+    "creditValue": 5
+  }
+]

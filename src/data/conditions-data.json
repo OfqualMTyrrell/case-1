@@ -1,0 +1,20 @@
+[
+  {
+    "id": "cond-1",
+    "rnNumber": "RN5123",
+    "title": "General Conditions of Recognition",
+    "type": "General"
+  },
+  {
+    "id": "cond-2",
+    "rnNumber": "RN5123",
+    "title": "Qualification-Level Conditions",
+    "type": "Qualification"
+  },
+  {
+    "id": "cond-3",
+    "rnNumber": "RN5142",
+    "title": "Subject-Specific Conditions",
+    "type": "Subject"
+  }
+]

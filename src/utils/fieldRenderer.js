@@ -1,10 +1,16 @@
 import React from 'react';
+import DocumentsTable from '../components/DocumentsTable';
 
 /**
  * Get the value from data using the field configuration
  */
 export const getFieldValue = (data, field) => {
   if (!data) return null;
+  
+  // If field has a custom render function, use it
+  if (field.type === 'custom' && field.render) {
+    return field.render(data);
+  }
   
   switch (field.type) {
     case 'nested':
@@ -62,6 +68,8 @@ export const renderFieldValue = (value, field) => {
   }
 
   switch (field.type) {
+    case 'custom':
+      return renderText(value);
     case 'multiline':
       return renderMultilineText(value);
     case 'files':
@@ -102,31 +110,14 @@ const renderMultilineText = (text) => {
 };
 
 /**
- * Render files as clickable links
+ * Render files as AI-enhanced data table
  */
 const renderFiles = (files) => {
   if (!files || !Array.isArray(files) || files.length === 0) {
     return null;
   }
   
-  return (
-    <div>
-      {files.map((file, index) => (
-        <div key={index} style={{ marginBottom: '0.25rem' }}>
-          <a 
-            href="#" 
-            style={{ 
-              wordBreak: 'break-all', 
-              color: 'var(--cds-link-primary, #0f62fe)', 
-              textDecoration: 'underline' 
-            }}
-          >
-            {file.name || file}
-          </a>
-        </div>
-      ))}
-    </div>
-  );
+  return <DocumentsTable documents={files} />;
 };
 
 /**
