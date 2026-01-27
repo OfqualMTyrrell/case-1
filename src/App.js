@@ -33,6 +33,7 @@ import OrganisationRisks from './pages/OrganisationRisks';
 import OrganisationRiskDetail from './pages/OrganisationRiskDetail';
 import OrganisationUnits from './pages/OrganisationUnits';
 import OrganisationUsers from './pages/OrganisationUsers';
+import GraphPage from './pages/GraphPage';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
 import '@carbon/styles/css/styles.css';
 import './App.css';
@@ -87,6 +88,7 @@ function App() {
             <Route path="/organisations/:rnNumber/risks/:riskId" element={<OrganisationRiskDetail />} />
             <Route path="/organisations/:rnNumber/units" element={<OrganisationUnits />} />
             <Route path="/organisations/:rnNumber/users" element={<OrganisationUsers />} />
+            <Route path="/graph" element={<GraphPage />} />
             <Route path="/admin/seed-data" element={<AdminDataSeeding />} />
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Routes>
