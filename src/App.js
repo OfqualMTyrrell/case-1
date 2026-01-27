@@ -34,7 +34,6 @@ import OrganisationRiskDetail from './pages/OrganisationRiskDetail';
 import OrganisationUnits from './pages/OrganisationUnits';
 import OrganisationUsers from './pages/OrganisationUsers';
 import { loadSeededDataIfEmpty } from './utils/seededDataLoader';
-import GraphPage from './pages/GraphPage';
 import '@carbon/styles/css/styles.css';
 import './App.css';
 import Footer from './components/Footer';
@@ -56,6 +55,8 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/team" element={<TeamDashboard />} />
             <Route path="/cases" element={<CaseList />} />
             <Route path="/case/:id" element={<CaseInformation />} />
             <Route path="/case/:caseId/record-note" element={<RecordCaseNote />} />
@@ -87,8 +88,7 @@ function App() {
             <Route path="/organisations/:rnNumber/units" element={<OrganisationUnits />} />
             <Route path="/organisations/:rnNumber/users" element={<OrganisationUsers />} />
             <Route path="/admin/seed-data" element={<AdminDataSeeding />} />
-            <Route path="/graph" element={<GraphPage />} />
-            <Route path="/" element={<Navigate to="/cases-v2" replace />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Routes>
         </Router>
         <Footer />
